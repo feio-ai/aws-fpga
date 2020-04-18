@@ -1,0 +1,54 @@
+{
+    "name": "Monte Carlo Simulation (HLS C/C++ Kernel)", 
+    "description": [
+        "Test Implementation of Vitis Library"
+    ],
+    "keywords": [
+        "mcSimulation", 
+        "complete"
+    ], 
+    "key_concepts": [
+        "Vitis Library"
+    ], 
+    "os": [
+        "Linux"
+    ], 
+    "runtime": [
+        "OpenCL"
+    ], 
+    "host": {
+        "host_exe": "host", 
+        "compiler": {
+            "sources": [
+                "REPO_DIR/common/includes/xcl2"
+            ], 
+            "includepaths": [
+                "REPO_DIR/common/includes/xcl2"
+            ]
+        }
+    }, 
+    "containers": [
+        {
+            "accelerators": [
+                {
+                    "name": "monte_sim", 
+                    "location": "src/monte_sim.cpp"
+                }
+                
+            ], 
+            "name": "monte_sim"
+        }
+    ],
+    "launch": [
+        {
+            "cmd_args": "BUILD/monte_sim.xclbin", 
+            "name": "generic launch for all flows"
+        }
+    ], 
+    "contributors": [
+        {
+            "url": "https://www.feio.ai", 
+            "group": "Feio"
+        }
+    ] 
+}
