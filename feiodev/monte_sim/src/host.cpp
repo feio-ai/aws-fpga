@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
 
     // -------------------------------------------------------------------------
     // OpenCL Host Area Start
-    auto devices = xcl::get_xcl_devices();
+    auto devices = xcl::get_xil_devices();
     auto fileBuf = xcl::read_binary_file(binaryFile);
     cl::Program::Binaries bins{{fileBuf.data(), fileBuf.size()}};
     int valid_device = 0;
@@ -90,7 +90,7 @@ int main(int argc, char **argv) {
                 cl::Buffer buffer_output(context,
                                         CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY,
                                         vector_size_bytes,
-                                        source_hw_resuls.data(),
+                                        source_hw_results.data(),
                                         &err));
 
     int size = DATA_SIZE;
