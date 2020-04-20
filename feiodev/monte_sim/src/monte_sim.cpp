@@ -13,7 +13,7 @@ extern "C" {
 
     void monte_sim(const unsigned int *in1,
                 const unsigned int *in2,
-                unsigned int *outr,
+                unsigned int *out_r,
                 int size
     ) {
         #pragma HLS INTERFACE m_axi port=in1 offset=slave bundle=gmem
@@ -21,7 +21,7 @@ extern "C" {
         #pragma HLS INTERFACE m_axi port=out_r offset=slave bundle=gmem
         #pragma HLS INTERFACE s_axilite port = in1 bundle = control
         #pragma HLS INTERFACE s_axilite port = in2 bundle = control
-        #pragma HLS INTERFACE s_axilite port = outr bundle = control
+        #pragma HLS INTERFACE s_axilite port = out_r bundle = control
         #pragma HLS INTERFACE s_axilite port = size bundle = control
         #pragma HLS INTERFACE s_axilite port = return bundle = control
 
