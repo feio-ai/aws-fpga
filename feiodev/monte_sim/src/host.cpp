@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
 
     // -------------------------------------------------------------------------
     // OpenCL Host Area Start
-    auto device = xcl::get_xcl_devices();
+    auto devices = xcl::get_xcl_devices();
     auto fileBuf = xcl::read_binary_file(binaryFile);
     cl::Program::Binaries bins{{fileBuf.data(), fileBuf.size()}};
     int valid_device = 0;
