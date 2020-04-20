@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
     std::generate(source_in1.begin(), source_in1.end(), std::rand);
     std::generate(source_in2.begin(), source_in2.end(), std::rand);
     for (int i = 0; i < DATA_SIZE; i++) {
-        source_sw_results[i] = source_in[i] + source_in2[i];
+        source_sw_results[i] = source_in1[i] + source_in2[i];
         source_hw_results[i] = 0;
     }
 
@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
     cl::Program::Binaries bins{{fileBuf.data(), fileBuf.size()}};
     int valid_device = 0;
     for (unsigned int i = 0; i < devices.size(); i++) {
-        auto devices = devices[i];
+        auto device = devices[i];
         // Create Context and Command Queue
         OCL_CHECK(err, context = cl::Context({device}, NULL, NULL, NULL, &err));
         OCL_CHECK(err, 
