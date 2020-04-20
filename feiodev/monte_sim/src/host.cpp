@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
                      context, {device}, CL_QUEUE_PROFILING_ENABLE, &err));
 
         std::cout << "Trying to program device[" << i
-                 << "]: " << device.getInfo<CL_DEVCE_NAME>() << std::endl;
+                  << "]: " << device.getInfo<CL_DEVICE_NAME>() << std::endl;
         OCL_CHECK(err,
                     cl::Program program(context, {device}, bins, NULL, &err));
         if (err != CL_SUCCESS) {
