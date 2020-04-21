@@ -120,7 +120,7 @@ int main(int argc, char **argv) {
     for (int i = 0; i < DATA_SIZE; i++) {
         if (source_hw_results[i] != source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
+            std::cout << "i = " << i << "val = " << source_in1[i] << " CPU result = " << source_sw_results[i]
                       << " Device result = " << source_hw_results[i]
                       << std::endl;
             match = false;
