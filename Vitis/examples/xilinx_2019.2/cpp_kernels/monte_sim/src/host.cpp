@@ -20,7 +20,7 @@ using std::vector;
 
 float gen_random() {
     static default_random_engine e;
-    static uniform_real_distribution<float> unif(x, y);
+    static uniform_real_distribution<float> unif(0.0, 10.0);
     return unif(e);
 }
 
