@@ -16,10 +16,9 @@ using std::vector;
 #define DATA_SIZE 4096
 
 int gen_random() {
-    std::random_device seed;
-    static std::mt19937 re (seed());
-    static std::uniform_real_distribution<int> unif(0, 10);
-    return unif(re);
+    static default_random_engine e;
+    static uniform_real_distribution<int> unif(0, 10);
+    return unif(e);
 }
 
 
