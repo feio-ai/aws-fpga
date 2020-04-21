@@ -12,9 +12,9 @@ const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-    void monte_sim(const unsigned int *in1,
+    void monte_sim(const double *in1,
                 // const unsigned int *in2,
-                unsigned int *out_r,
+                double *out_r,
                 int size
     ) {
         #pragma HLS INTERFACE m_axi port=in1 offset=slave bundle=gmem
@@ -26,9 +26,9 @@ extern "C" {
         #pragma HLS INTERFACE s_axilite port = size bundle = control
         #pragma HLS INTERFACE s_axilite port = return bundle = control
 
-            unsigned int v1_buffer[BUFFER_SIZE];
+            double v1_buffer[BUFFER_SIZE];
             // unsigned int v2_buffer[BUFFER_SIZE];
-            unsigned int vout_buffer[BUFFER_SIZE];
+            double vout_buffer[BUFFER_SIZE];
 
             for (int i = 0; i < size; i += BUFFER_SIZE) {
                 #pragma HLS LOOP_TRIPCOUNT min=c_len max=c_len
@@ -54,7 +54,7 @@ extern "C" {
 */
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
-                int x1;
+                double x1;
             monte_sim:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
