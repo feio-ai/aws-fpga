@@ -3,18 +3,21 @@
 #include <stdio.h>
 #include <string.h>
 #include "hls_math.h"
+#include "ap_fixed.h"
 
 #define BUFFER_SIZE 1024
 #define DATA_SIZE 4096
+
+ap_fixed<18,18,AP_RND> fix_type;
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-    void monte_sim(const double *in1,
+    void monte_sim(const fix_type *in1,
                 // const unsigned int *in2,
-                double *out_r,
+                fix_type *out_r,
                 int size
     ) {
         #pragma HLS INTERFACE m_axi port=in1 offset=slave bundle=gmem
@@ -26,9 +29,9 @@ extern "C" {
         #pragma HLS INTERFACE s_axilite port = size bundle = control
         #pragma HLS INTERFACE s_axilite port = return bundle = control
 
-            double v1_buffer[BUFFER_SIZE];
+            fix_type v1_buffer[BUFFER_SIZE];
             // unsigned int v2_buffer[BUFFER_SIZE];
-            double vout_buffer[BUFFER_SIZE];
+            fix_type vout_buffer[BUFFER_SIZE];
 
             for (int i = 0; i < size; i += BUFFER_SIZE) {
                 #pragma HLS LOOP_TRIPCOUNT min=c_len max=c_len
@@ -54,7 +57,7 @@ extern "C" {
 */
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
-                double x1;
+                fix_type x1;
             monte_sim:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
