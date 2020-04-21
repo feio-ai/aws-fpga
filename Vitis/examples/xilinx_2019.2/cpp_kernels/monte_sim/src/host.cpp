@@ -7,7 +7,7 @@
 #include <random>
 #include <vector>
 #include <math.h>
-#include "ap_fixed.h"
+// #include "ap_fixed.h"
 
 using std::default_random_engine;
 using std::generate;
@@ -16,13 +16,11 @@ using std::vector;
 
 #define DATA_SIZE 4096
 
-typedef ap_fixed<18,6,AP_RND> fix_type;
+// typedef ap_fixed<18,6,AP_RND> fix_type;
 
-fix_type gen_random() {
-    fix_type x = 0;
-    fix_type y = 10;
+float gen_random() {
     static default_random_engine e;
-    static uniform_real_distribution<fix_type> unif(x, y);
+    static uniform_real_distribution<float> unif(x, y);
     return unif(e);
 }
 
@@ -37,21 +35,21 @@ int main(int argc, char **argv) {
     }
 
     std::string binaryFile = argv[1];
-    size_t vector_size_bytes = sizeof(fix_type) * DATA_SIZE;
+    size_t vector_size_bytes = sizeof(float) * DATA_SIZE;
     cl_int err;
     cl::Context context;
     cl::Kernel kernel_monte_sim;
     cl::CommandQueue q;
 
-    std::vector<fix_type, aligned_allocator<fix_type>> source_in1(DATA_SIZE);
+    std::vector<float, aligned_allocator<float>> source_in1(DATA_SIZE);
     // std::vector<int, aligned_allocator<int>> source_in2(DATA_SIZE);   -- Only one source input
-    std::vector<fix_type, aligned_allocator<fix_type>> source_hw_results(DATA_SIZE);
-    std::vector<fix_type, aligned_allocator<fix_type>> source_sw_results(DATA_SIZE);
+    std::vector<float, aligned_allocator<float>> source_hw_results(DATA_SIZE);
+    std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
 
     // Create the test data
     std::generate(source_in1.begin(), source_in1.end(), gen_random);
     // std::generate(source_in2.begin(), source_in2.end(), std::rand);
-    fix_type x;
+    float x;
     for (int i = 0; i < DATA_SIZE; i++) {
         // source_sw_results[i] = source_in1[i] + source_in2[i];
         x = source_in1[i];
