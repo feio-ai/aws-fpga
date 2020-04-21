@@ -38,10 +38,10 @@ int main(int argc, char **argv) {
     cl::Kernel kernel_monte_sim;
     cl::CommandQueue q;
 
-    std::vector<double, aligned_allocator<int>> source_in1(DATA_SIZE);
+    std::vector<double, aligned_allocator<double>> source_in1(DATA_SIZE);
     // std::vector<int, aligned_allocator<int>> source_in2(DATA_SIZE);   -- Only one source input
-    std::vector<double, aligned_allocator<int>> source_hw_results(DATA_SIZE);
-    std::vector<double, aligned_allocator<int>> source_sw_results(DATA_SIZE);
+    std::vector<double, aligned_allocator<double>> source_hw_results(DATA_SIZE);
+    std::vector<double, aligned_allocator<double>> source_sw_results(DATA_SIZE);
 
     // Create the test data
     std::generate(source_in1.begin(), source_in1.end(), gen_random);
