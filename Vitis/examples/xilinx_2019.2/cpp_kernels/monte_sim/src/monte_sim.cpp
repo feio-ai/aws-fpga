@@ -65,7 +65,7 @@ extern "C" {
                     //perform vector addition
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
                     x1 = v1_buffer[j];
-                    vout_buffer[j] = ap_fixed<32,16> exp (x1);
+                    vout_buffer[j] = exp<ap_fixed<W,I>> (x1);
                 }
 
             //burst write the result
