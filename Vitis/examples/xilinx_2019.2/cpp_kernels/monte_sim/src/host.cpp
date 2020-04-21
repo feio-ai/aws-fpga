@@ -6,7 +6,9 @@
 #include <cstdio>
 #include <random>
 #include <vector>
-#include <math.h>
+// #include <math.h>
+
+#include "hls_math.h"
 
 #define DATA_SIZE 4096
 
@@ -32,7 +34,7 @@ int main(int argc, char **argv) {
     std::vector<int, aligned_allocator<int>> source_sw_results(DATA_SIZE);
 
     // Create the test data
-    std::generate(source_in1.begin(), source_in1.end(), ceil(std::rand % 100));
+    std::generate(source_in1.begin(), source_in1.end(), std::rand);
     // std::generate(source_in2.begin(), source_in2.end(), std::rand);
     int x;
     for (int i = 0; i < DATA_SIZE; i++) {
