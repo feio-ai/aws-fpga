@@ -16,7 +16,7 @@ using std::vector;
 
 #define DATA_SIZE 4096
 
-typedef ap_fixed<18,18,AP_RND> fix_type;
+typedef ap_fixed<18,6,AP_RND> fix_type;
 
 fix_type gen_random() {
     fix_type x = 0;
