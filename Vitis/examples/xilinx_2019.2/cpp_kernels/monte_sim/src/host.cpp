@@ -137,6 +137,8 @@ int main(int argc, char **argv) {
                       << std::endl;
             match = false;
             break;
+        } else {
+            std::cout << "SW result = " << source_sw_results[i] << " Device result = " << source_hw_results[i] << std::endl;
         }
     }
 
