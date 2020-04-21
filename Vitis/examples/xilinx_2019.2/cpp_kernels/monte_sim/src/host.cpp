@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
     std::vector<int, aligned_allocator<int>> source_sw_results(DATA_SIZE);
 
     // Create the test data
-    std::generate(source_in1.begin(), source_in1.end(), std::rand);
+    std::generate(source_in1.begin(), source_in1.end(), ( std::rand % 100 ));
     // std::generate(source_in2.begin(), source_in2.end(), std::rand);
     int x;
     for (int i = 0; i < DATA_SIZE; i++) {
@@ -120,7 +120,7 @@ int main(int argc, char **argv) {
     for (int i = 0; i < DATA_SIZE; i++) {
         if (source_hw_results[i] != source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << "val = " << source_in1[i] << " CPU result = " << source_sw_results[i]
+            std::cout << "i = " << i << " val = " << source_in1[i] << " CPU result = " << source_sw_results[i]
                       << " Device result = " << source_hw_results[i]
                       << std::endl;
             match = false;
