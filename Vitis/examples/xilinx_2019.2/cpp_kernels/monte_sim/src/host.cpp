@@ -8,9 +8,20 @@
 #include <vector>
 #include <math.h>
 
-// #include "hls_math.h"
+using std::default_random_engine;
+using std::generate;
+using std::uniform_int_distribution;
+using std::vector;
 
 #define DATA_SIZE 4096
+
+int gen_random() {
+    std::random_device seed;
+    static std::mt19937 re (seed());
+    static std::uniform_real_distribution<int> unif(0, 10);
+    return unif(re);
+}
+
 
 // pass a vector of numbers, return the exp(x) of those numbers
 // or some manipulation of those numbers
@@ -34,7 +45,7 @@ int main(int argc, char **argv) {
     std::vector<int, aligned_allocator<int>> source_sw_results(DATA_SIZE);
 
     // Create the test data
-    std::generate(source_in1.begin(), source_in1.end(), std::rand);
+    std::generate(source_in1.begin(), source_in1.end(), gen_random);
     // std::generate(source_in2.begin(), source_in2.end(), std::rand);
     int x;
     for (int i = 0; i < DATA_SIZE; i++) {
