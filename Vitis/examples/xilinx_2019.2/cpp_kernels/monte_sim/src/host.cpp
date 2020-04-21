@@ -17,7 +17,7 @@ using std::vector;
 
 int gen_random() {
     static default_random_engine e;
-    static uniform_real_distribution<int> unif(0, 10);
+    static uniform_int_distribution<int> unif(0, 10);
     return unif(e);
 }
 
