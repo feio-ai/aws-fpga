@@ -6,9 +6,9 @@
 #include <cstdio>
 #include <random>
 #include <vector>
-// #include <math.h>
+#include <math.h>
 
-#include "hls_math.h"
+// #include "hls_math.h"
 
 #define DATA_SIZE 4096
 
