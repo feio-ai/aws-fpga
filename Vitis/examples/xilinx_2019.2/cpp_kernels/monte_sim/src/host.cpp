@@ -102,8 +102,8 @@ int main(int argc, char **argv) {
     int size = DATA_SIZE;
     OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1));
     // OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, buffer_output));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(3, size));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_output));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, size));
 
     // Copy input data to device global memory
     // OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));
