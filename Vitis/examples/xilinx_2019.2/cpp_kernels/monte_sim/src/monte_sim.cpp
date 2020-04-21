@@ -8,7 +8,7 @@
 #define BUFFER_SIZE 1024
 #define DATA_SIZE 4096
 
-typedef ap_fixed<32,16,AP_RND> fix_type;
+typedef ap_fixed<32,16> fix_type;
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;
@@ -65,7 +65,7 @@ extern "C" {
                     //perform vector addition
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
                     x1 = v1_buffer[j];
-                    vout_buffer[j] = exp (x1);
+                    vout_buffer[j] = ap_fixed<32,16> exp (x1);
                 }
 
             //burst write the result
