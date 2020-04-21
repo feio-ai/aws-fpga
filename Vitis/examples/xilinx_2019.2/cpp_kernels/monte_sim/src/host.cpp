@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <random>
 #include <vector>
+#include <math.h>
 
 #define DATA_SIZE 4096
 
@@ -26,15 +27,18 @@ int main(int argc, char **argv) {
     cl::CommandQueue q;
 
     std::vector<int, aligned_allocator<int>> source_in1(DATA_SIZE);
-    std::vector<int, aligned_allocator<int>> source_in2(DATA_SIZE);
+    // std::vector<int, aligned_allocator<int>> source_in2(DATA_SIZE);   -- Only one source input
     std::vector<int, aligned_allocator<int>> source_hw_results(DATA_SIZE);
     std::vector<int, aligned_allocator<int>> source_sw_results(DATA_SIZE);
 
     // Create the test data
     std::generate(source_in1.begin(), source_in1.end(), std::rand);
-    std::generate(source_in2.begin(), source_in2.end(), std::rand);
+    // std::generate(source_in2.begin(), source_in2.end(), std::rand);
+    int x;
     for (int i = 0; i < DATA_SIZE; i++) {
-        source_sw_results[i] = source_in1[i] + source_in2[i];
+        // source_sw_results[i] = source_in1[i] + source_in2[i];
+        x = source_in[i];
+        source_sw_results[i] = exp (x);
         source_hw_results[i] = 0;
     }
 
@@ -80,12 +84,14 @@ int main(int argc, char **argv) {
                                     vector_size_bytes,
                                     source_in1.data(),
                                     &err));
-    OCL_CHECK(err,
+/*    OCL_CHECK(err,
                 cl::Buffer buffer_in2(context,
                                     CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
                                     vector_size_bytes,
                                     source_in2.data(),
                                     &err));
+*/
+
     OCL_CHECK(err,
                 cl::Buffer buffer_output(context,
                                         CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY,
@@ -95,7 +101,7 @@ int main(int argc, char **argv) {
 
     int size = DATA_SIZE;
     OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
+    // OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(2, buffer_output));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(3, size));
 
