@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
     int x;
     for (int i = 0; i < DATA_SIZE; i++) {
         // source_sw_results[i] = source_in1[i] + source_in2[i];
-        x = source_in[i];
+        x = source_in1[i];
         source_sw_results[i] = exp (x);
         source_hw_results[i] = 0;
     }
