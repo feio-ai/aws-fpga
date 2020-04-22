@@ -11,16 +11,16 @@
 
 using std::default_random_engine;
 using std::generate;
-using std::uniform_real_distribution;
+using std::uniform_int_distribution;
 using std::vector;
 
 #define DATA_SIZE 4096
 
 // typedef ap_fixed<18,6,AP_RND> fix_type;
 
-float gen_random() {
+int gen_random() {
     static default_random_engine e;
-    static uniform_real_distribution<float> unif(0.0, 10.0);
+    static uniform_int_distribution<int> unif(0, 11);
     return unif(e);
 }
 
@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
     cl::Kernel kernel_monte_sim;
     cl::CommandQueue q;
 
-    std::vector<float, aligned_allocator<float>> source_in1(DATA_SIZE);
+    std::vector<int, aligned_allocator<int>> source_in1(DATA_SIZE);
     // std::vector<int, aligned_allocator<int>> source_in2(DATA_SIZE);   -- Only one source input
     std::vector<float, aligned_allocator<float>> source_hw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
     // Create the test data
     std::generate(source_in1.begin(), source_in1.end(), gen_random);
     // std::generate(source_in2.begin(), source_in2.end(), std::rand);
-    float x;
+    int x;
     for (int i = 0; i < DATA_SIZE; i++) {
         // source_sw_results[i] = source_in1[i] + source_in2[i];
         x = source_in1[i];

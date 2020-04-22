@@ -8,14 +8,14 @@
 #define BUFFER_SIZE 1024
 #define DATA_SIZE 4096
 
-typedef ap_fixed<32,16> fix_type;
+typedef ap_fixed<31,15> fix_type;
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-    void monte_sim(const fix_type *in1,
+    void monte_sim(const unsigned int *in1,
                 // const unsigned int *in2,
                 fix_type *out_r,
                 int size
@@ -29,7 +29,7 @@ extern "C" {
         #pragma HLS INTERFACE s_axilite port = size bundle = control
         #pragma HLS INTERFACE s_axilite port = return bundle = control
 
-            fix_type v1_buffer[BUFFER_SIZE];
+            unsigned int v1_buffer[BUFFER_SIZE];
             // unsigned int v2_buffer[BUFFER_SIZE];
             fix_type vout_buffer[BUFFER_SIZE];
 
@@ -57,7 +57,7 @@ extern "C" {
 */
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
-                fix_type x1;
+                int x1;
             monte_sim:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
@@ -65,7 +65,7 @@ extern "C" {
                     //perform vector addition
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
                     x1 = v1_buffer[j];
-                    vout_buffer[j] = hls::exp (x1);
+                    vout_buffer[j] = hls::exp(x1);
                 }
 
             //burst write the result
