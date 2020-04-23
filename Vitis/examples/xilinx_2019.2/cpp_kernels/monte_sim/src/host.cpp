@@ -8,6 +8,7 @@
 #include <vector>
 #include <math.h>
 #include "ap_fixed.h"
+#include "hls_math.h"
 
 using std::mt19937;
 using std::generate;
@@ -53,6 +54,7 @@ fix_type rand_fix_gen() {
     float y = phi(x);
 
     fix_type o = static_cast<fix_type>(y);
+    return o;
 }
 
 // pass a vector of numbers, return the exp(x) of those numbers
