@@ -86,7 +86,7 @@ int main(int argc, char **argv) {
         
         float x1 = static_cast<float>(source_in1[i]);
         // fix_type x = source_in1[i];
-        float y = hls::exp(x1);
+        float y = exp(x1);
         source_sw_results[i] = y;
         source_hw_results[i] = 0;
     }
