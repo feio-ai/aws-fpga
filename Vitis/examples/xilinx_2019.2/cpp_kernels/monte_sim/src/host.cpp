@@ -2,13 +2,13 @@
 
 
 #include "xcl2.hpp"
+#include "hls_math.h"
 #include <algorithm>
 #include <cstdio>
 #include <random>
 #include <vector>
 // #include <math.h>
 #include "ap_fixed.h"
-#include "hls_math.h"
 
 using std::mt19937;
 using std::generate;
