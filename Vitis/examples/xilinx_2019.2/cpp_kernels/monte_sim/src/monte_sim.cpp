@@ -59,17 +59,15 @@ extern "C" {
 */
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
-                typedef ap_fixed<32,16> exp_type;
             monte_sim:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
                     #pragma HLS PIPELINE II=1
                     //perform vector addition
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
-                    int W = 32;
-                    int I = 16;
+                    
                     fix_type x1 = v1_buffer[j];
-                    fix_type y = exp<exp_type>(x1);
+                    fix_type y = hls::exp (x1);
                     vout_buffer[j] = y;
                 }
 
