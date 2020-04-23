@@ -66,8 +66,10 @@ extern "C" {
                     #pragma HLS PIPELINE II=1
                     //perform vector addition
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
+                    int W = 32;
+                    int I = 16;
                     fix_type x1 = v1_buffer[j];
-                    fix_type y = exp<ap_fixed<int 32,int 16>>(x1);
+                    fix_type y = exp<ap_fixed<W,I>>(x1);
                     vout_buffer[j] = y;
                 }
 
