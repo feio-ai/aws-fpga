@@ -84,7 +84,7 @@ int main(int argc, char **argv) {
     
     for (fix_type i = 0; i < DATA_SIZE; i++) {
         
-        float x1 = static_cast<float> source_in1[i];
+        float x1 = static_cast<float>(source_in1[i]);
         // fix_type x = source_in1[i];
         fix_type y = hls::exp<float>>(x1);
         source_sw_results[i] = y;
