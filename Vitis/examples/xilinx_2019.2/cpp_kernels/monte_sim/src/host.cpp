@@ -6,7 +6,7 @@
 #include <cstdio>
 #include <random>
 #include <vector>
-#include <math.h>
+// #include <math.h>
 #include "ap_fixed.h"
 #include "hls_math.h"
 
