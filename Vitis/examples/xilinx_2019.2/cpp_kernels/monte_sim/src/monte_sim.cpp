@@ -15,7 +15,7 @@ const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-    void monte_sim(const unsigned int *in1,
+    void monte_sim(fix_type *in1,
                 // const unsigned int *in2,
                 fix_type *out_r,
                 int size
@@ -57,14 +57,14 @@ extern "C" {
 */
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
-                int x1;
+                
             monte_sim:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
                     #pragma HLS PIPELINE II=1
                     //perform vector addition
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
-                    x1 = v1_buffer[j];
+                    fix_type x1 = v1_buffer[j];
                     vout_buffer[j] = hls::exp(x1);
                 }
 
