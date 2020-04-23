@@ -81,11 +81,11 @@ int main(int argc, char **argv) {
     // Create the test data
     std::generate(source_in1.begin(), source_in1.end(), rand_fix_gen);
     // std::generate(source_in_sw.begin(), source_in_sw.end(), );
-
+    fix_type x;
     for (int i = 0; i < DATA_SIZE; i++) {
         // source_sw_results[i] = source_in1[i] + source_in2[i];
-        fix_type x = source_in1[i];
-        source_sw_results[i] = hls::exp(ap_fixed<32,16> x);
+        x = source_in1[i];
+        source_sw_results[i] = hls::exp(x);
         source_hw_results[i] = 0;
     }
 
