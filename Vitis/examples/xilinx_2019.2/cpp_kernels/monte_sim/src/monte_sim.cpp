@@ -10,6 +10,8 @@
 
 typedef ap_fixed<32,16, AP_RND, AP_SAT> fix_type;
 
+using hls::exp<ap_fixed<32,16>>;
+
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;
 
@@ -65,7 +67,7 @@ extern "C" {
                     //perform vector addition
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
                     fix_type x1 = v1_buffer[j];
-                    fix_type y = hls::exp<ap_fixed<32,16>>(x1);
+                    fix_type y = exp(x1);
                     vout_buffer[j] = y;
                 }
 
