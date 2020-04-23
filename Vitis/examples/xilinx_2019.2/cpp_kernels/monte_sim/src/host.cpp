@@ -17,7 +17,8 @@ using std::vector;
 
 #define DATA_SIZE 4096
 
-typedef ap_fixed<32,16,AP_RND, AP_SAT> fix_type;
+typedef ap_fixed<32,16> fix_type;
+// typedef ap_fixed<32,16,AP_RND, AP_SAT> fix_type;
 
 float gen_random() {
     std::random_device seed;
