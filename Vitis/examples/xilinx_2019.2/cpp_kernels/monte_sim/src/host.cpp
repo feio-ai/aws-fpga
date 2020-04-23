@@ -86,7 +86,7 @@ int main(int argc, char **argv) {
         // source_sw_results[i] = source_in1[i] + source_in2[i];
 
         fix_type x = source_in1[i];
-        fix_type y = hls::exp<fix_type>(x);
+        fix_type y = hls::exp<ap_fixed<32,16,AP_RND, AP_SAT>>(x);
         source_sw_results[i] = y;
         source_hw_results[i] = 0;
     }
