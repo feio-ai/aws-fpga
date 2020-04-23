@@ -7,23 +7,52 @@
 #include <random>
 #include <vector>
 #include <math.h>
-// #include "ap_fixed.h"
+#include "ap_fixed.h"
 
-using std::default_random_engine;
+using std::mt19937;
 using std::generate;
-using std::uniform_int_distribution;
+using std::uniform_real_distribution;
 using std::vector;
 
 #define DATA_SIZE 4096
 
-// typedef ap_fixed<18,6,AP_RND> fix_type;
+typedef ap_fixed<32,16,AP_RND> fix_type;
 
-int gen_random() {
-    static default_random_engine e;
-    static uniform_int_distribution<int> unif(0, 11);
-    return unif(e);
+float gen_random() {
+    std::random_device seed;
+    static mt19937 re (seed());
+    static std::uniform_real_distribution<float> unif(-9.0, 9.0);
+    return unif(re);
 }
 
+
+// Need this output to be fix_type and then feed those to hw
+fix_type phi(float x) {
+    // constants
+    
+    // Not sure this can work!
+    fix_type x_conv = x;
+
+
+    fix_type a1 =  0.25483;
+    fix_type a2 = -0.284497;
+    fix_type a3 =  1.421414;
+    fix_type a4 = -1.45315;
+    fix_type a5 =  1.061405;
+    fix_type p  =  0.32759;
+
+    // Save the sign of x
+    fix_type sign = 1;
+    if (x_conv < 0)
+        sign = -1;
+    x_conv = hls::fabs(x_conv)/hls::sqrt(2.0);
+
+    // A&S formula 7.1.26
+    fix_type t = 1.0/(1.0 + p*x);
+    fix_type y = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*hls::exp(-x*x);
+
+    return 0.5*(1.0 + sign*y);
+}
 
 // pass a vector of numbers, return the exp(x) of those numbers
 // or some manipulation of those numbers
@@ -47,7 +76,7 @@ int main(int argc, char **argv) {
     std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
 
     // Create the test data
-    std::generate(source_in1.begin(), source_in1.end(), gen_random);
+    std::generate(source_in1.begin(), source_in1.end(), phi(gen_random));
     // std::generate(source_in2.begin(), source_in2.end(), std::rand);
     int x;
     for (int i = 0; i < DATA_SIZE; i++) {
