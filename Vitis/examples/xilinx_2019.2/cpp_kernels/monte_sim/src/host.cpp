@@ -71,7 +71,7 @@ int main(int argc, char **argv) {
     cl::Kernel kernel_monte_sim;
     cl::CommandQueue q;
 
-    std::vector<fix_type, aligned_allocator<fix_type>> source_in_sw(DATA_SIZE);
+    std::vector<fix_type, aligned_allocator<fix_type>> source_in1(DATA_SIZE);
     // std::vector<fix_type, aligned_allocator<fix_type>> source_in1(DATA_SIZE);   -- Only one source input
     std::vector<float, aligned_allocator<float>> source_hw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
