@@ -10,7 +10,7 @@
 
 typedef ap_fixed<32,16, AP_RND, AP_SAT> fix_type;
 
-using hls::exp<ap_fixed<32,16>>;
+using hls::exp;
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;
