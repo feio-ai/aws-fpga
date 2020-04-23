@@ -69,7 +69,7 @@ extern "C" {
                     int W = 32;
                     int I = 16;
                     fix_type x1 = v1_buffer[j];
-                    fix_type y = exp<ap_fixed(W,I)>(x1);
+                    fix_type y = exp<fix_type>(x1);
                     vout_buffer[j] = y;
                 }
 
