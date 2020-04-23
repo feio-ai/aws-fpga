@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
     std::vector<fix_type, aligned_allocator<fix_type>> source_in1(DATA_SIZE);
     // std::vector<fix_type, aligned_allocator<fix_type>> source_in1(DATA_SIZE);   -- Only one source input
     std::vector<fix_type, aligned_allocator<fix_type>> source_hw_results(DATA_SIZE);
-    std::vector<fix_type, aligned_allocator<fix_type>> source_sw_results(DATA_SIZE);
+    std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
 
     // Create the test data
     std::generate(source_in1.begin(), source_in1.end(), rand_fix_gen);
@@ -86,7 +86,7 @@ int main(int argc, char **argv) {
         
         float x1 = static_cast<float>(source_in1[i]);
         // fix_type x = source_in1[i];
-        fix_type y = hls::exp<float>>(x1);
+        float y = hls::exp(x1);
         source_sw_results[i] = y;
         source_hw_results[i] = 0;
     }
