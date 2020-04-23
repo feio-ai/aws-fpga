@@ -16,7 +16,7 @@ using std::vector;
 
 #define DATA_SIZE 4096
 
-typedef ap_fixed<32,16,AP_RND> fix_type;
+typedef ap_fixed<32,16,AP_RND, AP_SAT> fix_type;
 
 float gen_random() {
     std::random_device seed;
@@ -25,33 +25,34 @@ float gen_random() {
     return unif(re);
 }
 
-
-// Need this output to be fix_type and then feed those to hw
-fix_type phi(float x) {
+float phi(float x) {
     // constants
-    
-    // Not sure this can work!
-    fix_type x_conv = x;
-
-
-    fix_type a1 =  0.25483;
-    fix_type a2 = -0.284497;
-    fix_type a3 =  1.421414;
-    fix_type a4 = -1.45315;
-    fix_type a5 =  1.061405;
-    fix_type p  =  0.32759;
+    float a1 =  0.254829592;
+    float a2 = -0.284496736;
+    float a3 =  1.421413741;
+    float a4 = -1.453152027;
+    float a5 =  1.061405429;
+    float p  =  0.3275911;
 
     // Save the sign of x
-    fix_type sign = 1;
-    if (x_conv < 0)
+    int sign = 1;
+    if (x < 0)
         sign = -1;
-    x_conv = hls::fabs(x_conv)/hls::sqrt(2.0);
+    
+    x = fabs(x)/sqrt(2.0);
 
     // A&S formula 7.1.26
-    fix_type t = 1.0/(1.0 + p*x);
-    fix_type y = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*hls::exp(-x*x);
+    float t = 1.0/(1.0 + p*x);
+    float y = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*exp(-x*x);
 
     return 0.5*(1.0 + sign*y);
+}
+
+fix_type rand_fix_gen() {
+    float x = gen_random();
+    float y = phi(x);
+
+    fix_type o = static_cast<fix_type>(y);
 }
 
 // pass a vector of numbers, return the exp(x) of those numbers
@@ -70,19 +71,19 @@ int main(int argc, char **argv) {
     cl::Kernel kernel_monte_sim;
     cl::CommandQueue q;
 
-    std::vector<int, aligned_allocator<int>> source_in1(DATA_SIZE);
-    // std::vector<int, aligned_allocator<int>> source_in2(DATA_SIZE);   -- Only one source input
+    std::vector<fix_type, aligned_allocator<fix_type>> source_in_sw(DATA_SIZE);
+    // std::vector<fix_type, aligned_allocator<fix_type>> source_in1(DATA_SIZE);   -- Only one source input
     std::vector<float, aligned_allocator<float>> source_hw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
 
     // Create the test data
-    std::generate(source_in1.begin(), source_in1.end(), phi(gen_random));
-    // std::generate(source_in2.begin(), source_in2.end(), std::rand);
-    int x;
+    std::generate(source_in1.begin(), source_in1.end(), rand_fix_gen);
+    // std::generate(source_in_sw.begin(), source_in_sw.end(), );
+
     for (int i = 0; i < DATA_SIZE; i++) {
         // source_sw_results[i] = source_in1[i] + source_in2[i];
-        x = source_in1[i];
-        source_sw_results[i] = exp (x);
+        fix_type x = source_in1[i];
+        source_sw_results[i] = hls::exp (x);
         source_hw_results[i] = 0;
     }
 
