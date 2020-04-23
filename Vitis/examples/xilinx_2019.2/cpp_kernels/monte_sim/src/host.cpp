@@ -85,7 +85,7 @@ int main(int argc, char **argv) {
     for (fix_type i = 0; i < DATA_SIZE; i++) {
         // source_sw_results[i] = source_in1[i] + source_in2[i];
         fix_type x = source_in1[i];
-        ap_fixed<32,16,AP_RND, AP_SAT> y = hls::exp(x);
+        fix_type y = hls::exp<fix_type>(x);
         source_sw_results[i] = y;
         source_hw_results[i] = 0;
     }
