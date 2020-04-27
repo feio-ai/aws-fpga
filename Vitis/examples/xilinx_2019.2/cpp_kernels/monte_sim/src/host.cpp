@@ -174,7 +174,7 @@ int main(int argc, char **argv) {
 
     //Compare to sim
     bool match = true;
-    for (int i = 0; i < DATA_SIZE; i++) {
+    for (red_fix_type i = 0; i < DATA_SIZE; i++) {
         
         if (source_hw_results[i] != source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
