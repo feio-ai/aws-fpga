@@ -7,6 +7,7 @@
 #include <cstdio>
 #include <random>
 #include <vector>
+// #include <bits/stdc++.h>
 // #include <math.h>
 #include "ap_fixed.h"
 
@@ -16,8 +17,11 @@ using std::uniform_real_distribution;
 using std::vector;
 
 #define DATA_SIZE 4096
+// #define BIT_SET1 32
+// #define BIT_SET2 16
 
-typedef ap_fixed<32,16,AP_RND, AP_SAT> fix_type;
+// typedef ap_fixed<32,16,AP_RND, AP_SAT> fix_type;
+typedef ap_fixed<16,8,AP_RND,AP_SAT> red_fix_type;
 
 float gen_random() {
     std::random_device seed;
@@ -53,7 +57,10 @@ fix_type rand_fix_gen() {
     float x = gen_random();
     float y = phi(x);
 
-    fix_type o = static_cast<fix_type>(y);
+    // bitset<BIT_SET> bset1;
+    red_fix_type o = static_cast<red_fix_type>(y);
+    // red_fix_type out = o.range(24, 8);
+
     return o;
 }
 
@@ -67,16 +74,16 @@ int main(int argc, char **argv) {
     }
 
     std::string binaryFile = argv[1];
-    size_t vector_size_bytes = sizeof(float) * DATA_SIZE;
+    size_t vector_size_bytes = sizeof(red_fix_type) * DATA_SIZE;
     cl_int err;
     cl::Context context;
     cl::Kernel kernel_monte_sim;
     cl::CommandQueue q;
 
-    std::vector<fix_type, aligned_allocator<fix_type>> source_in1(DATA_SIZE);
+    std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_in1(DATA_SIZE);
     // std::vector<fix_type, aligned_allocator<fix_type>> source_in1(DATA_SIZE);   -- Only one source input
-    std::vector<fix_type, aligned_allocator<fix_type>> source_hw_results(DATA_SIZE);
-    std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
+    std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_hw_results(DATA_SIZE);
+    std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_sw_results(DATA_SIZE);
 
     // Create the test data
     std::generate(source_in1.begin(), source_in1.end(), rand_fix_gen);
@@ -84,10 +91,11 @@ int main(int argc, char **argv) {
     
     for (fix_type i = 0; i < DATA_SIZE; i++) {
         
-        float x1 = static_cast<float>(source_in1[i]);
-        // fix_type x = source_in1[i];
-        float y = exp(x1);
-        source_sw_results[i] = y;
+        //float x1 = static_cast<float>(source_in1[i]);
+        red_fix_type x = source_in1[i];
+        red_fix_type y = 1;
+        red_fix_type z = x + y; 
+        source_sw_results[i] = z;
         source_hw_results[i] = 0;
     }
 
