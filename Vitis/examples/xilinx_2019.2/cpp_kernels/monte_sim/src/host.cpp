@@ -53,7 +53,7 @@ float phi(float x) {
     return 0.5*(1.0 + sign*y);
 }
 
-fix_type rand_fix_gen() {
+red_fix_type rand_fix_gen() {
     float x = gen_random();
     float y = phi(x);
 
@@ -89,7 +89,7 @@ int main(int argc, char **argv) {
     std::generate(source_in1.begin(), source_in1.end(), rand_fix_gen);
     // std::generate(source_in_sw.begin(), source_in_sw.end(), );
     
-    for (fix_type i = 0; i < DATA_SIZE; i++) {
+    for (red_fix_type i = 0; i < DATA_SIZE; i++) {
         
         //float x1 = static_cast<float>(source_in1[i]);
         red_fix_type x = source_in1[i];
