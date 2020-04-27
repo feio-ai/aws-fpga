@@ -93,8 +93,8 @@ int main(int argc, char **argv) {
         
         //float x1 = static_cast<float>(source_in1[i]);
         red_fix_type x = source_in1[i];
-        red_fix_type y = 1;
-        red_fix_type z = x + y; 
+        
+        red_fix_type z = x * x; 
         source_sw_results[i] = z;
         source_hw_results[i] = 0;
     }

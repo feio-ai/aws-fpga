@@ -67,8 +67,7 @@ extern "C" {
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
                     
                     fix_type x = v1_buffer[j];
-                    fix_type y = 1;
-                    fix_type z =  x + y;
+                    fix_type z =  x * x;
                     vout_buffer[j] = z;
                 }
 
