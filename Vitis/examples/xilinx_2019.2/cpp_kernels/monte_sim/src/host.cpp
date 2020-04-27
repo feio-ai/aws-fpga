@@ -21,7 +21,7 @@ using std::vector;
 // #define BIT_SET2 16
 
 // typedef ap_fixed<32,16,AP_RND, AP_SAT> fix_type;
-typedef ap_fixed<16,8,AP_RND,AP_SAT> red_fix_type;
+typedef ap_fixed<32,16,AP_RND,AP_SAT> red_fix_type;
 
 float gen_random() {
     std::random_device seed;

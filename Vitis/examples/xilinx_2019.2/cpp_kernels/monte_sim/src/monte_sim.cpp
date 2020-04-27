@@ -4,13 +4,13 @@
 #include <string.h>
 #include "hls_math.h"
 
-#define AP_INT_MAX_W 4096
+
 #include "ap_fixed.h"
 
 #define BUFFER_SIZE 1024
 #define DATA_SIZE 4096
 
-typedef ap_fixed<16,8, AP_RND, AP_SAT> fix_type;
+typedef ap_fixed<32,16, AP_RND, AP_SAT> fix_type;
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;
