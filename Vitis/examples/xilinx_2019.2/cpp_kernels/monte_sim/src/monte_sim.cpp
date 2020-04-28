@@ -73,7 +73,9 @@ extern "C" {
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
                     
                     ap_fixed<16,7> x = v1_buffer[j];
-                    ap_fixed<16,7> s = so * hls::exp( (r - ( hls::pow(sig , duo) / duo ) * t) + ( x * sig * hls::sqrt(t)) );
+                    ap_fixed<16,7> hls_p = hls::pow(sig, duo);
+                    ap_fixed<16,7> hls_sq = hls::sqrt(t);
+                    ap_fixed<16,7> s = so * hls::exp( (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq) );
                     // ap_fixed<16,7> z = hls::exp(x);
                     vout_buffer[j] = s;
                 }
