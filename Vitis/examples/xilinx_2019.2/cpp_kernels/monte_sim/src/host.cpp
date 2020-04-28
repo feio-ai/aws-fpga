@@ -168,7 +168,7 @@ int main(int argc, char **argv) {
     red_fix_type scalar_arg_sigma = 0.2;
 
     int size = DATA_SIZE;
-    int scalar_size = sizeof(red_fix_type);
+    int scalar_size = 32;
 
     OCL_CHECK(err, err = kernel_monte_sim.setArg(0, scalar_size, &scalar_arg_time));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(1, scalar_size, &scalar_arg_so));
