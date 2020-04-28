@@ -83,7 +83,7 @@ extern "C" {
                     fix_type x6 = x3 * x3;
 
                     fix_type exp_result = 1 + xo + (x2 / 2) + (x3 / 6) + (x4 / 24) + (x5 / 120) + (x6 / 720);
-                    fix_type s = so * exp_result
+                    fix_type s = so * exp_result;
                     // ap_fixed<16,7> z = hls::exp(x);
                     vout_buffer[j] = s;
                 }
