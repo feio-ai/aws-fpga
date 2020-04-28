@@ -3,15 +3,13 @@
 #include <stdio.h>
 #include <string.h>
 #include "hls_math.h"
-
-
 #include "ap_fixed.h"
 
 #define BUFFER_SIZE 1024
 #define DATA_SIZE 4096
 
 
-typedef ap_fixed<16,7> fix_type;
+typedef ap_fixed<31,15> fix_type;
 
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
