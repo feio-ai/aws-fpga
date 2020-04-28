@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
     // std::generate(source_sw.begin(), source_in_sw.end(), rand_fl_gen);
 
     
-    for (red_fix_type i = 0; i < DATA_SIZE; i++) {
+    for (int i = 0; i < DATA_SIZE; i++) {
         
         red_fix_type x = source_in1[i];
         float x1 = static_cast<float>(x);
@@ -178,7 +178,7 @@ int main(int argc, char **argv) {
 
     //Compare to sim
     bool match = true;
-    for (red_fix_type i = 0; i < DATA_SIZE; i++) {
+    for (int i = 0; i < DATA_SIZE; i++) {
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         if (conv_hw_res != source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
