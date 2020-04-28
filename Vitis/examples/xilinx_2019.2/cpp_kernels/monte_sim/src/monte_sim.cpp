@@ -10,6 +10,7 @@
 
 
 typedef ap_fixed<31,15> fix_type;
+typedef ap_fixed<8,3> scalar_type;
 
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
@@ -17,10 +18,10 @@ const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-    void monte_sim(fix_type t,
-                fix_type so,
-                fix_type r,
-                fix_type sig,
+    void monte_sim(scalar_type t,
+                scalar_type so,
+                scalar_type r,
+                scalar_type sig,
 
                 fix_type *in1,
                 fix_type *out_r,

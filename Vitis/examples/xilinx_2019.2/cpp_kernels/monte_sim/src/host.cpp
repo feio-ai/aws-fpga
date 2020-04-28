@@ -168,7 +168,7 @@ int main(int argc, char **argv) {
     ap_fixed<8,3> scalar_arg_sigma = 0.2;
 
     int size = DATA_SIZE;
-    int scalar_size = 32;
+    
 
     OCL_CHECK(err, err = kernel_monte_sim.setArg(0, 8, &scalar_arg_time));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(1, 8, &scalar_arg_so));
