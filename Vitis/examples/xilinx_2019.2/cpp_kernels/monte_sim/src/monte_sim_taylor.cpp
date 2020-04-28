@@ -11,11 +11,14 @@
 #define DATA_SIZE 4096
 
 
+
+
 typedef ap_fixed<16,7> fix_type;
 
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;
+
 
 extern "C" {
 
@@ -66,6 +69,8 @@ extern "C" {
 */
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
+               
+
 
             monte_sim:
                 for (int j = 0; j < chunk_size; j++) {
@@ -75,7 +80,7 @@ extern "C" {
                     fix_type x = v1_buffer[j];
                     fix_type hls_p = sig * sig;
                     fix_type hls_sq = hls::sqrt(t);
-                    fix_type xo = (r - ( hls_p / 2 ) * t) + ( x * sig * hls_sq);
+                    fix_type xo = (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq);
                     fix_type x2 = xo * xo;
                     fix_type x3 = x2 * xo;
                     fix_type x4 = x2 * x2;
@@ -87,22 +92,7 @@ extern "C" {
                     // ap_fixed<16,7> z = hls::exp(x);
                     vout_buffer[j] = s;
                 }
-/*
-                fix_type duo = 2;
-            monte_sim:
-                for (int j = 0; j < chunk_size; j++) {
-                    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-                    #pragma HLS PIPELINE II=1
-                   
-                    
-                    fix_type x = v1_buffer[j];
-                    fix_type hls_p = hls::pow(sig, duo);
-                    fix_type hls_sq = hls::sqrt(t);
-                    fix_type s = so * hls::exp( (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq) );
-                    // ap_fixed<16,7> z = hls::exp(x);
-                    vout_buffer[j] = s;
-                }
-*/
+
             //burst write the result
             write:
                 for (int j = 0; j < chunk_size; j++) {
