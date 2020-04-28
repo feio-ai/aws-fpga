@@ -10,7 +10,7 @@
 #define BUFFER_SIZE 1024
 #define DATA_SIZE 4096
 
-typedef ap_fixed<16,7, AP_RND, AP_SAT> fix_type;
+typedef ap_fixed<16,7> fix_type;
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;
