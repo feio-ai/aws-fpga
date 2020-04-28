@@ -32,9 +32,9 @@ extern "C" {
         #pragma HLS INTERFACE s_axilite port = size bundle = control
         #pragma HLS INTERFACE s_axilite port = return bundle = control
 
-            buffer_type v1_buffer[BUFFER_SIZE];
+            fix_type v1_buffer[BUFFER_SIZE];
             // unsigned int v2_buffer[BUFFER_SIZE];
-            buffer_type vout_buffer[BUFFER_SIZE];
+            fix_type vout_buffer[BUFFER_SIZE];
 
             fix_type t = 0.5;
             fix_type so = 50.0;
