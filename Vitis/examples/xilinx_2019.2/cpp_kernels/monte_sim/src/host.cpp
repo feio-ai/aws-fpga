@@ -17,12 +17,10 @@ using std::uniform_real_distribution;
 using std::vector;
 
 #define DATA_SIZE 4096
-// #define BIT_SET1 32
-// #define BIT_SET2 16
 
 
 // typedef ap_fixed<16,7,AP_RND,AP_SAT> fix_type;
-typedef ap_fixed<32,15> red_fix_type;
+typedef ap_fixed<16,7> red_fix_type;
 
 float gen_random() {
     std::random_device seed;
@@ -65,9 +63,6 @@ red_fix_type rand_fix_gen() {
     return o;
 }
 
-
-// pass a vector of numbers, return the exp(x) of those numbers
-// or some manipulation of those numbers
 
 int main(int argc, char **argv) {
     if (argc != 2) {
