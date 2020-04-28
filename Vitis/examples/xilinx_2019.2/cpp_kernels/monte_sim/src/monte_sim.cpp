@@ -10,7 +10,7 @@
 #define BUFFER_SIZE 1024
 #define DATA_SIZE 4096
 
-typedef ap_fixed<16,7, AP_SAT, AP_RND> buffer_type;
+
 typedef ap_fixed<16,7> fix_type;
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
@@ -70,8 +70,7 @@ extern "C" {
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
                     #pragma HLS PIPELINE II=1
-                    //perform vector addition
-                    // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
+                   
                     
                     fix_type x = v1_buffer[j];
                     fix_type hls_p = hls::pow(sig, duo);
