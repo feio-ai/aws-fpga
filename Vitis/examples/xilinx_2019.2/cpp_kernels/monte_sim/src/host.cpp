@@ -175,10 +175,10 @@ int main(int argc, char **argv) {
     OCL_CHECK(err, err = kernel_monte_sim.setArg(2, scalar_size, &scalar_arg_rate));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(3, scalar_size, &scalar_arg_sigma));
 
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(4, buffer_in1));
     // OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_output));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, size));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(5, buffer_output));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(6, size));
 
     // Copy input data to device global memory
     // OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));
