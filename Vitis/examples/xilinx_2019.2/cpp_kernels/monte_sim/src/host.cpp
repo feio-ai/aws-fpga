@@ -64,6 +64,7 @@ red_fix_type rand_fix_gen() {
     return o;
 }
 
+
 // pass a vector of numbers, return the exp(x) of those numbers
 // or some manipulation of those numbers
 
@@ -81,23 +82,26 @@ int main(int argc, char **argv) {
     cl::CommandQueue q;
 
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_in1(DATA_SIZE);
-    // std::vector<fix_type, aligned_allocator<fix_type>> source_in1(DATA_SIZE);   -- Only one source input
+    //std::vector<float, aligned_allocator<float>> source_sw(DATA_SIZE);  
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_hw_results(DATA_SIZE);
-    std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_sw_results(DATA_SIZE);
+    std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
 
     // Create the test data
     std::generate(source_in1.begin(), source_in1.end(), rand_fix_gen);
-    // std::generate(source_in_sw.begin(), source_in_sw.end(), );
+    // std::generate(source_sw.begin(), source_in_sw.end(), rand_fl_gen);
+
     
     for (red_fix_type i = 0; i < DATA_SIZE; i++) {
         
-        //float x1 = static_cast<float>(source_in1[i]);
         red_fix_type x = source_in1[i];
-        
-        red_fix_type z = x * x; 
+        float x1 = static_cast<float>(x);
+       
+        float z = x1 * x1; 
         source_sw_results[i] = z;
         source_hw_results[i] = 0;
     }
+
+    
 
     // -------------------------------------------------------------------------
     // OpenCL Host Area Start
@@ -175,8 +179,8 @@ int main(int argc, char **argv) {
     //Compare to sim
     bool match = true;
     for (red_fix_type i = 0; i < DATA_SIZE; i++) {
-        
-        if (source_hw_results[i] != source_sw_results[i]) {
+        float conv_hw_res = static_cast<float> source_hw_results[i];
+        if (conv_hw_res[i] != source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << "i = " << i << " val = " << source_in1[i] << " CPU result = " << source_sw_results[i]
                       << " Device result = " << source_hw_results[i]
