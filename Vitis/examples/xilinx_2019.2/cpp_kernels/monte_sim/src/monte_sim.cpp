@@ -66,8 +66,8 @@ extern "C" {
                     //perform vector addition
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
                     
-                    ap_fixed<16,7, AP_RND, AP_SAT> x = v1_buffer[j];
-                    ap_fixed<16,7, AP_RND, AP_SAT> z = hls::exp(x);
+                    ap_fixed<16,7> x = v1_buffer[j];
+                    ap_fixed<16,7> z = hls::exp(x);
                     vout_buffer[j] = z;
                 }
 
