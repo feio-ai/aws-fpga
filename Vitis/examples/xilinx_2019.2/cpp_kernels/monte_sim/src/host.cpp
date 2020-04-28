@@ -21,7 +21,7 @@ using std::vector;
 // #define BIT_SET2 16
 
 
-typedef ap_fixed<16,7,AP_RND,AP_SAT> fix_type;
+// typedef ap_fixed<16,7,AP_RND,AP_SAT> fix_type;
 typedef ap_fixed<16,7,AP_RND, AP_SAT> red_fix_type;
 
 float gen_random() {
@@ -54,7 +54,7 @@ float phi(float x) {
     return 0.5*(1.0 + sign*y);
 }
 
-fix_type rand_fix_gen() {
+red_fix_type rand_fix_gen() {
     float x = gen_random();
     float y = phi(x);
 
@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
     }
 
     std::string binaryFile = argv[1];
-    size_t vector_size_bytes = sizeof(fix_type) * DATA_SIZE;
+    size_t vector_size_bytes = sizeof(red_fix_type) * DATA_SIZE;
     cl_int err;
     cl::Context context;
     cl::Kernel kernel_monte_sim;
