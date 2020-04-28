@@ -17,28 +17,31 @@ const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-    void monte_sim(fix_type *in1,
-                // const unsigned int *in2,
+    void monte_sim(fix_type t,
+                fix_type so,
+                fix_type r,
+                fix_type sig,
+
+                fix_type *in1,
                 fix_type *out_r,
                 int size
     ) {
+        // Scalar input
+        #pragma HLS INTERFACE s_axilite port=t bundle=control
+        #pragma HLS INTERFACE s_axilite port=so bundle=control
+        #pragma HLS INTERFACE s_axilite port=r bundle=control
+        #pragma HLS INTERFACE s_axilite port=sig bundle=control
+
+        // Buffer inputs
         #pragma HLS INTERFACE m_axi port=in1 offset=slave bundle=gmem
-        // #pragma HLS INTERFACE m_axi port=in2 offset=slave bundle=gmem
         #pragma HLS INTERFACE m_axi port=out_r offset=slave bundle=gmem
         #pragma HLS INTERFACE s_axilite port = in1 bundle = control
-        // #pragma HLS INTERFACE s_axilite port = in2 bundle = control
         #pragma HLS INTERFACE s_axilite port = out_r bundle = control
         #pragma HLS INTERFACE s_axilite port = size bundle = control
         #pragma HLS INTERFACE s_axilite port = return bundle = control
 
             fix_type v1_buffer[BUFFER_SIZE];
-            // unsigned int v2_buffer[BUFFER_SIZE];
             fix_type vout_buffer[BUFFER_SIZE];
-
-            fix_type t = 0.5;
-            fix_type so = 50.0;
-            fix_type r = 0.05;
-            fix_type sig = 0.2;
 
             for (int i = 0; i < size; i += BUFFER_SIZE) {
                 #pragma HLS LOOP_TRIPCOUNT min=c_len max=c_len

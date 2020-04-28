@@ -162,7 +162,19 @@ int main(int argc, char **argv) {
                                         source_hw_results.data(),
                                         &err));
 
+    red_fix_type scalar_arg_time = 0.5;
+    red_fix_type scalar_arg_so = 50.0;
+    red_fix_type scalar_arg_rate = 0.05;
+    red_fix_type scalar_arg_sigma = 0.2;
+
     int size = DATA_SIZE;
+    int scalar_size = sizeof(red_fix_type);
+
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(0, scalar_size, &scalar_arg_time));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, scalar_size, &scalar_arg_so));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, scalar_size, &scalar_arg_rate));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(3, scalar_size, &scalar_arg_sigma));
+
     OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1));
     // OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_output));
