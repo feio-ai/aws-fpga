@@ -10,7 +10,7 @@
 #define BUFFER_SIZE 1024
 #define DATA_SIZE 4096
 
-typedef ap_fixed<16,7> fix_type;
+typedef ap_fixed<32,16> fix_type;
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;
@@ -64,7 +64,7 @@ extern "C" {
 */
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
-                ap_fixed<16,7> duo = 2;
+                fix_type duo = 2;
             monte_sim:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
@@ -72,10 +72,10 @@ extern "C" {
                     //perform vector addition
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
                     
-                    ap_fixed<16,7> x = v1_buffer[j];
-                    ap_fixed<16,7> hls_p = hls::pow(sig, duo);
-                    ap_fixed<16,7> hls_sq = hls::sqrt(t);
-                    ap_fixed<16,7> s = so * hls::exp( (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq) );
+                    fix_type x = v1_buffer[j];
+                    fix_type hls_p = hls::pow(sig, duo);
+                    fix_type hls_sq = hls::sqrt(t);
+                    fix_type s = so * hls::exp( (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq) );
                     // ap_fixed<16,7> z = hls::exp(x);
                     vout_buffer[j] = s;
                 }
