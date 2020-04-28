@@ -91,13 +91,19 @@ int main(int argc, char **argv) {
     std::generate(source_in1.begin(), source_in1.end(), rand_fix_gen);
     // std::generate(source_sw.begin(), source_in_sw.end(), rand_fl_gen);
 
+    float t = 0.5;
+    float so = 50.0;
+    float r = 0.05;
+    float sig = 0.2;
     
     for (int i = 0; i < DATA_SIZE; i++) {
         
         red_fix_type x = source_in1[i];
         float x1 = static_cast<float>(x);
        
-        float z = exp(x1); 
+        // float z = exp(x1); 
+        float z = so * exp( (r - ( pow(sig , 2) / 2 ) * t) + ( x1 * sig * sqrt(t)) );
+
         source_sw_results[i] = z;
         source_hw_results[i] = 0;
     }
