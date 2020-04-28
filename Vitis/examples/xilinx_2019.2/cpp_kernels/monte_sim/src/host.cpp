@@ -2,13 +2,13 @@
 
 
 #include "xcl2.hpp"
-#include "hls_math.h"
+// #include "hls_math.h"
 #include <algorithm>
 #include <cstdio>
 #include <random>
 #include <vector>
 // #include <bits/stdc++.h>
-// #include <math.h>
+#include <cmath>
 #include "ap_fixed.h"
 
 using std::mt19937;
@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
         red_fix_type x = source_in1[i];
         float x1 = static_cast<float>(x);
        
-        float z = x1 * x1; 
+        float z = exp(x1); 
         source_sw_results[i] = z;
         source_hw_results[i] = 0;
     }

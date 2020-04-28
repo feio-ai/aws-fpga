@@ -67,7 +67,7 @@ extern "C" {
                     // vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
                     
                     fix_type x = v1_buffer[j];
-                    fix_type z =  x * x;
+                    fix_type z =  hls::exp(x);
                     vout_buffer[j] = z;
                 }
 
