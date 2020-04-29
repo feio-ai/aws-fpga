@@ -9,7 +9,7 @@
 #define DATA_SIZE 4096
 
 
-typedef ap_fixed<31,15> fix_type;
+typedef ap_fixed<32,16> fix_type;
 typedef ap_fixed<8,3> scalar_type;
 
 const fix_type ov_2 = 0.5;

@@ -21,7 +21,7 @@ using std::vector;
 
 
 // typedef ap_fixed<16,7> exp_fix_type;
-typedef ap_fixed<31,15> red_fix_type;
+typedef ap_fixed<32,16> red_fix_type;
 
 float gen_random() {
     std::random_device seed;
