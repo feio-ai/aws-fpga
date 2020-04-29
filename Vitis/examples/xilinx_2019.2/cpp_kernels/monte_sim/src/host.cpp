@@ -168,12 +168,12 @@ int main(int argc, char **argv) {
     ap_fixed<8,2> scalar_arg_sigma = 0.2;
 
     int size = DATA_SIZE;
-    
+    int scalar_size = sizeof(cl_uint);
 
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(0, 8, &scalar_arg_time));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, 8, &scalar_arg_so));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, 8, &scalar_arg_rate));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(3, 8, &scalar_arg_sigma));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(0, scalar_size, &scalar_arg_time));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, scalar_size, &scalar_arg_so));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, scalar_size, &scalar_arg_rate));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(3, scalar_size, &scalar_arg_sigma));
 
     OCL_CHECK(err, err = kernel_monte_sim.setArg(4, buffer_in1));
     // OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
