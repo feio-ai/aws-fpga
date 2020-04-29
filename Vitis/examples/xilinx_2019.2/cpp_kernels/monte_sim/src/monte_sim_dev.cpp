@@ -70,8 +70,8 @@ void monte_sim_dev(
 
             read2:
                 for (int j = 0; j < 4; j++) {
-                    // #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-                    // #pragma HLS PIPELINE II=1
+                    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
+                    #pragma HLS PIPELINE II=1
                     v2_buffer[j] = in2[i + j];
                 }
 
