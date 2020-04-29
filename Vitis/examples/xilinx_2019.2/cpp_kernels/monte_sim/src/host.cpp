@@ -65,7 +65,7 @@ red_fix_type rand_fix_gen() {
 }
 
 void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_in1,
-            vector<red_fix_type, aligned_allocator<red_fix_type>> &source_sw_results,
+            vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
     
     bool match = true;
@@ -202,6 +202,8 @@ int main(int argc, char **argv) {
     printf("|-------------------------+-------------------------|\n"
            "| Kernel                  |    Wall-Clock Time (ns) |\n"
            "|-------------------------+-------------------------|\n");
+
+           
     OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim", &err));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
