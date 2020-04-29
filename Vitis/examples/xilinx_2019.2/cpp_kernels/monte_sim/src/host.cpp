@@ -162,10 +162,10 @@ int main(int argc, char **argv) {
                                         source_hw_results.data(),
                                         &err));
 
-    ap_fixed<8,3> scalar_arg_time = 0.5;
-    ap_fixed<8,3> scalar_arg_so = 50.0;
-    ap_fixed<8,3> scalar_arg_rate = 0.05;
-    ap_fixed<8,3> scalar_arg_sigma = 0.2;
+    ap_fixed<8,2> scalar_arg_time = 0.5;
+    ap_fixed<8,6> scalar_arg_so = 50.0;
+    ap_fixed<8,2> scalar_arg_rate = 0.05;
+    ap_fixed<8,2> scalar_arg_sigma = 0.2;
 
     int size = DATA_SIZE;
     
