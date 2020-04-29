@@ -267,6 +267,7 @@ int main(int argc, char **argv) {
 
     cl::Event event;
     uint64_t nstimestart, nstimeend;
+    uint64_t nstimestart_exp, nstimeend_exp;
 
     OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim, NULL, &event));
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_output},
@@ -302,11 +303,11 @@ int main(int argc, char **argv) {
 
     OCL_CHECK(err,
               err = event.getProfilingInfo<uint64_t>(CL_PROFILING_COMMAND_START,
-                                                     &nstimestart));
+                                                     &nstimestart_exp));
     OCL_CHECK(err,
               err = event.getProfilingInfo<uint64_t>(CL_PROFILING_COMMAND_END,
-                                                     &nstimeend));
-    auto monte_sim_exp_time = nstimeend - nstimestart;
+                                                     &nstimeend_exp));
+    auto monte_sim_exp_time = nstimeend_exp - nstimestart_exp;
 
     verify_exp(source_in2, source_sw_results, source_hw_results);
 
