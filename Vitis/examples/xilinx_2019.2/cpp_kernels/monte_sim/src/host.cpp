@@ -101,6 +101,7 @@ int main(int argc, char **argv) {
     cl::Context context;
     cl::Kernel kernel_monte_sim;
     cl::CommandQueue q;
+    cl::Program program;
 
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_in1(DATA_SIZE);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_const(CONST_SIZE);  
