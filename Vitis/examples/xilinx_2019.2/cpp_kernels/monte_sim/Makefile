@@ -90,12 +90,12 @@ exe: $(EXECUTABLE)
 build: $(BINARY_CONTAINERS)
 
 # Building kernel
-$(TEMP_DIR)/monte_sim.xo: src/monte_sim.cpp
-	mkdir -p $(TEMP_DIR)
-	$(VPP) $(CLFLAGS) --temp_dir $(TEMP_DIR) -c -k monte_sim -I'$(<D)' -o'$@' '$<'
 $(TEMP_DIR)/monte_sim_taylor.xo: src/monte_sim_taylor.cpp
 	mkdir -p $(TEMP_DIR)
 	$(VPP) $(CLFLAGS) --temp_dir $(TEMP_DIR) -c -k monte_sim_taylor -I'$(<D)' -o'$@' '$<'
+$(TEMP_DIR)/monte_sim.xo: src/monte_sim.cpp
+	mkdir -p $(TEMP_DIR)
+	$(VPP) $(CLFLAGS) --temp_dir $(TEMP_DIR) -c -k monte_sim -I'$(<D)' -o'$@' '$<'
 $(BUILD_DIR)/monte_sim.xclbin: $(BINARY_CONTAINER_matmul_OBJS)
 	mkdir -p $(BUILD_DIR)
 	$(VPP) $(CLFLAGS) --temp_dir $(BUILD_DIR) -l $(LDCLFLAGS) -o'$@' $(+)
