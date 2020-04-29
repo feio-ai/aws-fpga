@@ -288,15 +288,14 @@ int main(int argc, char **argv) {
            "Results from HLS exp function with reduced fixed point precision and range");
 
     OCL_CHECK(err, kernel_monte_sim_exp = cl::Kernel(program, "monte_sim", &err));    
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1_exp));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2_exp));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, buffer_output));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(3, size));
+    OCL_CHECK(err, err = kernel_monte_sim_exp.setArg(0, buffer_in1_exp));
+    OCL_CHECK(err, err = kernel_monte_sim_exp.setArg(1, buffer_in2_exp));
+    OCL_CHECK(err, err = kernel_monte_sim_exp.setArg(2, buffer_output));
+    OCL_CHECK(err, err = kernel_monte_sim_exp.setArg(3, size));
 
     // Copy input data to device global memory
     // OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1_exp}, 0));
-
     OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim_exp, NULL, &event));
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_output},
                                                     CL_MIGRATE_MEM_OBJECT_HOST));
