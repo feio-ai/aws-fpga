@@ -26,7 +26,7 @@ const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-    void monte_sim(
+    void monte_sim_taylor(
                 fix_type *in1,
                 fix_type *in2,
                 fix_type *out_r,
@@ -80,7 +80,7 @@ extern "C" {
 
                 
 
-            monte_sim:
+            monte_sim_taylor:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
                     #pragma HLS PIPELINE II=1
