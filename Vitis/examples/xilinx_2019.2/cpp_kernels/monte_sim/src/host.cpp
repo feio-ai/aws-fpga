@@ -234,7 +234,7 @@ int main(int argc, char **argv) {
     
     //OpenCL Host Code Area End
 
-
+    return EXIT_SUCCESS;
 
 
 
