@@ -12,6 +12,14 @@
 typedef ap_fixed<31,15> fix_type;
 typedef ap_fixed<8,3> scalar_type;
 
+const fix_type ov_2 = 0.5;
+const fix_type ov_6 = 0.166667;
+const fix_type ov_24 = 0.416667;
+const fix_type ov_120 = 0.008333;
+const fix_type ov_720 = 0.0013889;
+const fix_type ov_5040 = 0.000198413;
+
+
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;
@@ -86,8 +94,9 @@ extern "C" {
                     fix_type x4 = x2 * x2;
                     fix_type x5 = x2 * x3;
                     fix_type x6 = x3 * x3;
+                    fix_type x7 = x3 * x4;
 
-                    fix_type exp_result = 1 + xo + (x2 / 2) + (x3 / 6) + (x4 / 24) + (x5 / 120) + (x6 / 720);
+                    fix_type exp_result = 1 + xo + (x2 * ov_2) + (x3 * ov_6) + (x4 * ov_24) + (x5 * ov_120) + (x6 * ov_720) + (x7 * ov_5040);
                     fix_type s = so * exp_result;
                     // ap_fixed<16,7> z = hls::exp(x);
                     vout_buffer[j] = s;
