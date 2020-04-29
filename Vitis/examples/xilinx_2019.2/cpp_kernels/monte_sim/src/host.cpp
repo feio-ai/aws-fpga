@@ -164,10 +164,10 @@ int main(int argc, char **argv) {
 
 
 
-    source_const.at(0) = scalar_arg_time; // time
-    source_const.at(1) = scalar_arg_so; // so
-    source_const.at(2) = scalar_arg_rate; // r
-    source_const.at(3) = scalar_arg_sigma; // sigma
+    source_const.at(0) = 0.5; // time
+    source_const.at(1) = 50.0; // so
+    source_const.at(2) = 0.05; // r
+    source_const.at(3) = 0.2; // sigma
 
     source_const_exp.at(0) = exp_scalar_arg_time; // time
     source_const_exp.at(1) = exp_scalar_arg_so; // so
@@ -289,7 +289,7 @@ int main(int argc, char **argv) {
     verify(source_in1, source_sw_results, source_hw_results);
 
     printf("--------------------------------------------------------\n"
-           "Results from HLS exp function with reduced fixed point precision and range");
+           "Results from HLS exp function with reduced fixed point precision and range\n");
 
     OCL_CHECK(err, kernel_monte_sim_exp = cl::Kernel(program, "monte_sim", &err));    
     OCL_CHECK(err, err = kernel_monte_sim_exp.setArg(0, buffer_in1_exp));
