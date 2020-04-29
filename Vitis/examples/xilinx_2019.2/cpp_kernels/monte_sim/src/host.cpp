@@ -159,10 +159,10 @@ int main(int argc, char **argv) {
 
 
 
-    source_const.at(0) = t; // time
-    source_const.at(1) = so; // so
-    source_const.at(2) = r; // r
-    source_const.at(3) = sig; // sigma
+    source_const.at(0) = (red_fix_type)(0.5); // time
+    source_const.at(1) = (red_fix_type)(50.0); // so
+    source_const.at(2) = (red_fix_type)(0.05); // r
+    source_const.at(3) = (red_fix_type)(0.2); // sigma
 
     source_const_exp.at(0) = exp_scalar_arg_time; // time
     source_const_exp.at(1) = exp_scalar_arg_so; // so
