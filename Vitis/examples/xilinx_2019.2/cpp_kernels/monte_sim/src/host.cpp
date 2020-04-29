@@ -17,6 +17,7 @@ using std::uniform_real_distribution;
 using std::vector;
 
 #define DATA_SIZE 4096
+#define CONST_SIZE 4
 
 
 // typedef ap_fixed<16,7,AP_RND,AP_SAT> fix_type;
@@ -72,13 +73,14 @@ int main(int argc, char **argv) {
 
     std::string binaryFile = argv[1];
     size_t vector_size_bytes = sizeof(red_fix_type) * DATA_SIZE;
+    size_t const_vector_size_bytes = sizeof(red_fix_type) * CONST_SIZE;
     cl_int err;
     cl::Context context;
     cl::Kernel kernel_monte_sim;
     cl::CommandQueue q;
 
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_in1(DATA_SIZE);
-    //std::vector<float, aligned_allocator<float>> source_sw(DATA_SIZE);  
+    std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_const(CONST_SIZE);  
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_hw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
 
@@ -90,6 +92,18 @@ int main(int argc, char **argv) {
     float so = 50.0;
     float r = 0.05;
     float sig = 0.2;
+
+    red_fix_type scalar_arg_time = 0.5;
+    red_fix_type scalar_arg_so = 50.0;
+    red_fix_type scalar_arg_rate = 0.05;
+    red_fix_type scalar_arg_sigma = 0.2;
+
+    source_const.at(0) = 0.5; // time
+    source_const.at(1) = 50.0; // so
+    source_const.at(2) = 0.05; // r
+    source_const.at(3) = 0.2; // sigma
+    
+
     
     for (int i = 0; i < DATA_SIZE; i++) {
         
@@ -145,13 +159,12 @@ int main(int argc, char **argv) {
                                     vector_size_bytes,
                                     source_in1.data(),
                                     &err));
-/*    OCL_CHECK(err,
+    OCL_CHECK(err,
                 cl::Buffer buffer_in2(context,
                                     CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
-                                    vector_size_bytes,
-                                    source_in2.data(),
+                                    const_vector_size_bytes,
+                                    source_const.data(),
                                     &err));
-*/
 
     OCL_CHECK(err,
                 cl::Buffer buffer_output(context,
@@ -160,22 +173,13 @@ int main(int argc, char **argv) {
                                         source_hw_results.data(),
                                         &err));
 
-    ap_fixed<8,3> scalar_arg_time = 0.5;
-    // ap_fixed<8,6> scalar_arg_so = 50.0;
-    ap_fixed<8,2> scalar_arg_rate = 0.05;
-    ap_fixed<8,2> scalar_arg_sigma = 0.2;
 
     int size = DATA_SIZE;
-    int scalar_size = sizeof(cl_uint) * 2;
 
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(0, scalar_size, &scalar_arg_time));
-    // OCL_CHECK(err, err = kernel_monte_sim.setArg(1, scalar_size, &scalar_arg_so));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, scalar_size, &scalar_arg_rate));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, scalar_size, &scalar_arg_sigma));
-
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(3, buffer_in1));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(4, buffer_output));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(5, size));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, buffer_output));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(3, size));
 
     // Copy input data to device global memory
     // OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));
