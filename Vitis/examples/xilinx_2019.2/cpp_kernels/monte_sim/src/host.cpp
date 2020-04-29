@@ -217,7 +217,6 @@ int main(int argc, char **argv) {
     OCL_CHECK(err, err = kernel_monte_sim.setArg(3, size));
 
     // Copy input data to device global memory
-    // OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));
 
     cl::Event event;
@@ -250,7 +249,6 @@ int main(int argc, char **argv) {
 
     // Copy input data to device global memory
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));
-    // OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1}, 0));
     OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim_dev, NULL, &event));
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_output},
                                                     CL_MIGRATE_MEM_OBJECT_HOST));

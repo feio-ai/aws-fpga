@@ -44,7 +44,7 @@ void monte_sim_dev(
         #pragma HLS INTERFACE s_axilite port = return bundle = control
 
             fix_type v1_buffer[BUFFER_SIZE];
-            // fix_type v2_buffer[BUFFER_SIZE];
+            fix_type v2_buffer[BUFFER_SIZE];
             fix_type vout_buffer[BUFFER_SIZE];
 
             fix_type t = in2[0];
@@ -67,14 +67,19 @@ void monte_sim_dev(
                     #pragma HLS PIPELINE II=1
                     v1_buffer[j] = in1[i + j];
                 }
-/*
+
             read2:
-                for (int j = 0; j < chunk_size; j++) {
-                    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-                    #pragma HLS PIPELINE II=1
+                for (int j = 0; j < 4; j++) {
+                    // #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
+                    // #pragma HLS PIPELINE II=1
                     v2_buffer[j] = in2[i + j];
                 }
-*/
+
+                fix_type t = v2_buffer[0];
+                fix_type so = v2_buffer[1];
+                fix_type r = v2_buffer[2];
+                fix_type sig = v2_buffer[3];
+
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
 
