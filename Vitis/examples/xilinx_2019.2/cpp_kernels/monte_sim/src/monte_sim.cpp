@@ -18,10 +18,10 @@ const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-    void monte_sim(scalar_type t,
-                scalar_type so,
-                scalar_type r,
-                scalar_type sig,
+    void monte_sim(ap_fixed<8,2> t,
+                ap_fixed<8,6> so,
+                ap_fixed<8,2> r,
+                ap_fixed<8,2> sig,
 
                 fix_type *in1,
                 fix_type *out_r,
