@@ -64,7 +64,8 @@ red_fix_type rand_fix_gen() {
     return o;
 }
 
-void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results,
+void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_in1,
+            vector<red_fix_type, aligned_allocator<red_fix_type>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
     
     bool match = true;
@@ -72,7 +73,7 @@ void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_res
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         if (conv_hw_res != source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " val = " << source_in1[i] << " CPU result = " << source_sw_results[i]
+            std::cout << " val = " << source_in1[i] << " CPU result = " << source_sw_results[i]
                       << " Device result = " << source_hw_results[i]
                       << std::endl;
             match = false;
@@ -227,7 +228,7 @@ int main(int argc, char **argv) {
                                                      &nstimeend));
     auto monte_sim_time = nstimeend - nstimestart;
 
-    //verify(source_sw_results, source_hw_results);
+    verify(source_in1, source_sw_results, source_hw_results);
 
     printf("| %-23s | %23lu |\n", "monte_sim: ", monte_sim_time);
     
