@@ -26,12 +26,7 @@ const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-void monte_sim(
-                fix_type *in1,
-                fix_type *in2,
-                fix_type *out_r,
-                int size
-    ) {
+void monte_sim(fix_type *in1, fix_type *in2, fix_type *out_r, int size) {
 
         // Buffer inputs
         #pragma HLS INTERFACE m_axi port=in1 offset=slave bundle=gmem
@@ -44,13 +39,8 @@ void monte_sim(
         #pragma HLS INTERFACE s_axilite port = return bundle = control
 
             fix_type v1_buffer[BUFFER_SIZE];
-            // fix_type v2_buffer[BUFFER_SIZE];
+            fix_type v2_buffer[BUFFER_SIZE];
             fix_type vout_buffer[BUFFER_SIZE];
-
-            fix_type t = in2[0];
-            fix_type so = in2[1];
-            fix_type r = in2[2];
-            fix_type sig = in2[3];
 
 
             for (int i = 0; i < size; i += BUFFER_SIZE) {
@@ -67,18 +57,18 @@ void monte_sim(
                     #pragma HLS PIPELINE II=1
                     v1_buffer[j] = in1[i + j];
                 }
-/*
+
             read2:
                 for (int j = 0; j < chunk_size; j++) {
-                    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-                    #pragma HLS PIPELINE II=1
+                    // #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
+                    // #pragma HLS PIPELINE II=1
                     v2_buffer[j] = in2[i + j];
                 }
-*/
-                // PIPELINE pragma reduces the initiation interval for loop by allowing the
-                // concurrent executions of operations
 
-                
+                fix_type t = v2_buffer[0];
+                fix_type so = v2_buffer[1];
+                fix_type r = v2_buffer[2];
+                fix_type sig = v2_buffer[3];
 
             monte_sim_taylor:
                 for (int j = 0; j < chunk_size; j++) {
