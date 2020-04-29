@@ -19,7 +19,7 @@ const unsigned int c_size = BUFFER_SIZE;
 extern "C" {
 
     void monte_sim(ap_fixed<8,3> t,
-                ap_fixed<8,5> so,
+                ap_fixed<8,6> so,
                 ap_fixed<8,2> r,
                 ap_fixed<8,2> sig,
 
@@ -29,7 +29,7 @@ extern "C" {
     ) {
         // Scalar input
         #pragma HLS INTERFACE s_axilite port=t bundle=control
-        #pragma HLS INTERFACE s_axilite port=so bundle=control
+        // #pragma HLS INTERFACE s_axilite port=so bundle=control
         #pragma HLS INTERFACE s_axilite port=r bundle=control
         #pragma HLS INTERFACE s_axilite port=sig bundle=control
 
