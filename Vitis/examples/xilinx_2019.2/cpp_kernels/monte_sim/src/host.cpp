@@ -100,7 +100,7 @@ int main(int argc, char **argv) {
 
     cl_int err;
     cl::Context context;
-    cl::Kernel kernel_monte_sim, kernel_monte_sim_exp;
+    cl::Kernel kernel_monte_sim, kernel_monte_sim_dev;
     cl::CommandQueue q;
     cl::Program program;
 
@@ -264,7 +264,7 @@ int main(int argc, char **argv) {
                                                      &nstimeend_exp));
     auto monte_sim_dev_time = nstimeend_exp - nstimestart_exp;
 
-    verify_exp(source_in1, source_sw_results, source_hw_results);
+    verify(source_in1, source_sw_results, source_hw_results);
 
     printf("|-------------------------+-------------------------|\n"
            "| Kernel                  |    Wall-Clock Time (ns) |\n"
