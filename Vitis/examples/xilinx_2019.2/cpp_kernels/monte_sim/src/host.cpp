@@ -121,7 +121,7 @@ int main(int argc, char **argv) {
 
     cl_int err;
     cl::Context context;
-    cl::Kernel kernel_monte_sim;
+    cl::Kernel kernel_monte_sim, kernel_monte_sim_exp;
     cl::CommandQueue q;
     cl::Program program;
 
