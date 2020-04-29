@@ -152,11 +152,6 @@ int main(int argc, char **argv) {
     float r = 0.05;
     float sig = 0.2;
 
-    red_fix_type scalar_arg_time = 0.5;
-    red_fix_type scalar_arg_so = 50.0;
-    red_fix_type scalar_arg_rate = 0.05;
-    red_fix_type scalar_arg_sigma = 0.2;
-
     exp_fix_type exp_scalar_arg_time = 0.5;
     exp_fix_type exp_scalar_arg_so = 50.0;
     exp_fix_type exp_scalar_arg_rate = 0.05;
@@ -164,10 +159,10 @@ int main(int argc, char **argv) {
 
 
 
-    source_const.at(0) = 0.5; // time
-    source_const.at(1) = 50.0; // so
-    source_const.at(2) = 0.05; // r
-    source_const.at(3) = 0.2; // sigma
+    source_const.at(0) = t; // time
+    source_const.at(1) = so; // so
+    source_const.at(2) = r; // r
+    source_const.at(3) = sig; // sigma
 
     source_const_exp.at(0) = exp_scalar_arg_time; // time
     source_const_exp.at(1) = exp_scalar_arg_so; // so
