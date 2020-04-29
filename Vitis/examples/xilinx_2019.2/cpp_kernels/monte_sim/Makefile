@@ -76,6 +76,7 @@ EMCONFIG_DIR = $(TEMP_DIR)
 EMU_DIR = $(SDCARD)/data/emulation
 
 BINARY_CONTAINERS += $(BUILD_DIR)/monte_sim.xclbin
+BINARY_CONTAINER_matmul_OBJS += $(TEMP_DIR)/monte_sim_taylor.xo
 BINARY_CONTAINER_matmul_OBJS += $(TEMP_DIR)/monte_sim.xo
 
 CP = cp -rf
