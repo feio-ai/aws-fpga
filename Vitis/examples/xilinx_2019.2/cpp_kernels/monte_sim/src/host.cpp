@@ -270,7 +270,7 @@ int main(int argc, char **argv) {
 
     printf("| %-23s | %23lu |\n", "monte_sim: ", monte_sim_time);
     printf("| %-23s | %23lu |\n", "monte_sim_exp: ", monte_sim_dev_time);
-    
+    printf("|-------------------------+-------------------------|\n"
     //OpenCL Host Code Area End
 
     
