@@ -164,10 +164,10 @@ int main(int argc, char **argv) {
     source_const.at(2) = (double)(0.05); // r
     source_const.at(3) = (double)(0.2); // sigma
 
-    source_const_exp.at(0) = (exp_fix_type)(0.5); // time
-    source_const_exp.at(1) = (exp_fix_type)(50.0); // so
-    source_const_exp.at(2) = (exp_fix_type)(0.05); // r
-    source_const_exp.at(3) = (exp_fix_type)(0.2); // sigma
+    source_const_exp.at(0) = (double)(0.5); // time
+    source_const_exp.at(1) = (double)(50.0); // so
+    source_const_exp.at(2) = (double)(0.05); // r
+    source_const_exp.at(3) = (double)(0.2); // sigma
     
 
     
