@@ -26,7 +26,7 @@ const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-void monte_sim_taylor(
+void monte_sim_dev(
                 fix_type *in1,
                 fix_type *in2,
                 fix_type *out_r,
@@ -80,7 +80,7 @@ void monte_sim_taylor(
 
                 
 
-            monte_sim_taylor:
+            monte_sim_dev:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
                     #pragma HLS PIPELINE II=1
@@ -98,25 +98,9 @@ void monte_sim_taylor(
 
                     fix_type exp_result = 1 + xo + (x2 * ov_2) + (x3 * ov_6) + (x4 * ov_24) + (x5 * ov_120) + (x6 * ov_720) + (x7 * ov_5040);
                     fix_type s = so * exp_result;
-                    // ap_fixed<16,7> z = hls::exp(x);
                     vout_buffer[j] = s;
                 }
-/*
-                fix_type duo = 2;
-            monte_sim:
-                for (int j = 0; j < chunk_size; j++) {
-                    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-                    #pragma HLS PIPELINE II=1
-                   
-                    
-                    fix_type x = v1_buffer[j];
-                    fix_type hls_p = hls::pow(sig, duo);
-                    fix_type hls_sq = hls::sqrt(t);
-                    fix_type s = so * hls::exp( (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq) );
-                    // ap_fixed<16,7> z = hls::exp(x);
-                    vout_buffer[j] = s;
-                }
-*/
+
             //burst write the result
             write:
                 for (int j = 0; j < chunk_size; j++) {
