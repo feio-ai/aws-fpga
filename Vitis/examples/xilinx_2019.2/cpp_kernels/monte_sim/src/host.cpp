@@ -176,6 +176,10 @@ int main(int argc, char **argv) {
 
     int size = DATA_SIZE;
 
+    printf("|-------------------------+-------------------------|\n"
+           "| Kernel                  |    Wall-Clock Time (ns) |\n"
+           "|-------------------------+-------------------------|\n");
+
     OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(2, buffer_output));
@@ -184,16 +188,29 @@ int main(int argc, char **argv) {
     // Copy input data to device global memory
     // OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1}, 0));
+
+    cl::Event event;
+    uint64_t nstimestart, nstimeend;
+
     OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim));
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_output},
                                                     CL_MIGRATE_MEM_OBJECT_HOST));
     q.finish();
+
+    OCL_CHECK(err,
+              err = event.getProfilingInfo<uint64_t>(CL_PROFILING_COMMAND_START,
+                                                     &nstimestart));
+    OCL_CHECK(err,
+              err = event.getProfilingInfo<uint64_t>(CL_PROFILING_COMMAND_END,
+                                                     &nstimeend));
+    auto monte_sim_time = nstimeend - nstimestart;
+    printf("| %-23s | %23lu |\n", "matmul: ", monte_sim_time);
     
     //OpenCL Host Code Area End
 
     //Compare to sim
     bool match = true;
-    for (int i = 0; i < DATA_SIZE; i++) {
+    for (int i = 0; i < 10; i++) {
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         if (conv_hw_res != source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
