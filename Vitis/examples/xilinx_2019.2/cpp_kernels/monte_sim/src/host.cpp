@@ -63,7 +63,7 @@ red_fix_type rand_fix_gen() {
 
     return o;
 }
-
+/*
 void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
     
@@ -83,10 +83,10 @@ void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_res
     }
 
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
-    return (match ? EXIT_SUCCESS : EXIT_FAILURE);
+    
 
 }
-
+*/
 
 int main(int argc, char **argv) {
     if (argc != 2) {
@@ -228,13 +228,32 @@ int main(int argc, char **argv) {
                                                      &nstimeend));
     auto monte_sim_time = nstimeend - nstimestart;
 
-    verify(source_sw_results, source_hw_results);
+    //verify(source_sw_results, source_hw_results);
 
     printf("| %-23s | %23lu |\n", "monte_sim: ", monte_sim_time);
     
     //OpenCL Host Code Area End
 
-    return EXIT_SUCCESS;
+    bool match = true;
+    for (int i = 0; i < 10; i++) {
+        float conv_hw_res = static_cast<float>(source_hw_results[i]);
+        if (conv_hw_res != source_sw_results[i]) {
+            std::cout << "Error: Result mismatch" << std::endl;
+            std::cout << "i = " << i << " val = " << source_in1[i] << " CPU result = " << source_sw_results[i]
+                      << " Device result = " << source_hw_results[i]
+                      << std::endl;
+            match = false;
+            // break;
+        } else {
+            std::cout << "SW result = " << source_sw_results[i] << " Device result = " << source_hw_results[i] << std::endl;
+        }
+    }
+
+    std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
+
+    return (match ? EXIT_SUCCESS : EXIT_FAILURE);
+
+    
 
 
 
