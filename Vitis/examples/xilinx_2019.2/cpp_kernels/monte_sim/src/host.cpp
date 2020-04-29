@@ -103,8 +103,6 @@ int main(int argc, char **argv) {
         source_hw_results[i] = 0;
     }
 
-    
-
     // -------------------------------------------------------------------------
     // OpenCL Host Area Start
     auto devices = xcl::get_xil_devices();
@@ -163,7 +161,7 @@ int main(int argc, char **argv) {
                                         &err));
 
     ap_fixed<8,3> scalar_arg_time = 0.5;
-    ap_fixed<8,6> scalar_arg_so = 50.0;
+    // ap_fixed<8,6> scalar_arg_so = 50.0;
     ap_fixed<8,2> scalar_arg_rate = 0.05;
     ap_fixed<8,2> scalar_arg_sigma = 0.2;
 
@@ -171,14 +169,13 @@ int main(int argc, char **argv) {
     int scalar_size = sizeof(cl_uint) * 2;
 
     OCL_CHECK(err, err = kernel_monte_sim.setArg(0, scalar_size, &scalar_arg_time));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, scalar_size, &scalar_arg_so));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, scalar_size, &scalar_arg_rate));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(3, scalar_size, &scalar_arg_sigma));
+    // OCL_CHECK(err, err = kernel_monte_sim.setArg(1, scalar_size, &scalar_arg_so));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, scalar_size, &scalar_arg_rate));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, scalar_size, &scalar_arg_sigma));
 
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(4, buffer_in1));
-    // OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(5, buffer_output));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(6, size));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(3, buffer_in1));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(4, buffer_output));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(5, size));
 
     // Copy input data to device global memory
     // OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));

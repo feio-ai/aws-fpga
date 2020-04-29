@@ -19,7 +19,7 @@ const unsigned int c_size = BUFFER_SIZE;
 extern "C" {
 
     void monte_sim(ap_fixed<8,3> t,
-                ap_fixed<8,6> so,
+                // ap_fixed<8,6> so,
                 ap_fixed<8,2> r,
                 ap_fixed<8,2> sig,
 
@@ -32,6 +32,7 @@ extern "C" {
         // #pragma HLS INTERFACE s_axilite port=so bundle=control
         #pragma HLS INTERFACE s_axilite port=r bundle=control
         #pragma HLS INTERFACE s_axilite port=sig bundle=control
+
 
         // Buffer inputs
         #pragma HLS INTERFACE m_axi port=in1 offset=slave bundle=gmem
@@ -69,6 +70,7 @@ extern "C" {
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
 
+                fix_type so = 50.0;
             monte_sim:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
