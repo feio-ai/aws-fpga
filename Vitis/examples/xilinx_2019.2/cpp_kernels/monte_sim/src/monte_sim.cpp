@@ -17,7 +17,7 @@ const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-    void monte_sim(
+void monte_sim(
                 fix_type *in1,
                 fix_type *in2,
                 fix_type *out_r,
