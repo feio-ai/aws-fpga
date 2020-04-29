@@ -163,7 +163,7 @@ int main(int argc, char **argv) {
                       << "] with xclbin file!\n";
         } else {
             std::cout << "Device[" << i << "]: program successful!\n";
-            
+            OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim", &err));
             valid_device++;
             break;
         }
@@ -203,8 +203,8 @@ int main(int argc, char **argv) {
            "| Kernel                  |    Wall-Clock Time (ns) |\n"
            "|-------------------------+-------------------------|\n");
 
-           
-    OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim", &err));
+
+    
     OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(2, buffer_output));
