@@ -64,6 +64,29 @@ red_fix_type rand_fix_gen() {
     return o;
 }
 
+void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results,
+            vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
+    
+    bool match = true;
+    for (int i = 0; i < 10; i++) {
+        float conv_hw_res = static_cast<float>(source_hw_results[i]);
+        if (conv_hw_res != source_sw_results[i]) {
+            std::cout << "Error: Result mismatch" << std::endl;
+            std::cout << "i = " << i << " val = " << source_in1[i] << " CPU result = " << source_sw_results[i]
+                      << " Device result = " << source_hw_results[i]
+                      << std::endl;
+            match = false;
+            // break;
+        } else {
+            std::cout << "SW result = " << source_sw_results[i] << " Device result = " << source_hw_results[i] << std::endl;
+        }
+    }
+
+    std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
+    return (match ? EXIT_SUCCESS : EXIT_FAILURE);
+
+}
+
 
 int main(int argc, char **argv) {
     if (argc != 2) {
@@ -192,7 +215,7 @@ int main(int argc, char **argv) {
     cl::Event event;
     uint64_t nstimestart, nstimeend;
 
-    OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim));
+    OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim, NULL, &event));
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_output},
                                                     CL_MIGRATE_MEM_OBJECT_HOST));
     q.finish();
@@ -204,28 +227,14 @@ int main(int argc, char **argv) {
               err = event.getProfilingInfo<uint64_t>(CL_PROFILING_COMMAND_END,
                                                      &nstimeend));
     auto monte_sim_time = nstimeend - nstimestart;
-    printf("| %-23s | %23lu |\n", "matmul: ", monte_sim_time);
+
+    verify(source_sw_results, source_hw_results);
+
+    printf("| %-23s | %23lu |\n", "monte_sim: ", monte_sim_time);
     
     //OpenCL Host Code Area End
 
-    //Compare to sim
-    bool match = true;
-    for (int i = 0; i < 10; i++) {
-        float conv_hw_res = static_cast<float>(source_hw_results[i]);
-        if (conv_hw_res != source_sw_results[i]) {
-            std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " val = " << source_in1[i] << " CPU result = " << source_sw_results[i]
-                      << " Device result = " << source_hw_results[i]
-                      << std::endl;
-            match = false;
-            // break;
-        } else {
-            std::cout << "SW result = " << source_sw_results[i] << " Device result = " << source_hw_results[i] << std::endl;
-        }
-    }
 
-    std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
-    return (match ? EXIT_SUCCESS : EXIT_FAILURE);
 
 
 
