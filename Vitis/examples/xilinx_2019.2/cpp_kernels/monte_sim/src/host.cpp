@@ -53,6 +53,17 @@ float phi(float x) {
     return 0.5*(1.0 + sign*y);
 }
 
+exp_fix_type exp_rand_fix_gen() {
+    float x = gen_random();
+    float y = phi(x);
+
+    // bitset<BIT_SET> bset1;
+    exp_fix_type o = static_cast<exp_fix_type>(y);
+    // fix_type out = o.range(24, 8);
+
+    return o;
+}
+
 red_fix_type rand_fix_gen() {
     float x = gen_random();
     float y = phi(x);
@@ -134,14 +145,7 @@ int main(int argc, char **argv) {
 
     // Create the test data
     std::generate(source_in1.begin(), source_in1.end(), rand_fix_gen);
-    // std::generate(source_sw.begin(), source_in_sw.end(), rand_fl_gen);
-
-    //build separate source for monte_sim
-    for (int i = 0; i < DATA_SIZE; i++) {
-        red_fix_type y = source_in1[i];
-        exp_fix_type z = static_cast<exp_fix_type>(y);
-        source_in2.at(i) = z;
-    }
+    std::generate(source_in2.begin(), source_in2.end(), exp_rand_fix_gen);
 
     float t = 0.5;
     float so = 50.0;
@@ -316,7 +320,7 @@ int main(int argc, char **argv) {
            "|-------------------------+-------------------------|\n");
 
     printf("| %-23s | %23lu |\n", "monte_sim: ", monte_sim_time);
-    printf("| %-23s | %23lu |\n", "monte_sim: ", monte_sim_exp_time);
+    printf("| %-23s | %23lu |\n", "monte_sim_exp: ", monte_sim_exp_time);
     
     //OpenCL Host Code Area End
 
