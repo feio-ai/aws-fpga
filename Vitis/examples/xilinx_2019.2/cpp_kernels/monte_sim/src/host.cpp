@@ -156,14 +156,12 @@ int main(int argc, char **argv) {
 
         std::cout << "Trying to program device[" << i
                   << "]: " << device.getInfo<CL_DEVICE_NAME>() << std::endl;
-        OCL_CHECK(err,
-                    cl::Program program(context, {device}, bins, NULL, &err));
+        program = cl::Program(context, {device}, bins, NULL, &err);
         if (err != CL_SUCCESS) {
             std::cout << "Faied to program device [" << i
                       << "] with xclbin file!\n";
         } else {
             std::cout << "Device[" << i << "]: program successful!\n";
-            OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim", &err));
             valid_device++;
             break;
         }
@@ -199,12 +197,10 @@ int main(int argc, char **argv) {
 
     int size = DATA_SIZE;
 
-    printf("|-------------------------+-------------------------|\n"
-           "| Kernel                  |    Wall-Clock Time (ns) |\n"
-           "|-------------------------+-------------------------|\n");
 
 
-    
+
+    OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim", &err));    
     OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(2, buffer_output));
@@ -231,6 +227,10 @@ int main(int argc, char **argv) {
     auto monte_sim_time = nstimeend - nstimestart;
 
     verify(source_in1, source_sw_results, source_hw_results);
+
+    printf("|-------------------------+-------------------------|\n"
+           "| Kernel                  |    Wall-Clock Time (ns) |\n"
+           "|-------------------------+-------------------------|\n");
 
     printf("| %-23s | %23lu |\n", "monte_sim: ", monte_sim_time);
     
