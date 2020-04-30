@@ -1,0 +1,51 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'monte_sim'" level="0">
+<item name = "Date">Thu Apr 30 20:02:24 2020
+</item>
+<item name = "Version">2019.2 (Build 2698951 on Thu Oct 24 19:15:34 MDT 2019)</item>
+<item name = "Project">monte_sim</item>
+<item name = "Solution">solution</item>
+<item name = "Product family">virtexuplus</item>
+<item name = "Target device">xcvu9p-flgb2104-2-i</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">4.00 ns, 2.920 ns, 1.08 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">?, ?, ?, ?, ?, ?, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_sqrt_fixed_32_16_s_fu_369">sqrt_fixed_32_16_s, 12, 12, 48.000 ns, 48.000 ns, 1, 1, function</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- Loop 1">?, ?, ?, -, -, 4, no</column>
+<column name=" + read1">1025, 1025, 3, 1, 1, 1024, yes</column>
+<column name=" + read2">?, ?, 3, 1, 1, ?, yes</column>
+<column name=" + monte_sim_taylor">1063, 1063, 41, 1, 1, 1024, yes</column>
+<column name=" + write">1025, 1025, 3, 1, 1, 1024, yes</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

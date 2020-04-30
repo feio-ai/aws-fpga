@@ -1,0 +1,186 @@
+<ENTRY>
+{
+ "session": {
+  "name": "v++_compile_monte_sim",
+  "pid": "0",
+  "uuid": "0254e53a-62fc-41bb-9ebb-121a17e581da",
+  "description": "",
+  "timestamp": "0",
+  "outputFiles": [
+   {
+    "type": "JSON",
+    "mode": "CLIENT_ONLY",
+    "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/.tlog/v++_compile_monte_sim.xtl",
+    "continuous": true
+   },
+   {
+    "type": "JSON",
+    "mode": "LOCAL_IF_NO_CONNECT",
+    "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xo.compile_summary",
+    "continuous": true
+   },
+   {
+    "type": "BINARY_PROTOBUF",
+    "mode": "LOCAL_IF_NO_CONNECT",
+    "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xo.compile_summary.pb",
+    "continuous": true
+   }
+  ]
+ },
+ "thisFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xo.compile_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Thu Apr 30 19:50:12 2020",
+ "timestampMillis": "1588276212452",
+ "buildStep": {
+  "cmdId": "bbac5467-01fc-43dc-a1cd-4dc7afd6c0cb",
+  "name": "v++",
+  "logFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim/monte_sim.steps.log",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++  --xp \"vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\" -t sw_emu --platform /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm --save-temps -g --temp_dir ./_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1 -c -k monte_sim -Isrc -o_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xo src/monte_sim.cpp ",
+  "args": [
+   "-t",
+   "sw_emu",
+   "--platform",
+   "/home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm",
+   "--save-temps",
+   "-g",
+   "--temp_dir",
+   "./_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1",
+   "-c",
+   "-k",
+   "monte_sim",
+   "-Isrc",
+   "-o_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xo",
+   "src/monte_sim.cpp"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Apr 30 19:50:12 2020",
+ "timestampMillis": "1588276212453",
+ "status": {
+  "cmdId": "bbac5467-01fc-43dc-a1cd-4dc7afd6c0cb",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Thu Apr 30 19:50:19 2020",
+ "timestampMillis": "1588276219359",
+ "buildSummary": {
+  "hardwarePlatform": "xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm",
+  "hardwareDsa": "xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xsa",
+  "platformDirectory": "/home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1",
+  "runtime": "OpenCL",
+  "systemConfig": "Linux",
+  "flow": "BF_COMPILE",
+  "target": "TT_SW_EMU",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "monte_sim",
+     "file": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xo",
+     "reports": []
+    },
+    "sources": [
+     "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp"
+    ],
+    "cuNames": []
+   }
+  ]
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Thu Apr 30 19:50:19 2020",
+ "timestampMillis": "1588276219363",
+ "buildStep": {
+  "cmdId": "3a460624-6539-448c-a8ad-d3a84bcf3a01",
+  "name": "vivado_hls",
+  "logFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim/monte_sim/vivado_hls.log",
+  "commandLine": "vivado_hls -f /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim/monte_sim/monte_sim.tcl -messageDb vivado_hls.pb",
+  "args": [
+   "vivado_hls",
+   "-f",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim/monte_sim/monte_sim.tcl",
+   "-messageDb",
+   "vivado_hls.pb"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Apr 30 19:50:19 2020",
+ "timestampMillis": "1588276219364",
+ "status": {
+  "cmdId": "3a460624-6539-448c-a8ad-d3a84bcf3a01",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Apr 30 19:51:30 2020",
+ "timestampMillis": "1588276290535",
+ "status": {
+  "cmdId": "3a460624-6539-448c-a8ad-d3a84bcf3a01",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Apr 30 19:51:30 2020",
+ "timestampMillis": "1588276290601",
+ "report": {
+  "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/reports/monte_sim/v++_compile_monte_sim_guidance.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Apr 30 19:51:30 2020",
+ "timestampMillis": "1588276290602",
+ "report": {
+  "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/v++_compile_monte_sim_guidance.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Apr 30 19:51:30 2020",
+ "timestampMillis": "1588276290602",
+ "status": {
+  "cmdId": "bbac5467-01fc-43dc-a1cd-4dc7afd6c0cb",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>

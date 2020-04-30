@@ -1,0 +1,199 @@
+INFO: [v++ 60-897] Reading --xp value from platform: param:compiler.lockFlowCritSlackThreshold=0
+INFO: [v++ 60-897] Reading --xp value from platform: vivado_param:hd.routingContainmentAreaExpansion=true
+INFO: [v++ 60-897] Reading --xp value from platform: vivado_param:hd.supportClockNetCrossDiffReconfigurablePartitions=1
+INFO: [v++ 60-897] Reading --xp value from platform: vivado_param:bitstream.enablePR=4123
+INFO: [v++ 60-897] Reading --xp value from platform: vivado_param:physynth.ultraRAMOptOutput=false
+INFO: [v++ 60-897] Reading --xp value from platform: vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MAX_URAM_CASCADE_HEIGHT}={1}
+INFO: [v++ 60-897] Reading --xp value from platform: vivado_param:synth.elaboration.rodinMoreOptions={rt::set_parameter disableOregPackingUram true}
+WARNING: [v++ 60-642] Deprecated parameter name: compiler.lockFlowCritSlackThreshold
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/reports/link
+	Log files: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/logs/link
+INFO: [v++ 60-1548] Creating build summary session with primary output /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xclbin.link_summary, at Thu Apr 30 20:06:21 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Thu Apr 30 20:06:21 2020
+INFO: [v++ 60-1315] Creating rulecheck session with output '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/reports/link/v++_link_monte_sim_guidance.html', at Thu Apr 30 20:06:23 2020
+INFO: [v++ 60-895]   Target platform: /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/hw/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xsa'
+INFO: [v++ 60-629] Linking for hardware emulation target
+INFO: [v++ 60-423]   Target device: xilinx_aws-vu9p-f1_shell-v04261818_201920_1
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [20:06:27] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xo --xo /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim_dev.xo -keep --xpfm /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm --target emu --output_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int --temp_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Thu Apr 30 20:06:28 2020
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xo
+INFO: [KernelCheck 83-118] 'monte_sim' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_r' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'size' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim_dev.xo
+INFO: [KernelCheck 83-118] 'monte_sim_dev' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_r' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'size' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [20:06:28] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/emu/xilinx_aws-vu9p-f1_shell-v04261818_201920_1_emu.hpfm -clkid 0 -ip /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/iprepo/xilinx_com_hls_monte_sim_1_0,monte_sim -ip /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/iprepo/xilinx_com_hls_monte_sim_dev_1_0,monte_sim_dev -o /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [20:06:33] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 279.016 ; gain = 0.000 ; free physical = 4700 ; free virtual = 27430
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [20:06:33] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen -dmclkid 0 -r /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: monte_sim, num: 1  {monte_sim_1}
+INFO: [CFGEN 83-0]   kernel: monte_sim_dev, num: 1  {monte_sim_dev_1}
+INFO: [CFGEN 83-2226] Inferring mapping for argument monte_sim_1.in1 to DDR[1]
+INFO: [CFGEN 83-2226] Inferring mapping for argument monte_sim_1.in2 to DDR[1]
+INFO: [CFGEN 83-2226] Inferring mapping for argument monte_sim_1.out_r to DDR[1]
+INFO: [CFGEN 83-2226] Inferring mapping for argument monte_sim_dev_1.in1 to DDR[1]
+INFO: [CFGEN 83-2226] Inferring mapping for argument monte_sim_dev_1.in2 to DDR[1]
+INFO: [CFGEN 83-2226] Inferring mapping for argument monte_sim_dev_1.out_r to DDR[1]
+INFO: [SYSTEM_LINK 82-37] [20:06:37] cfgen finished successfully
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 287.598 ; gain = 0.000 ; free physical = 4698 ; free virtual = 27429
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [20:06:37] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/_sysl/.xsd --temp_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link --output_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int --target_bd emu/pfm_dynamic/pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd emu/pfm_dynamic/pfm_dynamic.bd -dn dr -dp /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [20:06:40] cf2bd finished successfully
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 287.598 ; gain = 0.000 ; free physical = 4689 ; free virtual = 27427
+INFO: [v++ 60-1441] [20:06:40] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 686.484 ; gain = 0.000 ; free physical = 4708 ; free virtual = 27446
+INFO: [v++ 60-1443] [20:06:40] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/sdsl.dat -rtd /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/cf2sw.rtd -xclbin /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xclbin_orig.xml -o /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/run_link
+INFO: [v++ 60-1441] [20:06:41] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 686.484 ; gain = 0.000 ; free physical = 4708 ; free virtual = 27448
+INFO: [v++ 60-1443] [20:06:41] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/cf2sw.rtd --diagramJsonFileName /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModel.json --platformFilePath /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2700185 --generatedByTimeStamp Thu Oct 24 18:45:48 MDT 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw_emu --platform /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm --save-temps -g --temp_dir ./build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1 -l -obuild_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xclbin _x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xo _x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim_dev.xo  --generatedByXclbinName monte_sim --kernelInfoDataFileName /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/run_link
+WARNING: [v++ 82-168] hardwarePlatform.board.name is not in the platform information.
+WARNING: [v++ 82-169] hardwarePlatform.board.part is not in the platform information.
+WARNING: [v++ 82-167] hardwarePlatform.board.boardPart is not in the platform information.
+INFO: [v++ 60-839] Read in kernel information from file '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/kernel_info.dat'.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+WARNING: [v++ 82-163] Unable to populate user region available resources.  The platform file deos not contain a hardwarePlatform.devices..core.availableResources entry
+INFO: [v++ 60-1441] [20:06:43] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 686.484 ; gain = 0.000 ; free physical = 4712 ; free virtual = 27453
+INFO: [v++ 60-1443] [20:06:43] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw_emu -f /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm -g -s --output_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int --log_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/logs/link --report_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/reports/link --config /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/vplConfig.ini -k /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link --emulation_mode debug_waveform --no-info --tlog_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/.tlog/v++_link_monte_sim --iprepo /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/ip_repo/xilinx_com_hls_monte_sim_dev_1_0 --iprepo /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/ip_repo/xilinx_com_hls_monte_sim_1_0 --messageDb /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/run_link/vpl.pb /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2700185 on Thu Oct 24 18:45:48 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/kernel_info.dat'.
+WARNING: [VPL 60-642] Deprecated parameter name: compiler.lockFlowCritSlackThreshold
+INFO: [VPL 60-423]   Target device: xilinx_aws-vu9p-f1_shell-v04261818_201920_1
+INFO: [VPL 60-1032] Extracting hardware platform to /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/vivado/vpl/.local/hw_platform
+[20:07:00] Run vpl: Step create_project: Started
+Creating Vivado project.
+[20:07:00] Run vpl: Step create_project: Completed
+[20:07:00] Run vpl: Step create_bd: Started
+[20:07:30] Run vpl: Step create_bd: Completed
+[20:07:30] Run vpl: Step update_bd: Started
+[20:07:38] Run vpl: Step update_bd: Completed
+[20:07:38] Run vpl: Step generate_target: Started
+[20:08:04] Run vpl: Step generate_target: Completed
+[20:08:04] Run vpl: Step config_hw_emulation: Started
+[20:09:21] Run vpl: Step config_hw_emulation: RUNNING...
+[20:10:36] Run vpl: Step config_hw_emulation: RUNNING...
+[20:11:51] Run vpl: Step config_hw_emulation: RUNNING...
+[20:13:07] Run vpl: Step config_hw_emulation: RUNNING...
+[20:14:22] Run vpl: Step config_hw_emulation: RUNNING...
+[20:15:37] Run vpl: Step config_hw_emulation: RUNNING...
+[20:16:53] Run vpl: Step config_hw_emulation: RUNNING...
+[20:17:53] Run vpl: Step config_hw_emulation: Completed
+[20:17:53] Run vpl: FINISHED. Run Status: config_hw_emulation Complete!
+INFO: [v++ 60-1441] [20:17:54] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:00:09 ; elapsed = 00:11:11 . Memory (MB): peak = 686.484 ; gain = 0.000 ; free physical = 3064 ; free virtual = 27381
+INFO: [v++ 60-1443] [20:17:54] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/run_link
+INFO: [v++ 60-991] clock name 'kernel2_clk_clk' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'kernel_clk_clk' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_main_a0' (clock ID '') is being mapped to clock name 'clk_main_a0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_main_a0 = 250, Kernel (KERNEL) clock: kernel2_clk_clk = 500, Kernel (DATA) clock: kernel_clk_clk = 300
+INFO: [v++ 60-1453] Command Line: cf2sw -a /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/address_map.xml -sdsl /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/sdsl.dat -xclbin /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xclbin_orig.xml -rtd /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim.rtd -o /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim.xml
+INFO: [v++ 60-1618] Launching 
+INFO: [v++ 60-1441] [20:18:57] Run run_link: Step rtdgen: Completed
+Time (s): cpu = 00:01:01 ; elapsed = 00:01:03 . Memory (MB): peak = 686.484 ; gain = 0.000 ; free physical = 2893 ; free virtual = 27375
+INFO: [v++ 60-1443] [20:18:57] Run run_link: Step xclbinutil: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --key-value SYS:mode:hw_emu --add-section DEBUG_DATA:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf --add-section DEBUG_IP_LAYOUT:JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/behav.xse --force --add-section :JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim.rtd --append-section :JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim_xml.rtd --add-section BUILD_METADATA:JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim_build.rtd --add-section EMBEDDED_METADATA:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim.xml --add-section SYSTEM_METADATA:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModelSlrBaseAddress.json --key-value SYS:PlatformVBNV:xilinx_aws-vu9p-f1_shell-v04261818_201920_1 --output /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim.xcp
+INFO: [v++ 60-1454] Run Directory: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/run_link
+XRT Build Version: 2.3.0
+       Build Date: 2020-02-06 15:08:44
+          Hash ID: 9e13d57c4563e2c19bf5f518993f6e5a8dadc18a
+Creating a default 'in-memory' xclbin image.
+
+Section: 'DEBUG_DATA'(4) was successfully added.
+Size   : 18874957 bytes
+Format : RAW
+File   : '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf'
+
+Section: 'DEBUG_IP_LAYOUT'(9) was successfully added.
+Size   : 1016 bytes
+Format : JSON
+File   : '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/debug_ip_layout.rtd'
+
+Section: 'BITSTREAM'(0) was successfully added.
+Size   : 63517311 bytes
+Format : RAW
+File   : '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/behav.xse'
+
+Section: 'MEM_TOPOLOGY'(6) was successfully added.
+Format : JSON
+File   : 'mem_topology'
+
+Section: 'IP_LAYOUT'(8) was successfully added.
+Format : JSON
+File   : 'ip_layout'
+
+Section: 'CONNECTIVITY'(7) was successfully added.
+Format : JSON
+File   : 'connectivity'
+
+Section: 'CLOCK_FREQ_TOPOLOGY'(11) was successfully added.
+Size   : 410 bytes
+Format : JSON
+File   : '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim_xml.rtd'
+
+Section: 'BUILD_METADATA'(14) was successfully added.
+Size   : 3563 bytes
+Format : JSON
+File   : '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim_build.rtd'
+
+Section: 'EMBEDDED_METADATA'(2) was successfully added.
+Size   : 9904 bytes
+Format : RAW
+File   : '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim.xml'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 8318 bytes
+Format : RAW
+File   : '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModelSlrBaseAddress.json'
+
+Section: 'PARTITION_METADATA'(20) was successfully appended to.
+Format : JSON
+File   : 'partition_metadata'
+Successfully wrote (82425919 bytes) to the output file: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim.xcp
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [20:18:57] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.08 . Memory (MB): peak = 686.484 ; gain = 0.000 ; free physical = 2813 ; free virtual = 27374
+INFO: [v++ 60-1443] [20:18:57] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --info /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim.xclbin.info --input /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/monte_sim.xcp
+INFO: [v++ 60-1454] Run Directory: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/run_link
+INFO: [v++ 60-1441] [20:18:58] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:00.65 ; elapsed = 00:00:00.70 . Memory (MB): peak = 686.484 ; gain = 0.000 ; free physical = 2813 ; free virtual = 27374
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/reports/link/system_estimate_monte_sim.xtxt
+INFO: [v++ 60-586] Created build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/reports/link/v++_link_monte_sim_guidance.html
+	Steps Log File: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 0h 12m 38s

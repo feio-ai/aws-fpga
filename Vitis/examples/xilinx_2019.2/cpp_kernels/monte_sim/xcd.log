@@ -1,0 +1,14 @@
+Thu Apr 30 20:06:21 2020: Server was asked to start on port: '45575'
+Thu Apr 30 20:06:21 2020: Server is using token UUID: '1408a99f-9d8c-4f9a-b8f5-f8ee6af422c1'
+Thu Apr 30 20:06:21 2020: SESSION_MGR: creating session with session uuid: '6d04a3e9-ade5-4ab9-8d63-1f78fcd2ec76' and name 'default'
+Thu Apr 30 20:06:21 2020: Attempting to start server on port '45575'
+Thu Apr 30 20:06:21 2020: XCD main fifo: created main fifo '/tmp/xcdmain1408a99f-9d8c-4f9a-b8f5-f8ee6af422c1', fd read = 12
+Thu Apr 30 20:06:21 2020: Running Dispatch Server
+Thu Apr 30 20:06:21 2020: Version 1.0.1
+Thu Apr 30 20:06:21 2020: Dispatch Server: Accepted socket connection from client
+Thu Apr 30 20:06:21 2020: EXCHANGE_TOKEN received, server token: 1408a99f-9d8c-4f9a-b8f5-f8ee6af422c1, passed token: 1408a99f-9d8c-4f9a-b8f5-f8ee6af422c1
+Thu Apr 30 20:06:21 2020: SESSION_MGR: creating session with session uuid: 'fb4a7029-2f7b-4f71-b738-d0808ba5cbb5' and name 'v++_link_monte_sim'
+Thu Apr 30 20:06:43 2020: Dispatch Server: Accepted socket connection from client
+Thu Apr 30 20:06:45 2020: Dispatch Server: Accepted socket connection from client
+Thu Apr 30 20:18:57 2020: Dispatch Server: Accepted socket connection from client
+Thu Apr 30 20:18:58 2020: SESSION_MGR: closing session for UUID 'fb4a7029-2f7b-4f71-b738-d0808ba5cbb5' with name 'v++_link_monte_sim'

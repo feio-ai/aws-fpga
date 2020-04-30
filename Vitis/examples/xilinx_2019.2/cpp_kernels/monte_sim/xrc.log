@@ -1,0 +1,11 @@
+Thu Apr 30 20:20:30 2020: Server was asked to start on port: '41637'
+Thu Apr 30 20:20:30 2020: Server is using token UUID: 'bdceac7c-c6d3-4a9d-9a4a-b65714e02573'
+Thu Apr 30 20:20:30 2020: Attempting to start server on port '41637'
+Thu Apr 30 20:20:30 2020: XRC main fifo: created main fifo '/tmp/xrcmainbdceac7c-c6d3-4a9d-9a4a-b65714e02573', fd read = 13
+Thu Apr 30 20:20:30 2020: Running Rule Check Server
+Thu Apr 30 20:20:30 2020: Version 1.5.1
+Thu Apr 30 20:20:31 2020: Rule Check Server: Accepted socket connection from client
+Thu Apr 30 20:20:31 2020: EXCHANGE_TOKEN received, server token: bdceac7c-c6d3-4a9d-9a4a-b65714e02573, passed token: bdceac7c-c6d3-4a9d-9a4a-b65714e02573
+Thu Apr 30 20:20:31 2020: SESSION_MGR: creating session with session uuid: '380f53c7-9b2c-4b60-a405-5a2e78a4573a' and name 'Profiling'
+Thu Apr 30 20:20:31 2020: Exception writing guidance report: boost::filesystem::create_directories: Invalid argument
+Thu Apr 30 20:20:31 2020: SESSION_MGR: closing session for UUID '380f53c7-9b2c-4b60-a405-5a2e78a4573a' with name 'Profiling'

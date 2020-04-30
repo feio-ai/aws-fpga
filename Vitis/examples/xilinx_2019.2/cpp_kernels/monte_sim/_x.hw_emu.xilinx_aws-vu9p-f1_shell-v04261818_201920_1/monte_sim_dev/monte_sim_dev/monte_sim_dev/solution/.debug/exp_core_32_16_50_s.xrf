@@ -1,0 +1,95 @@
+Begin Function 'exp_core<32, 16, 50>'
+
+RTL state condition: (1'b1 == 1'b1)
+# ST_6
+local add_ln731 <add_1410> <integer> <Arithmetic> 'add' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1410>
+add_ln731 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1410
+reg: add_ln731_reg_1350[46:0] lv
+
+local ret_V_10 <add_1426> <integer> <Arithmetic> 'add' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1426>
+exp_x_msb_2_m_1_h.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1426
+reg: ret_V_10_reg_1355[8:0] lv
+
+local trunc_ln612_1 <trunc_1429> <integer> <> 'trunc' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1429>
+trunc_ln612_1 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1429
+reg: trunc_ln612_1_reg_1361[40:0] lv
+
+# ST_7
+local exp_x_msb_3_4_lsb_m_1_V <bitconcatenate_1410> <integer> <> 'bitconcatenate' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1410>
+exp_x_msb_3_4_lsb_m_1.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1410
+reg: exp_x_msb_3_4_lsb_m_1_V_reg_1367[47:0] lv
+
+# ST_10
+local f_x_msb_2_3_4_lsb_s_V <partselect_1432> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1432>
+f_x_msb_2_3_4_lsb_s.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1432
+reg: f_x_msb_2_3_4_lsb_s_V_reg_1382[45:0] lv
+
+# ST_11
+local exp_x_msb_2_3_4_lsb_m_1_V <partselect_1433> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1433>
+exp_x_msb_2_3_4_lsb_m_1.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1433
+reg: exp_x_msb_2_3_4_lsb_m_1_V_reg_1392[49:0] lv
+
+local exp_x_msb_1_V <load_1501> <integer> <ArrayAccess><ArrayLoad><MultiCycle> 'load' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1501>
+exp_x_msb_1.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1501
+reg: exp_x_msb_1_V_reg_1397[49:0] lv
+
+# ST_15
+local y_lo_s_V <partselect_1504> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1504>
+y_lo_s.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1504
+reg: y_lo_s_V_reg_1413[47:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_pp0_stage0)
+# ST_1
+local trunc_ln703 <trunc_1390> <integer> <> 'trunc' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1390>
+trunc_ln703 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1390
+reg: trunc_ln703_reg_1259[17:0] lv
+
+local tmp <bitselect_1311> <integer> <> 'bitselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1311>
+tmp /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1311
+reg: tmp_reg_1264[0:0] lv
+
+local p_Result_18 <partselect_1324> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1324>
+p_Result_18 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1324
+reg: p_Result_18_reg_1270[6:0] lv
+
+local tmp_V <partselect_1327> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1327>
+x_msb_ind_2.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1327
+reg: tmp_V_reg_1275[7:0] lv
+
+local tmp_V_1 <partselect_1329> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1329>
+x_msb_ind_3.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1329
+reg: tmp_V_1_reg_1281[4:0] lv
+
+local tmp_s <partselect_1383> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1383>
+tmp_s /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1383
+reg: tmp_s_reg_1292[5:0] lv
+
+local tmp_44 <partselect_1392> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1392>
+tmp_44 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1392
+reg: tmp_44_reg_1297[6:0] lv
+
+local tmp_46 <partselect_1394> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1394>
+tmp_46 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1394
+reg: tmp_46_reg_1302[2:0] lv
+
+local or_ln1314_8 <or_1314> <integer> <Logic> 'or' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1314>
+or_ln1314_8 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1314
+reg: or_ln1314_8_reg_1313[0:0] lv
+
+local or_ln1314_17 <or_1314> <integer> <Logic> 'or' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1314>
+or_ln1314_17 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1314
+reg: or_ln1314_17_reg_1318[0:0] lv
+
+# ST_2
+local tmp_45 <partselect_1393> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1393>
+tmp_45 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1393
+reg: tmp_45_reg_1323[31:0] lv
+
+local f_x_msb_3_V <load_1402> <integer> <ArrayAccess><ArrayLoad><MultiCycle> 'load' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1402>
+f_x_msb_3.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1402
+reg: f_x_msb_3_V_reg_1329[31:0] lv
+
+
+End Function 'exp_core<32, 16, 50>'
+

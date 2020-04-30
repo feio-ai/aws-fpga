@@ -1,0 +1,240 @@
+Begin Function 'matmul_partition'
+
+RTL state condition: (1'b1 == 1'b1)
+# ST_35
+local temp_sum_0 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[0] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_0_reg_2468[31:0] lv
+
+local temp_sum_1 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[1] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_1_reg_2474[31:0] lv
+
+local temp_sum_2 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[2] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_2_reg_2479[31:0] lv
+
+local temp_sum_3 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[3] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_3_reg_2484[31:0] lv
+
+local temp_sum_4 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[4] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_4_reg_2489[31:0] lv
+
+local temp_sum_5 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[5] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_5_reg_2494[31:0] lv
+
+local temp_sum_6 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[6] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_6_reg_2499[31:0] lv
+
+local temp_sum_7 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[7] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_7_reg_2504[31:0] lv
+
+local temp_sum_8 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[8] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_8_reg_2509[31:0] lv
+
+local temp_sum_9 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[9] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_9_reg_2514[31:0] lv
+
+local temp_sum_10 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[10] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_10_reg_2519[31:0] lv
+
+local temp_sum_11 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[11] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_11_reg_2524[31:0] lv
+
+local temp_sum_12 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[12] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_12_reg_2529[31:0] lv
+
+local temp_sum_13 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[13] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_13_reg_2534[31:0] lv
+
+local temp_sum_14 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[14] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_14_reg_2539[31:0] lv
+
+local temp_sum_15 <add_104> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+temp_sum[15] /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: temp_sum_15_reg_2544[31:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_pp0_stage0)
+# ST_13
+local j_0 <> <integer> <Phi> 'phi' <>
+j /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:70
+reg: j_0_reg_1010[31:0] lv
+
+local i_0 <phi_73> <integer> <Phi> 'phi' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:73>
+select_ln73_1 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:73
+reg: i_0_reg_1021[31:0] lv
+
+local itr_0 <> <integer> <Phi> 'phi' <>
+itr /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:70
+reg: itr_0_reg_1032[30:0] lv
+
+local icmp_ln70 <icmp_70> <integer> <Comparator> 'icmp' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:70>
+icmp_ln70 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:70
+reg: icmp_ln70_reg_2048[0:0] lv
+
+local select_ln73_1 <select_73> <integer> <> 'select' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:73>
+select_ln73_1 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:73
+reg: select_ln73_1_reg_2057[31:0] lv
+
+local add_ln77 <add_77> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:77>
+add_ln77 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:77
+reg: add_ln77_reg_2062[9:0] lv
+
+# ST_14
+local gmem_addr_2_read <read_77> <integer> <> 'read' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:77>
+gmem_addr_2_read /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:77
+reg: gmem_addr_2_read_reg_2072[31:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_pp1_stage0)
+# ST_23
+local j3_0 <> <integer> <Phi> 'phi' <>
+j /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:82
+reg: j3_0_reg_1043[31:0] lv
+
+local i2_0 <phi_85> <integer> <Phi> 'phi' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:85>
+select_ln85_1 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:85
+reg: i2_0_reg_1054[31:0] lv
+
+local itr1_0 <> <integer> <Phi> 'phi' <>
+itr /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:82
+reg: itr1_0_reg_1065[30:0] lv
+
+local icmp_ln82 <icmp_82> <integer> <Comparator> 'icmp' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:82>
+icmp_ln82 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:82
+reg: icmp_ln82_reg_2077[0:0] lv
+
+local select_ln85_1 <select_85> <integer> <> 'select' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:85>
+select_ln85_1 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:85
+reg: select_ln85_1_reg_2086[31:0] lv
+
+local trunc_ln89 <trunc_89> <integer> <> 'trunc' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:89>
+trunc_ln89 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:89
+reg: trunc_ln89_reg_2092[3:0] lv
+
+# ST_24
+local gmem_addr_1_read <read_89> <integer> <> 'read' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:89>
+gmem_addr_1_read /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:89
+reg: gmem_addr_1_read_reg_2101[31:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_pp2_stage0)
+# ST_30
+local indvar_flatten <phi_94> <integer> <Phi> 'phi' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:94>
+add_ln94 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:94
+reg: indvar_flatten_reg_1076[63:0] lv
+
+local row_0 <phi_94> <integer> <Phi> 'phi' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:94>
+select_ln94_1 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:94
+reg: row_0_reg_1087[30:0] lv
+
+local col_0 <> <integer> <Phi> 'phi' <>
+col /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:97
+reg: col_0_reg_1098[31:0] lv
+
+local icmp_ln94 <icmp_94> <integer> <Comparator> 'icmp' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:94>
+icmp_ln94 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:94
+reg: icmp_ln94_reg_2233[0:0] lv
+
+local select_ln94 <select_94> <integer> <> 'select' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:94>
+select_ln94 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:94
+reg: select_ln94_reg_2242[31:0] lv
+
+local select_ln94_1 <select_94> <integer> <> 'select' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:94>
+select_ln94_1 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:94
+reg: select_ln94_1_reg_2248[30:0] lv
+
+local icmp_ln106 <icmp_106> <integer> <Comparator> 'icmp' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:106>
+icmp_ln106 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:106
+reg: icmp_ln106_reg_2259[0:0] lv
+
+# ST_31
+local icmp_ln103 <icmp_103> <integer> <Comparator> 'icmp' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:103>
+icmp_ln103 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:103
+reg: icmp_ln103_reg_2268[0:0] lv
+
+local A_load <load_104> <integer> <ArrayAccess><ArrayLoad><MultiCycle> 'load' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104>
+A_load /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:104
+reg: A_load_reg_2288[31:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_pp3_stage0)
+# ST_38
+local itr5_0 <> <integer> <Phi> 'phi' <>
+itr /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:114
+reg: itr5_0_reg_1109[30:0] lv
+
+local i6_0 <phi_117> <integer> <Phi> 'phi' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:117>
+select_ln117 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:117
+reg: i6_0_reg_1120[31:0] lv
+
+local j7_0 <> <integer> <Phi> 'phi' <>
+j /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:114
+reg: j7_0_reg_1131[31:0] lv
+
+local icmp_ln114 <icmp_114> <integer> <Comparator> 'icmp' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:114>
+icmp_ln114 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:114
+reg: icmp_ln114_reg_2549[0:0] lv
+
+local select_ln117 <select_117> <integer> <> 'select' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:117>
+select_ln117 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:117
+reg: select_ln117_reg_2558[31:0] lv
+
+local trunc_ln121 <trunc_121> <integer> <> 'trunc' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:121>
+trunc_ln121 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:121
+reg: trunc_ln121_reg_2563[3:0] lv
+
+# ST_39
+local tmp_4 <mux_121> <integer> <> 'mux' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:121>
+tmp_4 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:121
+reg: tmp_4_reg_2653[31:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_state1)
+# ST_1
+local size_read <> <integer> <> 'read' <>
+reg: size_read_reg_2008[31:0] lv
+
+local gmem_addr <> <integer> <> 'getelementptr' <>
+reg: gmem_addr_reg_2020[63:0] lv
+
+local gmem_addr_1 <> <integer> <> 'getelementptr' <>
+reg: gmem_addr_1_reg_2026[63:0] lv
+
+local gmem_addr_2 <> <integer> <> 'getelementptr' <>
+reg: gmem_addr_2_reg_2032[63:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_state29)
+# ST_29
+local add_ln106 <add_106> <integer> <Arithmetic> 'add' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:106>
+add_ln106 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:106
+reg: add_ln106_reg_2223[31:0] lv
+
+local mul_ln106 <mul_106> <integer> <Arithmetic><MultiCycle> 'mul' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:106>
+mul_ln106 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:106
+reg: mul_ln106_reg_2228[63:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_state5)
+# ST_5
+local mul_ln70 <mul_70> <integer> <Arithmetic><MultiCycle> 'mul' </home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:70>
+mul_ln70 /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src/matmul_partition.cpp:70
+reg: mul_ln70_reg_2038[31:0] lv
+
+
+End Function 'matmul_partition'
+

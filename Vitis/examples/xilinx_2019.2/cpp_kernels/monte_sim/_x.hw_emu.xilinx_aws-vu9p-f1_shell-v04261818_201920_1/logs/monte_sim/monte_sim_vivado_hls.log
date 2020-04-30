@@ -1,0 +1,164 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+  **** SW Build 2700185 on Thu Oct 24 18:45:48 MDT 2019
+  **** IP Build 2699827 on Thu Oct 24 21:16:38 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source /opt/Xilinx/Vivado/2019.2/scripts/vivado_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/opt/Xilinx/Vivado/2019.2/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'centos' on host 'ip-172-31-6-181.us-west-2.compute.internal' (Linux_x86_64 version 3.10.0-1062.18.1.el7.x86_64) on Thu Apr 30 20:01:08 UTC 2020
+INFO: [HLS 200-10] On os "CentOS Linux release 7.7.1908 (Core)"
+INFO: [HLS 200-10] In directory '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim/monte_sim'
+Sourcing Tcl script 'monte_sim.tcl'
+INFO: [HLS 200-10] Creating and opening project '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim/monte_sim/monte_sim'.
+INFO: [HLS 200-10] Adding design file '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp' to the project
+INFO: [HLS 200-10] Creating and opening solution '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim/monte_sim/monte_sim/solution'.
+INFO: [HLS 200-10] Setting target device to 'xcvu9p-flgb2104-2-i'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 4ns.
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=0
+INFO: [HLS 200-435] Setting 'config_export -vivado_optimization_level' configuration: config_export -vivado_phys_opt=none
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_compile -pipeline_loops=64
+INFO: [XFORM 203-1171] Pipeline the innermost loop with trip count more than 64 or its parent loop when its trip count is less than or equal 64.
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_compile -name_max_length=80
+INFO: [XFORM 203-1161] The maximum of name length is set into 80.
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_schedule -enable_dsp_full_reg=1
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_rtl -register_reset_num=3
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_rtl -module_auto_prefix=1
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_interface -m_axi_addr64=1
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty 27%
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 1.08ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 1.08ns.
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:01:06 ; elapsed = 00:01:08 . Memory (MB): peak = 983.102 ; gain = 463.160 ; free physical = 5527 ; free virtual = 27366
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:01:06 ; elapsed = 00:01:08 . Memory (MB): peak = 983.102 ; gain = 463.160 ; free physical = 5527 ; free virtual = 27366
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:01:08 ; elapsed = 00:01:10 . Memory (MB): peak = 1050.129 ; gain = 530.188 ; free physical = 5455 ; free virtual = 27308
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'hls::sqrt<32, 16>' into 'monte_sim' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp:80) automatically.
+WARNING: [SYNCHK 200-23] /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:272: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:01:08 ; elapsed = 00:01:11 . Memory (MB): peak = 1050.129 ; gain = 530.188 ; free physical = 5409 ; free virtual = 27267
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'sqrt_fixed<32, 16>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:44:36).
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:267) in function 'sqrt_fixed<32, 16>' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-2' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:295) in function 'sqrt_fixed<32, 16>' completely with a factor of 17.
+INFO: [XFORM 203-602] Inlining function 'hls::sqrt<32, 16>' into 'monte_sim' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp:80) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:44:1) to (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:372:1) in function 'sqrt_fixed<32, 16>'... converting 132 basic blocks.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:01:09 ; elapsed = 00:01:12 . Memory (MB): peak = 1113.789 ; gain = 593.848 ; free physical = 5339 ; free virtual = 27205
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'Loop-1' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp:46:27) in function 'monte_sim' : 
+
+more than one sub loop.
+INFO: [HLS 200-444] Inferring multiple bus burst read of variable length on port 'gmem' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp:58:2). These data requests might be further partitioned to multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.
+INFO: [HLS 200-444] Inferring multiple bus burst read of variable length on port 'gmem' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp:65:2). These data requests might be further partitioned to multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.
+INFO: [HLS 200-444] Inferring multiple bus burst write of variable length on port 'gmem' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp:100:2). These data requests might be further partitioned to multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.
+INFO: [HLS 200-472] Inferring partial write operation for 'v1_buffer.V' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp:58:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'v2_buffer.V' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp:65:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'vout_buffer.V' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim.cpp:92:21)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:01:10 ; elapsed = 00:01:13 . Memory (MB): peak = 1177.773 ; gain = 657.832 ; free physical = 5310 ; free virtual = 27179
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'monte_sim' ...
+WARNING: [SYN 201-103] Legalizing function name 'sqrt_fixed<32, 16>' to 'sqrt_fixed_32_16_s'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sqrt_fixed_32_16_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'sqrt_fixed<32, 16>'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 13.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 73.54 seconds; current allocated memory: 272.255 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.47 seconds; current allocated memory: 274.540 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'monte_sim' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_32) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_31) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_30) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_29) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_28) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_27) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_25) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_24) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_23) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_22) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_21) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_20) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_4) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln728) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_19) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'read1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'read2'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'monte_sim_taylor'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 41.
+INFO: [SCHED 204-61] Pipelining loop 'write'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.48 seconds; current allocated memory: 276.251 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.61 seconds; current allocated memory: 277.553 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sqrt_fixed_32_16_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sqrt_fixed_32_16_s'.
+INFO: [HLS 200-111]  Elapsed time: 1.04 seconds; current allocated memory: 281.638 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'monte_sim' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'monte_sim/gmem' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'monte_sim/in1_V' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'monte_sim/in2_V' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'monte_sim/out_r_V' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'monte_sim/size' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'monte_sim' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'return', 'in1_V', 'out_r_V' and 'size' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_mul_32s_11ns_43_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_mul_32s_15ns_47_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_mul_32s_16ns_48_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_mul_32s_32s_48_4_1': 8 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_mul_32s_32s_64_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_mul_32s_5ns_37_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_mul_32s_8ns_40_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_mul_64s_24ns_64_5_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'monte_sim'.
+INFO: [HLS 200-111]  Elapsed time: 2.4 seconds; current allocated memory: 293.183 MB.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 342.47 MHz
+INFO: [RTMG 210-282] Generating pipelined core: 'monte_sim_monte_sim_mul_32s_32s_64_4_1_Mul4S_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'monte_sim_monte_sim_mul_32s_32s_48_4_1_Mul4S_1'
+INFO: [RTMG 210-282] Generating pipelined core: 'monte_sim_monte_sim_mul_64s_24ns_64_5_1_MulnS_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'monte_sim_monte_sim_mul_32s_15ns_47_4_1_Mul4S_2'
+INFO: [RTMG 210-282] Generating pipelined core: 'monte_sim_monte_sim_mul_32s_16ns_48_4_1_Mul4S_3'
+INFO: [RTMG 210-282] Generating pipelined core: 'monte_sim_monte_sim_mul_32s_11ns_43_4_1_Mul4S_4'
+INFO: [RTMG 210-282] Generating pipelined core: 'monte_sim_monte_sim_mul_32s_8ns_40_4_1_Mul4S_5'
+INFO: [RTMG 210-282] Generating pipelined core: 'monte_sim_monte_sim_mul_32s_5ns_37_4_1_Mul4S_6'
+INFO: [RTMG 210-278] Implementing memory 'monte_sim_monte_sim_v1_buffer_V_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'monte_sim_monte_sim_v2_buffer_V_ram (RAM)' using block RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:01:17 ; elapsed = 00:01:23 . Memory (MB): peak = 1177.773 ; gain = 657.832 ; free physical = 5265 ; free virtual = 27148
+INFO: [VHDL 208-304] Generating VHDL RTL for monte_sim with prefix monte_sim_.
+INFO: [VLOG 209-307] Generating Verilog RTL for monte_sim with prefix monte_sim_.
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2019.2 (64-bit)
+  **** SW Build 2700185 on Thu Oct 24 18:45:48 MDT 2019
+  **** IP Build 2699827 on Thu Oct 24 21:16:38 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2019.2/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 30 20:02:53 2020...
+HLS completed successfully
+INFO: [HLS 200-112] Total elapsed time: 104.83 seconds; peak allocated memory: 293.183 MB.
+INFO: [Common 17-206] Exiting vivado_hls at Thu Apr 30 20:02:53 2020...

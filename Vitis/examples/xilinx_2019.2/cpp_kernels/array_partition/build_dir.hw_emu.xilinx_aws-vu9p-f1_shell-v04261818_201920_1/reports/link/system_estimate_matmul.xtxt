@@ -1,0 +1,43 @@
+===============================================================================
+Version:    v++ v2019.2 (64-bit)
+Build:      SW Build 2700185 on Thu Oct 24 18:45:48 MDT 2019
+Copyright:  Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+Created:    Wed Apr 29 19:17:08 2020
+===============================================================================
+
+-------------------------------------------------------------------------------
+Design Name:             matmul
+Target Device:           xilinx:aws-vu9p-f1:shell-v04261818:201920.1
+Target Clock:            250.000000MHz
+Total number of kernels: 2
+-------------------------------------------------------------------------------
+
+Kernel Summary
+Kernel Name       Type  Target              OpenCL Library  Compute Units
+----------------  ----  ------------------  --------------  -------------
+matmul_partition  c     fpga0:OCL_REGION_0  matmul          1
+matmul            c     fpga0:OCL_REGION_0  matmul          1
+
+
+-------------------------------------------------------------------------------
+OpenCL Binary:     matmul
+Kernels mapped to: clc_region
+
+Timing Information (MHz)
+Compute Unit        Kernel Name       Module Name       Target Frequency  Estimated Frequency
+------------------  ----------------  ----------------  ----------------  -------------------
+matmul_1            matmul            matmul            250               342.465759
+matmul_partition_1  matmul_partition  matmul_partition  250               342.465759
+
+Latency Information
+Compute Unit        Kernel Name       Module Name       Start Interval  Best (cycles)  Avg (cycles)  Worst (cycles)  Best (absolute)  Avg (absolute)  Worst (absolute)
+------------------  ----------------  ----------------  --------------  -------------  ------------  --------------  ---------------  --------------  ----------------
+matmul_1            matmul            matmul            2857            2856           2856          2856            11.424 us        11.424 us       11.424 us
+matmul_partition_1  matmul_partition  matmul_partition  1065            1064           1064          1064            4.256 us         4.256 us        4.256 us
+
+Area Information
+Compute Unit        Kernel Name       Module Name       FF    LUT   DSP  BRAM  URAM
+------------------  ----------------  ----------------  ----  ----  ---  ----  ----
+matmul_1            matmul            matmul            5917  5057  44   7     0
+matmul_partition_1  matmul_partition  matmul_partition  9452  5320  72   3     0
+-------------------------------------------------------------------------------

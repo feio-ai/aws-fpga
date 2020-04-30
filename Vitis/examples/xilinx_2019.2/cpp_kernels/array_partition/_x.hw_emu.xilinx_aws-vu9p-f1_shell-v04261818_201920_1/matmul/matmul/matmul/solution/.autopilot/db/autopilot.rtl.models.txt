@@ -1,0 +1,8 @@
+matmul_matmul_mul_32s_32s_32_4_1
+matmul_matmul_mul_32ns_32ns_64_4_1
+matmul_matmul_A
+matmul_matmul_B
+matmul_matmul_C
+matmul_matmul_control_s_axi
+matmul_matmul_gmem_m_axi
+matmul

@@ -1,0 +1,179 @@
+Begin Function 'log<67, 17>'
+
+RTL state condition: (1'b1 == 1'b1)
+# ST_3
+local b_frac_tilde_inverse_V <load_755> <integer> <ArrayAccess><ArrayLoad><MultiCycle> 'load' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:755>
+b_frac_tilde_inverse.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:755
+reg: b_frac_tilde_inverse_V_reg_5689[5:0] lv
+
+# ST_8
+local r_V_34 <mul_760> <integer> <Arithmetic><MultiCycle> 'mul' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:760>
+r_V_34 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:760
+reg: r_V_34_reg_5704[86:0] lv
+
+local z1_V <partselect_767> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:767>
+z1.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:767
+reg: z1_V_reg_5711[67:0] lv
+
+local a_V <partselect_771> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:178->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:348->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+a.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:178
+a_V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:348
+a_V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: a_V_reg_5717[3:0] lv
+
+# ST_9
+local ret_V <add_771> <integer> <Arithmetic> 'add' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:348->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+ret_V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+ret_V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:348
+ret_V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: ret_V_reg_5723[73:0] lv
+
+# ST_13
+local r_V_35 <mul_771> <integer> <Arithmetic><MultiCycle> 'mul' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:348->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+r_V_35 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+r_V_35 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:348
+r_V_35 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: r_V_35_reg_5738[71:0] lv
+
+# ST_14
+local p_Val2_29 <partselect_771> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:348->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+p_Val2_29 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+z2.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:348
+p_Val2_29 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: p_Val2_29_reg_5743[59:0] lv
+
+local a_V_1 <partselect_771> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:178->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+a.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:178
+a_V_1 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350
+a_V_1 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: a_V_1_reg_5749[5:0] lv
+
+local tmp_39 <partselect_771> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+tmp_39 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+tmp_39 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350
+tmp_39 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: tmp_39_reg_5755[53:0] lv
+
+# ST_15
+local ret_V_3 <add_771> <integer> <Arithmetic> 'add' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+ret_V_3 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+ret_V_3 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350
+ret_V_3 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: ret_V_3_reg_5765[68:0] lv
+
+# ST_16
+local add_ln703_28 <add_778> <integer> <Arithmetic> 'add' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:778>
+add_ln703_28 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:778
+reg: add_ln703_28_reg_5785[66:0] lv
+
+# ST_18
+local r_V_36 <mul_771> <integer> <Arithmetic><MultiCycle> 'mul' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+r_V_36 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+r_V_36 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350
+r_V_36 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: r_V_36_reg_5790[65:0] lv
+
+# ST_19
+local p_Val2_37 <partselect_771> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+p_Val2_37 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+z3.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350
+p_Val2_37 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: p_Val2_37_reg_5795[54:0] lv
+
+local a_V_2 <partselect_771> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:178->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+a.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:178
+a_V_2 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352
+a_V_2 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: a_V_2_reg_5801[5:0] lv
+
+local tmp_40 <partselect_771> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+tmp_40 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+tmp_40 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352
+tmp_40 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: tmp_40_reg_5807[48:0] lv
+
+# ST_20
+local ret_V_5 <add_771> <integer> <Arithmetic> 'add' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+ret_V_5 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+ret_V_5 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352
+ret_V_5 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: ret_V_5_reg_5812[73:0] lv
+
+# ST_23
+local r_V_37 <mul_771> <integer> <Arithmetic><MultiCycle> 'mul' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+r_V_37 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+r_V_37 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352
+r_V_37 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: r_V_37_reg_5827[60:0] lv
+
+# ST_24
+local p_Val2_46 <partselect_771> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+p_Val2_46 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+z4.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352
+p_Val2_46 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: p_Val2_46_reg_5832[49:0] lv
+
+local a_V_3 <partselect_771> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:178->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:354->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+a.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:178
+a_V_3 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:354
+a_V_3 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: a_V_3_reg_5838[5:0] lv
+
+local tmp_41 <partselect_771> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:354->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+tmp_41 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+tmp_41 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:354
+tmp_41 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: tmp_41_reg_5844[43:0] lv
+
+# ST_28
+local r_V_38 <mul_771> <integer> <Arithmetic><MultiCycle> 'mul' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:354->/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+r_V_38 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:184
+r_V_38 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:354
+r_V_38 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: r_V_38_reg_5864[55:0] lv
+
+# ST_29
+local tmp_42 <partselect_771> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771>
+tmp_42 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771
+reg: tmp_42_reg_5869[44:0] lv
+
+local trunc_ln <partselect_774> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:774>
+trunc_ln /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:774
+reg: trunc_ln_reg_5874[23:0] lv
+
+# ST_30
+local lshr_ln <partselect_775> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:775>
+lshr_ln /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:775
+reg: lshr_ln_reg_5894[46:0] lv
+
+local tmp_43 <partselect_778> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:778>
+tmp_43 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:778
+reg: tmp_43_reg_5899[66:0] lv
+
+# ST_31
+local log_base_V <add_778> <integer> <Arithmetic> 'add' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:778>
+log_base.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:778
+reg: log_base_V_reg_5904[73:0] lv
+
+local p_Result_17 <bitselect_783> <integer> <> 'bitselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:783>
+p_Result_17 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:783
+reg: p_Result_17_reg_5909[0:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_pp0_stage0)
+# ST_1
+local icmp_ln1497 <icmp_702> <integer> <Comparator> 'icmp' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:702>
+icmp_ln1497 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:702
+reg: icmp_ln1497_reg_5134[0:0] lv
+
+# ST_2
+local p_Val2_98_lcssa <> <integer> <Phi> 'phi' <>
+reg: p_Val2_98_lcssa_reg_768[80:0] lv
+
+local zext_ln544 <zext_755> <integer> <> 'zext' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:755>
+zext_ln544 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:755
+reg: zext_ln544_reg_5679[63:0] lv
+
+
+End Function 'log<67, 17>'
+

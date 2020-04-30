@@ -1,0 +1,221 @@
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [HLS 200-10] Setting target device to 'xcvu9p-flgb2104-2-i'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 4ns.
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=0
+INFO: [HLS 200-435] Setting 'config_export -vivado_optimization_level' configuration: config_export -vivado_phys_opt=none
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_compile -pipeline_loops=64
+INFO: [XFORM 203-1171] Pipeline the innermost loop with trip count more than 64 or its parent loop when its trip count is less than or equal 64.
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_compile -name_max_length=80
+INFO: [XFORM 203-1161] The maximum of name length is set into 80.
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_schedule -enable_dsp_full_reg=1
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_rtl -register_reset_num=3
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_rtl -module_auto_prefix=1
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_interface -m_axi_addr64=1
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty 27%
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 1.08ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 1.08ns.
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file '/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:01:49 ; elapsed = 00:01:53 . Memory (MB): peak = 983.102 ; gain = 463.160 ; free physical = 4877 ; free virtual = 27344
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:01:49 ; elapsed = 00:01:53 . Memory (MB): peak = 983.102 ; gain = 463.160 ; free physical = 4877 ; free virtual = 27344
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:01:57 ; elapsed = 00:02:01 . Memory (MB): peak = 1188.207 ; gain = 668.266 ; free physical = 4584 ; free virtual = 27101
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'log_apfixed_reduce::range_reduce<ap_fixed<74, 7, (ap_q_mode)5, (ap_o_mode)3, 0>, 4, 4, 68, 60>' into 'log_apfixed_reduce::log_traits<5>::range_reduction<68>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:348) automatically.
+INFO: [XFORM 203-602] Inlining function 'log_apfixed_reduce::range_reduce<ap_fixed<74, 7, (ap_q_mode)5, (ap_o_mode)3, 0>, 7, 6, 60, 55>' into 'log_apfixed_reduce::log_traits<5>::range_reduction<68>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350) automatically.
+INFO: [XFORM 203-602] Inlining function 'log_apfixed_reduce::range_reduce<ap_fixed<74, 7, (ap_q_mode)5, (ap_o_mode)3, 0>, 12, 6, 55, 50>' into 'log_apfixed_reduce::log_traits<5>::range_reduction<68>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352) automatically.
+INFO: [XFORM 203-602] Inlining function 'log_apfixed_reduce::range_reduce<ap_fixed<74, 7, (ap_q_mode)5, (ap_o_mode)3, 0>, 17, 6, 50, 45>' into 'log_apfixed_reduce::log_traits<5>::range_reduction<68>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:354) automatically.
+INFO: [XFORM 203-602] Inlining function 'fabs_fixed<33, 17>' into 'pow_apfixed_reduce::pow<32, 16>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:94) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::pow<32, 16>' into 'monte_sim_dev' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp:90) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::sqrt<32, 16>' into 'monte_sim_dev' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp:91) automatically.
+WARNING: [SYNCHK 200-23] /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:272: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:01:59 ; elapsed = 00:02:03 . Memory (MB): peak = 1313.418 ; gain = 793.477 ; free physical = 4451 ; free virtual = 26988
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'sqrt_fixed<32, 16>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:44:36).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'pow_apfixed_reduce::pow<32, 16>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:63:29).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'log_apfixed_reduce::log<67, 17>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:500:9).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'exp_reduce::exp_core<32, 16, 50>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:873:30).
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:267) in function 'sqrt_fixed<32, 16>' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-2' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:295) in function 'sqrt_fixed<32, 16>' completely with a factor of 17.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:75) in function 'pow_apfixed_reduce::pow<32, 16>' completely with a factor of 31.
+INFO: [HLS 200-489] Unrolling loop 'Loop-2' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:134) in function 'pow_apfixed_reduce::pow<32, 16>' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:177) in function 'pow_apfixed_reduce::pow<32, 16>' completely with a factor of 31.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:729) in function 'log_apfixed_reduce::log<67, 17>' completely with a factor of 67.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1310) in function 'exp_reduce::exp_core<32, 16, 50>' completely with a factor of 19.
+INFO: [HLS 200-489] Unrolling loop 'Loop-2' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1317) in function 'exp_reduce::exp_core<32, 16, 50>' completely with a factor of 46.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1512) in function 'exp_reduce::exp_core<32, 16, 50>' completely with a factor of 9.
+INFO: [HLS 200-489] Unrolling loop 'Loop-4' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1518) in function 'exp_reduce::exp_core<32, 16, 50>' completely with a factor of 9.
+INFO: [HLS 200-489] Unrolling loop 'Loop-5' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1521) in function 'exp_reduce::exp_core<32, 16, 50>' completely with a factor of 38.
+INFO: [XFORM 203-602] Inlining function 'log_apfixed_reduce::range_reduce<ap_fixed<74, 7, (ap_q_mode)5, (ap_o_mode)3, 0>, 4, 4, 68, 60>' into 'log_apfixed_reduce::log_traits<5>::range_reduction<68>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:348) automatically.
+INFO: [XFORM 203-602] Inlining function 'log_apfixed_reduce::range_reduce<ap_fixed<74, 7, (ap_q_mode)5, (ap_o_mode)3, 0>, 7, 6, 60, 55>' into 'log_apfixed_reduce::log_traits<5>::range_reduction<68>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:350) automatically.
+INFO: [XFORM 203-602] Inlining function 'log_apfixed_reduce::range_reduce<ap_fixed<74, 7, (ap_q_mode)5, (ap_o_mode)3, 0>, 12, 6, 55, 50>' into 'log_apfixed_reduce::log_traits<5>::range_reduction<68>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:352) automatically.
+INFO: [XFORM 203-602] Inlining function 'log_apfixed_reduce::range_reduce<ap_fixed<74, 7, (ap_q_mode)5, (ap_o_mode)3, 0>, 17, 6, 50, 45>' into 'log_apfixed_reduce::log_traits<5>::range_reduction<68>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:354) automatically.
+INFO: [XFORM 203-602] Inlining function 'log_apfixed_reduce::log_traits<5>::range_reduction<68>' into 'log_apfixed_reduce::log<67, 17>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:771) automatically.
+INFO: [XFORM 203-602] Inlining function 'fabs_fixed<33, 17>' into 'pow_apfixed_reduce::pow<32, 16>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:94) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::pow<32, 16>' into 'monte_sim_dev' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp:90) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::sqrt<32, 16>' into 'monte_sim_dev' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp:91) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:44:1) to (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_sqrt_apfixed.h:372:1) in function 'sqrt_fixed<32, 16>'... converting 132 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:727:44) to (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:747:17) in function 'log_apfixed_reduce::log<67, 17>'... converting 68 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:873:1) to (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:1993:5) in function 'exp_reduce::exp_core<32, 16, 50>'... converting 5 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'pow_apfixed_reduce::pow<32, 16>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:63:13)...9 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'log_apfixed_reduce::log<67, 17>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:178:90)...11 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'exp_reduce::exp_core<32, 16, 50>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:873:5)...26 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:02:04 ; elapsed = 00:02:07 . Memory (MB): peak = 1527.105 ; gain = 1007.164 ; free physical = 4250 ; free virtual = 26817
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'Loop-1' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp:52:27) in function 'monte_sim_dev' : 
+
+more than one sub loop.
+WARNING: [XFORM 203-631] Renaming function 'pow_apfixed_reduce::pow<32, 16>' to 'pow<32, 16>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:63:13)
+WARNING: [XFORM 203-631] Renaming function 'log_apfixed_reduce::log<67, 17>' to 'log<67, 17>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_log_apfixed.h:178:90)
+WARNING: [XFORM 203-631] Renaming function 'exp_reduce::exp_core<32, 16, 50>' to 'exp_core<32, 16, 50>' (/opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:873:5)
+INFO: [HLS 200-444] Inferring multiple bus burst read of a total cumulative length 4 on port 'gmem' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp:71:2). These data requests might be further partitioned to multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.
+INFO: [HLS 200-444] Inferring multiple bus burst read of variable length on port 'gmem' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp:64:2). These data requests might be further partitioned to multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.
+INFO: [HLS 200-444] Inferring multiple bus burst write of variable length on port 'gmem' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp:110:2). These data requests might be further partitioned to multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.
+INFO: [HLS 200-472] Inferring partial write operation for 'v1_buffer.V' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp:64:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'v2_buffer.V' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp:71:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'vout_buffer.V' (/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/src/monte_sim_dev.cpp:102:21)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:02:07 ; elapsed = 00:02:11 . Memory (MB): peak = 1536.359 ; gain = 1016.418 ; free physical = 4141 ; free virtual = 26717
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'monte_sim_dev' ...
+WARNING: [SYN 201-103] Legalizing function name 'log<67, 17>' to 'log_67_17_s'.
+WARNING: [SYN 201-103] Legalizing function name 'exp_core<32, 16, 50>' to 'exp_core_32_16_50_s'.
+WARNING: [SYN 201-103] Legalizing function name 'pow<32, 16>' to 'pow_32_16_s'.
+WARNING: [SYN 201-103] Legalizing function name 'sqrt_fixed<32, 16>' to 'sqrt_fixed_32_16_s'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'log_67_17_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_38) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_37) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_36) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining function 'log<67, 17>'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 32.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 131.5 seconds; current allocated memory: 673.464 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1 seconds; current allocated memory: 676.841 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'exp_core_32_16_50_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_51) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_50) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_49) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining function 'exp_core<32, 16, 50>'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 16.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.47 seconds; current allocated memory: 677.963 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.23 seconds; current allocated memory: 678.670 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'pow_32_16_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_1) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining function 'pow<32, 16>'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 55.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.36 seconds; current allocated memory: 679.152 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.73 seconds; current allocated memory: 679.971 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sqrt_fixed_32_16_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'sqrt_fixed<32, 16>'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 13.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.36 seconds; current allocated memory: 682.053 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.72 seconds; current allocated memory: 684.391 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'monte_sim_dev' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_20) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_19) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_18) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_17) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_16) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_15) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=r_V_5) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln728) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'read1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'read2'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'monte_sim_dev'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 235.
+INFO: [SCHED 204-61] Pipelining loop 'write'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.69 seconds; current allocated memory: 686.417 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 5.94 seconds; current allocated memory: 691.159 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'log_67_17_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_50ns_6ns_56_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_55ns_6ns_61_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_60ns_6ns_66_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_68ns_4ns_72_5_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_7s_68ns_73_5_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_81ns_6ns_87_5_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'log_67_17_s'.
+INFO: [HLS 200-111]  Elapsed time: 6.68 seconds; current allocated memory: 700.931 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'exp_core_32_16_50_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_36ns_44ns_80_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_48ns_50ns_98_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_50ns_50ns_100_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'exp_core_32_16_50_s'.
+INFO: [HLS 200-111]  Elapsed time: 3.06 seconds; current allocated memory: 714.926 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'pow_32_16_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_56s_19ns_74_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'pow_32_16_s'.
+INFO: [HLS 200-111]  Elapsed time: 0.91 seconds; current allocated memory: 719.602 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sqrt_fixed_32_16_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sqrt_fixed_32_16_s'.
+INFO: [HLS 200-111]  Elapsed time: 1.41 seconds; current allocated memory: 725.220 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'monte_sim_dev' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'monte_sim_dev/gmem' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'monte_sim_dev/in1_V' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'monte_sim_dev/in2_V' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'monte_sim_dev/out_r_V' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'monte_sim_dev/size' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'monte_sim_dev' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'return', 'in1_V', 'in2_V', 'out_r_V' and 'size' to AXI-Lite port control.
+INFO: [RTGEN 206-104] Estimated max fanout for 'monte_sim_dev' is 20536 from HDL expression: (1'b0 == ap_block_pp2_stage0_11001)
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_24ns_64s_64_5_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_32s_11ns_43_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_32s_15ns_47_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'monte_sim_dev_mul_32s_16ns_48_4_1': 1 instance(s).

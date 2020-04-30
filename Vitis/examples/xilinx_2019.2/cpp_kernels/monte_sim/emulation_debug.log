@@ -1,0 +1,6 @@
+INFO: [HW-EM 01] Hardware emulation runs simulation underneath. Using a large data set will result in long simulation times. It is recommended that a small dataset is used for faster execution. The flow uses approximate models for DDR memory and interconnect and hence the performance data generated is approximate.
+INFO::[ Vitis-EM 22 ] [Time elapsed: 1 minute(s) 24 seconds, Emulation time: 0.148115 ms]
+Data transfer between kernel(s) and global memory(s)
+monte_sim_1:m_axi_gmem-DDR[1]          RD = 32.000 KB              WR = 16.000 KB       
+monte_sim_dev_1:m_axi_gmem-DDR[1]          RD = 16.062 KB              WR = 16.000 KB       
+

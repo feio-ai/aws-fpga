@@ -1,0 +1,62 @@
+Begin Function 'pow<32, 16>'
+
+RTL state condition: (1'b1 == 1'b1)
+# ST_33
+local ln_x_s_V <trunc_109> <integer> <> 'trunc' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:109>
+ln_x_s.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:109
+reg: ln_x_s_V_reg_474[55:0] lv
+
+# ST_35
+local r_is_neg_1 <phi_84> <integer> <Phi> 'phi' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:84>
+r_is_neg_1 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:84
+reg: r_is_neg_1_reg_98[0:0] lv
+
+# ST_37
+local r_V_1 <mul_117> <integer> <Arithmetic><MultiCycle> 'mul' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:117>
+mul_y_ln.V /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:117
+reg: r_V_1_reg_494[73:0] lv
+
+local tmp <bitselect_135> <integer> <> 'bitselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:135>
+tmp /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:135
+reg: tmp_reg_501[0:0] lv
+
+# ST_38
+local or_ln135_4 <or_135> <integer> <Logic> 'or' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:135>
+or_ln135_4 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:135
+reg: or_ln135_4_reg_511[0:0] lv
+
+local trunc_ln4 <partselect_140> <integer> <> 'partselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:140>
+trunc_ln4 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:140
+reg: trunc_ln4_reg_515[41:0] lv
+
+local and_ln155 <and_155> <integer> <Logic> 'and' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:155>
+and_ln155 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:155
+reg: and_ln155_reg_520[0:0] lv
+
+# ST_54
+
+RTL state condition: (1'b1 == ap_CS_fsm_pp0_stage0)
+# ST_1
+local y_V_read <read_63> <integer> <> 'read' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:63>
+y_V_read /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:63
+reg: y_V_read_reg_449[18:0] lv
+
+local x_V_read <read_63> <integer> <> 'read' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:63>
+x_V_read /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:63
+reg: x_V_read_reg_456[31:0] lv
+
+local icmp_ln63 <icmp_63> <integer> <Comparator> 'icmp' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:63>
+icmp_ln63 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:63
+reg: icmp_ln63_reg_461[0:0] lv
+
+local icmp_ln1498 <icmp_65> <integer> <Comparator> 'icmp' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:65>
+icmp_ln1498 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:65
+reg: icmp_ln1498_reg_465[0:0] lv
+
+local p_Result_7 <bitselect_79> <integer> <> 'bitselect' </opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:79>
+p_Result_7 /opt/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_pow_apfixed.h:79
+reg: p_Result_7_reg_469[0:0] lv
+
+
+End Function 'pow<32, 16>'
+

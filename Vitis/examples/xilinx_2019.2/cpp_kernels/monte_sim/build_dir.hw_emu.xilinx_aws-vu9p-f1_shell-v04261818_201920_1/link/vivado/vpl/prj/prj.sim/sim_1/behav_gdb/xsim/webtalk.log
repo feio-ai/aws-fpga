@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Webtalk v2019.2 (64-bit)
+# SW Build 2700185 on Thu Oct 24 18:45:48 MDT 2019
+# IP Build 2699827 on Thu Oct 24 21:16:38 MDT 2019
+# Start of session at: Thu Apr 30 20:17:52 2020
+# Process ID: 8481
+# Current directory: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/vivado/vpl/prj/prj.sim/sim_1/behav_gdb/xsim
+# Command line: wbtcv -mode batch -source /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/vivado/vpl/prj/prj.sim/sim_1/behav_gdb/xsim/xsim.dir/emu_wrapper_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/vivado/vpl/prj/prj.sim/sim_1/behav_gdb/xsim/webtalk.log
+# Journal file: /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/vivado/vpl/prj/prj.sim/sim_1/behav_gdb/xsim/webtalk.jou
+#-----------------------------------------------------------
+source /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/monte_sim/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/vivado/vpl/prj/prj.sim/sim_1/behav_gdb/xsim/xsim.dir/emu_wrapper_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Apr 30 20:17:52 2020...

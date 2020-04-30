@@ -1,0 +1,113 @@
+Profile Summary
+Generated on: 2020-04-30 20:18:58
+Msec since Epoch: 1588277938418
+Profiled application: host
+Target platform: 
+Tool version: 2019.2
+XRT build version: 2.3.0
+Build version branch: 2019.2
+Build version hash: 9e13d57c4563e2c19bf5f518993f6e5a8dadc18a
+Build version date: 2020-02-06 15:08:44
+Target devices: xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0
+Flow mode: Hardware Emulation
+
+OpenCL API Calls
+API Name,Number Of Calls,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+clFinish,2,62011,29005.8,31005.5,33005.2,
+clCreateProgramWithBinary,1,19990.5,19990.5,19990.5,19990.5,
+clReleaseKernel,2,4901.38,0.003469,2450.69,4901.37,
+clCreateBuffer,3,6.01852,0.204632,2.00617,5.21985,
+clCreateKernel,2,3.00463,1.12671,1.50231,1.87791,
+clEnqueueTask,2,1.89686,0.384844,0.948432,1.51202,
+clEnqueueMigrateMemObjects,4,0.370014,0.011713,0.0925035,0.220815,
+clRetainMemObject,12,0.050899,0.000991,0.00424158,0.030328,
+clReleaseMemObject,15,0.028828,0.001032,0.00192187,0.003503,
+clSetKernelArg,8,0.025445,0.001297,0.00318062,0.009282,
+clGetExtensionFunctionAddress,2,0.021682,0.00416,0.010841,0.017522,
+clRetainDevice,4,0.018118,0.001063,0.0045295,0.013025,
+clGetPlatformInfo,14,0.015623,0.00096,0.00111593,0.001921,
+clReleaseDevice,4,0.015293,0.002052,0.00382325,0.006704,
+clCreateContext,1,0.013516,0.013516,0.013516,0.013516,
+clReleaseEvent,2,0.013318,0.00645,0.006659,0.006868,
+clGetEventProfilingInfo,4,0.012084,0.001454,0.003021,0.004919,
+clGetDeviceInfo,2,0.010709,0.00374,0.0053545,0.006969,
+clGetDeviceIDs,2,0.008129,0.00141,0.0040645,0.006719,
+clCreateCommandQueue,1,0.006906,0.006906,0.006906,0.006906,
+clReleaseContext,1,0.006506,0.006506,0.006506,0.006506,
+clGetExtensionFunctionAddressForPlatform,2,0.00596,0.001626,0.00298,0.004334,
+clReleaseProgram,1,0.004285,0.004285,0.004285,0.004285,
+clReleaseCommandQueue,1,0.004036,0.004036,0.004036,0.004036,
+
+
+Kernel Execution (includes estimated device times)
+Kernel,Number Of Enqueues,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+monte_sim_dev,1,0.047566,0.047566,0.047566,0.047566,
+monte_sim,1,0.05954,0.05954,0.05954,0.05954,
+
+
+Compute Unit Utilization (includes estimated device times)
+Device,Compute Unit,Kernel,Global Work Size,Local Work Size,Number Of Calls,Dataflow Execution,Max Overlapping Executions,Dataflow Acceleration,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),Clock Frequency (MHz),
+xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,monte_sim_dev_1,monte_sim_dev,1:1:1,1:1:1,1,No,1,1.000000x,0.0460767,0.0460767,0.0460767,0.0460767,300,
+xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,monte_sim_1,monte_sim,1:1:1,1:1:1,1,No,1,1.000000x,0.0572767,0.0572767,0.0572767,0.0572767,300,
+
+
+Data Transfer: Host to Global Memory
+Context:Number of Devices,Transfer Type,Number Of Buffer Transfers,Transfer Rate (MB/s),Average Bandwidth Utilization (%),Average Buffer Size (KB),Total Time (ms),Average Time (ms),
+context0:1,READ,2,N/A,N/A,16.384,N/A,N/A,
+context0:1,WRITE,2,N/A,N/A,16.4,N/A,N/A,
+
+
+Data Transfer: Kernels to Global Memory
+Device,Compute Unit/Port Name,Kernel Arguments,Memory Resources,Transfer Type,Number Of Transfers,Transfer Rate (MB/s),Average Bandwidth Utilization (%),Average Size (KB),Average Latency (ns),
+xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,monte_sim_1/m_axi_gmem,in1|in2|out_r,DDR[1],READ,512,1192.58,10.3522,0.064,665.469,
+xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,monte_sim_1/m_axi_gmem,in1|in2|out_r,DDR[1],WRITE,256,1124.25,9.75907,0.064,73.3203,
+xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,monte_sim_dev_1/m_axi_gmem,in1|in2|out_r,DDR[1],READ,260,1186.15,10.2965,0.0632615,655.538,
+xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,monte_sim_dev_1/m_axi_gmem,in1|in2|out_r,DDR[1],WRITE,256,1124.25,9.75907,0.064,73.4375,
+
+
+Top Data Transfer: Kernels to Global Memory
+Device,Compute Unit,Number of Transfers,Average Bytes per Transfer,Transfer Efficiency (%),Total Data Transfer (MB),Total Write (MB),Total Read (MB),Total Transfer Rate (MB/s),
+xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,monte_sim_1,768,64,1.5625,0.049152,0.016384,0.032768,1168.89,
+xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,monte_sim_dev_1,516,63.6279,1.55342,0.032832,0.016384,0.016448,1154.43,
+
+
+Top Kernel Execution
+Kernel Instance Address,Kernel,Context ID,Command Queue ID,Device,Start Time (ms),Duration (ms),Global Work Size,Local Work Size,
+27610448,monte_sim,0,0,xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,0.032099,0.05954,1:1:1,1:1:1,
+27542208,monte_sim_dev,0,0,xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,0.091646,0.047566,1:1:1,1:1:1,
+
+
+Top Memory Writes: Host to Global Memory
+Buffer Address,Context ID,Command Queue ID,Start Time (ms),Duration (ms),Buffer Size (KB),Writing Rate(MB/s),
+17179869184,0,0,20044.2,N/A,16.4,N/A,
+17179869184,0,0,53052.7,N/A,16.4,N/A,
+
+
+Top Memory Reads: Host to Global Memory
+Buffer Address,Context ID,Command Queue ID,Start Time (ms),Duration (ms),Buffer Size (KB),Reading Rate(MB/s),
+17179889664,0,0,53050.6,N/A,16.384,N/A,
+17179889664,0,0,82058.6,N/A,16.384,N/A,
+
+
+Guidance Parameters
+Parameter,Element,Value,
+DEVICE_EXEC_TIME,xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,0.107113,
+CU_CALLS,xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0|monte_sim_1,1,
+CU_CALLS,xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0|monte_sim_dev_1,1,
+MEMORY_BIT_WIDTH,xilinx_aws-vu9p-f1_shell-v04261818_201920_1-0,512,
+MIGRATE_MEM,host,4,
+MEMORY_USAGE,DDR[1],2,
+PLRAM_DEVICE,all,1,
+HBM_DEVICE,all,0,
+KDMA_DEVICE,all,0,
+P2P_DEVICE,all,0,
+P2P_HOST_TRANSFERS,host,0,
+PORT_BIT_WIDTH,monte_sim_dev_1/m_axi_gmem,32,
+PORT_BIT_WIDTH,monte_sim_1/m_axi_gmem,32,
+KERNEL_COUNT,monte_sim,1,
+KERNEL_COUNT,monte_sim_dev,1,
+OBJECTS_RELEASED,all,1,
+TRACE_MEMORY,all,NA,
+CU_CONTEXT_EN,all,0,
+
+

@@ -1,0 +1,16 @@
+# ==============================================================
+# Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+# Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+# ==============================================================
+OPTION psf_version = 2.1;
+
+BEGIN driver matmul_partition_matmul_partition
+
+ OPTION supported_peripherals = (matmul_partition_matmul_partition_v1_0 );
+ OPTION driver_state = ACTIVE;
+ OPTION copyfiles = all;
+ OPTION name = matmul_partition_matmul_partition;
+ OPTION version = 1.0;
+
+END driver
+

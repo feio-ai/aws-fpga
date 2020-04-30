@@ -1,0 +1,42 @@
+===============================================================================
+Version:    v++ v2019.2 (64-bit)
+Build:      SW Build 2700185 on Thu Oct 24 18:45:48 MDT 2019
+Copyright:  Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+Created:    Thu Apr 30 20:02:54 2020
+===============================================================================
+
+-------------------------------------------------------------------------------
+Design Name:             monte_sim
+Target Device:           xilinx:aws-vu9p-f1:shell-v04261818:201920.1
+Target Clock:            250.000000MHz
+Total number of kernels: 1
+-------------------------------------------------------------------------------
+
+Kernel Summary
+Kernel Name  Type  Target              OpenCL Library  Compute Units
+-----------  ----  ------------------  --------------  -------------
+monte_sim    c     fpga0:OCL_REGION_0  monte_sim       1
+
+
+-------------------------------------------------------------------------------
+OpenCL Binary:     monte_sim
+Kernels mapped to: clc_region
+
+Timing Information (MHz)
+Compute Unit  Kernel Name  Module Name         Target Frequency  Estimated Frequency
+------------  -----------  ------------------  ----------------  -------------------
+monte_sim_1   monte_sim    sqrt_fixed_32_16_s  250               342.70047
+monte_sim_1   monte_sim    monte_sim           250               342.465759
+
+Latency Information
+Compute Unit  Kernel Name  Module Name         Start Interval  Best (cycles)  Avg (cycles)  Worst (cycles)  Best (absolute)  Avg (absolute)  Worst (absolute)
+------------  -----------  ------------------  --------------  -------------  ------------  --------------  ---------------  --------------  ----------------
+monte_sim_1   monte_sim    sqrt_fixed_32_16_s  1               12             12            12              48.000 ns        48.000 ns       48.000 ns
+monte_sim_1   monte_sim    monte_sim           undef           undef          undef         undef           undef            undef           undef
+
+Area Information
+Compute Unit  Kernel Name  Module Name         FF    LUT   DSP  BRAM  URAM
+------------  -----------  ------------------  ----  ----  ---  ----  ----
+monte_sim_1   monte_sim    sqrt_fixed_32_16_s  1545  5419  0    0     0
+monte_sim_1   monte_sim    monte_sim           8722  9331  64   16    0
+-------------------------------------------------------------------------------

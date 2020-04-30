@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="link" dir="">
+  <FileSets>
+    <FileSet Name="kernel_matmul" Type="DesignSrcs">
+      <File Path="/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp"/>
+      <Config/>
+    </FileSet>
+    <FileSet Name="kernel_matmul_partition" Type="DesignSrcs">
+      <File Path="/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.sw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp"/>
+      <Config/>
+    </FileSet>
+  </FileSets>
+  <Runs/>
+</project>

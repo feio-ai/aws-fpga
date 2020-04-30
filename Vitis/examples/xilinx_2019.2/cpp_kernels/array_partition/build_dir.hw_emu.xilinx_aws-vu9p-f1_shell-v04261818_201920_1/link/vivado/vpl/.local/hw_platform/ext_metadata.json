@@ -1,0 +1,26 @@
+{
+   "xclbin" : {
+      "append_sections" : {
+         "partition_metadata" : {
+            "interfaces" : [
+               {
+                  "interface_uuid" : "7dc1d0e35634b9ee815669cf7799bacdd2c64af1bdf0d8327bc4f1348464a014"
+               }
+            ],
+            "schema_version" : {
+               "minor" : "0",
+               "major" : "1"
+            }
+         }
+      }
+   },
+   "raptor2" : {
+      "num_compute_units" : 60,
+      "part" : "xcvu9p-flgb2104-2-i",
+      "schema_version" : "1.0"
+   },
+   "revision_control" : {
+      "version" : "1",
+      "release" : 0
+   }
+}

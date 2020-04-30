@@ -1,0 +1,362 @@
+{
+ "system_diagram_metadata": {
+  "schema_version": {
+   "major": "1",
+   "minor": "5",
+   "patch": "0"
+  },
+  "xsa": {
+   "vendor": "xilinx",
+   "board_id": "aws-vu9p-f1",
+   "name": "shell-v04261818",
+   "version_major": "201920",
+   "version_minor": "1",
+   "description": "\n    {No description given}\n  ",
+   "generated_by": {
+    "name": "Vivado",
+    "version": "2019.2",
+    "cl": "2732241",
+    "time_stamp": "Tue Dec 10 14:35:55 2019"
+   },
+   "board": {
+    "name": "",
+    "vendor": "amazon",
+    "part": "",
+    "board_part": ""
+   },
+   "available_resources": {
+    "LUT": "1182240",
+    "REG": "",
+    "BRAM": "2160",
+    "DSP": "6840"
+   },
+   "device_topology": [
+    {
+     "id": "0",
+     "type": "Ddr4",
+     "used": "no",
+     "sizeKB": "0x1000000",
+     "base_address": "0x4000000000",
+     "tag": "bank0",
+     "slr": "SLR1"
+    },
+    {
+     "id": "1",
+     "type": "Ddr4",
+     "used": "yes",
+     "sizeKB": "0x1000000",
+     "base_address": "0x400000000",
+     "tag": "bank1",
+     "slr": "SLR2"
+    },
+    {
+     "id": "2",
+     "type": "Ddr4",
+     "used": "no",
+     "sizeKB": "0x1000000",
+     "base_address": "0x4800000000",
+     "tag": "bank2",
+     "slr": "SLR1"
+    },
+    {
+     "id": "3",
+     "type": "Ddr4",
+     "used": "no",
+     "sizeKB": "0x1000000",
+     "base_address": "0x4c00000000",
+     "tag": "bank3",
+     "slr": "SLR0"
+    },
+    {
+     "id": "4",
+     "type": "Dram",
+     "used": "no",
+     "sizeKB": "0x80",
+     "base_address": "0x5000000000",
+     "tag": "PLRAM[0]",
+     "slr": ""
+    },
+    {
+     "id": "5",
+     "type": "Dram",
+     "used": "no",
+     "sizeKB": "0x80",
+     "base_address": "0x5000020000",
+     "tag": "PLRAM[1]",
+     "slr": ""
+    },
+    {
+     "id": "6",
+     "type": "Dram",
+     "used": "no",
+     "sizeKB": "0x80",
+     "base_address": "0x5000040000",
+     "tag": "PLRAM[2]",
+     "slr": ""
+    }
+   ]
+  },
+  "xclbin": {
+   "generated_by": {
+    "name": "v++",
+    "version": "2019.2",
+    "cl": "2700185",
+    "time_stamp": "Thu Oct 24 18:45:48 MDT 2019",
+    "options": "/opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw_emu --platform /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm --save-temps -g --temp_dir ./build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1 -l -obuild_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xclbin _x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim.xo _x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/monte_sim_dev.xo ",
+    "xclbin_name": "monte_sim"
+   },
+   "user_regions": [
+    {
+     "name": "OCL_REGION_0",
+     "type": "clc_region",
+     "instance_path": "WRAPPER_INST/CL",
+     "kernels": [
+      {
+       "name": "monte_sim_dev",
+       "estimated_resources": {
+        "LUT": "4011",
+        "REG": "6634",
+        "BRAM": "22",
+        "DSP": "38"
+       },
+       "ports": [
+        {
+         "name": "M_AXI_GMEM",
+         "mode": "master",
+         "range": "0xFFFFFFFF",
+         "data_width": "32",
+         "port_type": "addressable",
+         "base": "0x0"
+        },
+        {
+         "name": "S_AXI_CONTROL",
+         "mode": "slave",
+         "range": "0x1000",
+         "data_width": "32",
+         "port_type": "addressable",
+         "base": "0x0"
+        }
+       ],
+       "arguments": [
+        {
+         "id": "0",
+         "name": "in1",
+         "address_qualifier": "1",
+         "port": "M_AXI_GMEM",
+         "size": "0x8",
+         "offset": "0x10",
+         "host_offset": "0x0",
+         "host_size": "0x8",
+         "type": "ap_fixed\u003c32, 16, 5, 3, 0\u003e*"
+        },
+        {
+         "id": "1",
+         "name": "in2",
+         "address_qualifier": "1",
+         "port": "M_AXI_GMEM",
+         "size": "0x8",
+         "offset": "0x1C",
+         "host_offset": "0x0",
+         "host_size": "0x8",
+         "type": "ap_fixed\u003c32, 16, 5, 3, 0\u003e*"
+        },
+        {
+         "id": "2",
+         "name": "out_r",
+         "address_qualifier": "1",
+         "port": "M_AXI_GMEM",
+         "size": "0x8",
+         "offset": "0x28",
+         "host_offset": "0x0",
+         "host_size": "0x8",
+         "type": "ap_fixed\u003c32, 16, 5, 3, 0\u003e*"
+        },
+        {
+         "id": "3",
+         "name": "size",
+         "address_qualifier": "0",
+         "port": "S_AXI_CONTROL",
+         "size": "0x4",
+         "offset": "0x34",
+         "host_offset": "0x0",
+         "host_size": "0x4",
+         "type": "int"
+        }
+       ]
+      },
+      {
+       "name": "monte_sim",
+       "estimated_resources": {
+        "LUT": "5419",
+        "REG": "1545",
+        "BRAM": "0",
+        "DSP": ""
+       },
+       "ports": [
+        {
+         "name": "M_AXI_GMEM",
+         "mode": "master",
+         "range": "0xFFFFFFFF",
+         "data_width": "32",
+         "port_type": "addressable",
+         "base": "0x0"
+        },
+        {
+         "name": "S_AXI_CONTROL",
+         "mode": "slave",
+         "range": "0x1000",
+         "data_width": "32",
+         "port_type": "addressable",
+         "base": "0x0"
+        }
+       ],
+       "arguments": [
+        {
+         "id": "0",
+         "name": "in1",
+         "address_qualifier": "1",
+         "port": "M_AXI_GMEM",
+         "size": "0x8",
+         "offset": "0x10",
+         "host_offset": "0x0",
+         "host_size": "0x8",
+         "type": "ap_fixed\u003c32, 16, 5, 3, 0\u003e*"
+        },
+        {
+         "id": "1",
+         "name": "in2",
+         "address_qualifier": "1",
+         "port": "M_AXI_GMEM",
+         "size": "0x8",
+         "offset": "0x1C",
+         "host_offset": "0x0",
+         "host_size": "0x8",
+         "type": "ap_fixed\u003c32, 16, 5, 3, 0\u003e*"
+        },
+        {
+         "id": "2",
+         "name": "out_r",
+         "address_qualifier": "1",
+         "port": "M_AXI_GMEM",
+         "size": "0x8",
+         "offset": "0x28",
+         "host_offset": "0x0",
+         "host_size": "0x8",
+         "type": "ap_fixed\u003c32, 16, 5, 3, 0\u003e*"
+        },
+        {
+         "id": "3",
+         "name": "size",
+         "address_qualifier": "0",
+         "port": "S_AXI_CONTROL",
+         "size": "0x4",
+         "offset": "0x34",
+         "host_offset": "0x0",
+         "host_size": "0x4",
+         "type": "int"
+        }
+       ]
+      }
+     ],
+     "compute_units": [
+      {
+       "id": "0",
+       "kernel_name": "monte_sim",
+       "cu_name": "monte_sim_1",
+       "base_address": "0x1d060000",
+       "actual_resources": []
+      },
+      {
+       "id": "1",
+       "kernel_name": "monte_sim_dev",
+       "cu_name": "monte_sim_dev_1",
+       "base_address": "0x1d070000",
+       "actual_resources": []
+      }
+     ],
+     "connectivity": [
+      {
+       "id": "0",
+       "node1": {
+        "type": "compute_unit",
+        "id": "0",
+        "kernel_argument_id": "0"
+       },
+       "node2": {
+        "type": "memory",
+        "id": "1",
+        "kernel_argument_id": ""
+       }
+      },
+      {
+       "id": "1",
+       "node1": {
+        "type": "compute_unit",
+        "id": "0",
+        "kernel_argument_id": "1"
+       },
+       "node2": {
+        "type": "memory",
+        "id": "1",
+        "kernel_argument_id": ""
+       }
+      },
+      {
+       "id": "2",
+       "node1": {
+        "type": "compute_unit",
+        "id": "0",
+        "kernel_argument_id": "2"
+       },
+       "node2": {
+        "type": "memory",
+        "id": "1",
+        "kernel_argument_id": ""
+       }
+      },
+      {
+       "id": "3",
+       "node1": {
+        "type": "compute_unit",
+        "id": "1",
+        "kernel_argument_id": "0"
+       },
+       "node2": {
+        "type": "memory",
+        "id": "1",
+        "kernel_argument_id": ""
+       }
+      },
+      {
+       "id": "4",
+       "node1": {
+        "type": "compute_unit",
+        "id": "1",
+        "kernel_argument_id": "1"
+       },
+       "node2": {
+        "type": "memory",
+        "id": "1",
+        "kernel_argument_id": ""
+       }
+      },
+      {
+       "id": "5",
+       "node1": {
+        "type": "compute_unit",
+        "id": "1",
+        "kernel_argument_id": "2"
+       },
+       "node2": {
+        "type": "memory",
+        "id": "1",
+        "kernel_argument_id": ""
+       }
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
+

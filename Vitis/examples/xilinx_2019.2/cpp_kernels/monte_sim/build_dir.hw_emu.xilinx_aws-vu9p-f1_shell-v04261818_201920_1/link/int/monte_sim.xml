@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="monte_sim">
+  <platform vendor="xilinx" boardid="aws-vu9p-f1" name="shell-v04261818" featureRomTime="0">
+    <version major="201920" minor="1"/>
+    <description/>
+    <board name="" vendor="amazon" fpga="">
+      <interfaces>
+        <interface id="int1" name="PCIe" type="gen3x16"/>
+      </interfaces>
+      <memories>
+        <memory name="mem0" type="ddr4" size="16GB"/>
+        <memory name="mem1" type="ddr4" size="16GB"/>
+        <memory name="mem2" type="ddr4" size="16GB"/>
+        <memory name="mem3" type="ddr4" size="16GB"/>
+      </memories>
+      <images>
+        <image name="" type="HDPI"/>
+        <image name="" type="MDPI"/>
+        <image name="" type="LDPI"/>
+      </images>
+      <id>
+        <vendor/>
+        <device/>
+        <subsystem/>
+      </id>
+    </board>
+    <build_flow/>
+    <host architecture="x86_64"/>
+    <device name="fpga0" fpgaDevice="virtexuplus:xcvu9p:flgb2104:-2:i" addrWidth="0">
+      <systemClocks>
+        <clock port="clk_main_a0" frequency="250MHz" name="clk_main_a0"/>
+      </systemClocks>
+      <core name="OCL_REGION_0" target="hw_em" type="clc_region" clockFreq="0MHz" numComputeUnits="60">
+        <kernelClocks>
+          <clock port="KERNEL_CLK" frequency="500.000000MHz" name="kernel2_clk_clk"/>
+          <clock port="DATA_CLK" frequency="300.000000MHz" name="kernel_clk_clk"/>
+        </kernelClocks>
+        <kernel name="monte_sim_dev" language="c" vlnv="xilinx.com:hls:monte_sim_dev:1.0" preferredWorkGroupSizeMultiple="1" workGroupSize="1" debug="true" interrupt="true" hwControlProtocol="ap_ctrl_hs">
+          <module name="monte_sim_dev">
+            <module name="pow_32_16_s" instName="grp_pow_32_16_s_fu_411" type="NonDataflowHS">
+              <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              <rtlPort name="y_V" object="y_V" protocol="ap_none"/>
+              <module name="log_67_17_s" instName="grp_log_67_17_s_fu_144" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+              <module name="exp_core_32_16_50_s" instName="grp_exp_core_32_16_50_s_fu_161" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+            </module>
+            <module name="pow_32_16_s" instName="grp_pow_32_16_s_fu_438" type="NonDataflowHS">
+              <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              <rtlPort name="y_V" object="y_V" protocol="ap_none"/>
+              <module name="log_67_17_s" instName="grp_log_67_17_s_fu_144" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+              <module name="exp_core_32_16_50_s" instName="grp_exp_core_32_16_50_s_fu_161" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+            </module>
+            <module name="pow_32_16_s" instName="grp_pow_32_16_s_fu_465" type="NonDataflowHS">
+              <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              <rtlPort name="y_V" object="y_V" protocol="ap_none"/>
+              <module name="log_67_17_s" instName="grp_log_67_17_s_fu_144" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+              <module name="exp_core_32_16_50_s" instName="grp_exp_core_32_16_50_s_fu_161" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+            </module>
+            <module name="pow_32_16_s" instName="grp_pow_32_16_s_fu_492" type="NonDataflowHS">
+              <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              <rtlPort name="y_V" object="y_V" protocol="ap_none"/>
+              <module name="log_67_17_s" instName="grp_log_67_17_s_fu_144" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+              <module name="exp_core_32_16_50_s" instName="grp_exp_core_32_16_50_s_fu_161" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+            </module>
+            <module name="pow_32_16_s" instName="grp_pow_32_16_s_fu_519" type="NonDataflowHS">
+              <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              <rtlPort name="y_V" object="y_V" protocol="ap_none"/>
+              <module name="log_67_17_s" instName="grp_log_67_17_s_fu_144" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+              <module name="exp_core_32_16_50_s" instName="grp_exp_core_32_16_50_s_fu_161" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+            </module>
+            <module name="pow_32_16_s" instName="grp_pow_32_16_s_fu_546" type="NonDataflowHS">
+              <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              <rtlPort name="y_V" object="y_V" protocol="ap_none"/>
+              <module name="log_67_17_s" instName="grp_log_67_17_s_fu_144" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+              <module name="exp_core_32_16_50_s" instName="grp_exp_core_32_16_50_s_fu_161" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+            </module>
+            <module name="pow_32_16_s" instName="grp_pow_32_16_s_fu_573" type="NonDataflowHS">
+              <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              <rtlPort name="y_V" object="y_V" protocol="ap_none"/>
+              <module name="log_67_17_s" instName="grp_log_67_17_s_fu_144" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+              <module name="exp_core_32_16_50_s" instName="grp_exp_core_32_16_50_s_fu_161" type="NonDataflowHS">
+                <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+              </module>
+            </module>
+            <module name="sqrt_fixed_32_16_s" instName="grp_sqrt_fixed_32_16_s_fu_600">
+              <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+            </module>
+          </module>
+          <port name="M_AXI_GMEM" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="S_AXI_CONTROL" mode="slave" range="0x1000" dataWidth="32" portType="addressable" base="0x0"/>
+          <arg name="in1" addressQualifier="1" id="0" port="M_AXI_GMEM" size="0x8" offset="0x10" hostOffset="0x0" hostSize="0x8" type="ap_fixed&lt;32, 16, 5, 3, 0&gt;*"/>
+          <arg name="in2" addressQualifier="1" id="1" port="M_AXI_GMEM" size="0x8" offset="0x1C" hostOffset="0x0" hostSize="0x8" type="ap_fixed&lt;32, 16, 5, 3, 0&gt;*"/>
+          <arg name="out_r" addressQualifier="1" id="2" port="M_AXI_GMEM" size="0x8" offset="0x28" hostOffset="0x0" hostSize="0x8" type="ap_fixed&lt;32, 16, 5, 3, 0&gt;*"/>
+          <arg name="size" addressQualifier="0" id="3" port="S_AXI_CONTROL" size="0x4" offset="0x34" hostOffset="0x0" hostSize="0x4" type="int"/>
+          <compileWorkGroupSize x="1" y="1" z="1"/>
+          <maxWorkGroupSize x="1" y="1" z="1"/>
+          <string_table/>
+          <instance name="monte_sim_dev_1">
+            <addrRemap base="0x000000001D070000" port="S_AXI_CONTROL"/>
+          </instance>
+        </kernel>
+        <kernel name="monte_sim" language="c" vlnv="xilinx.com:hls:monte_sim:1.0" preferredWorkGroupSizeMultiple="1" workGroupSize="1" debug="true" interrupt="true" hwControlProtocol="ap_ctrl_hs">
+          <module name="monte_sim">
+            <module name="sqrt_fixed_32_16_s" instName="grp_sqrt_fixed_32_16_s_fu_369">
+              <rtlPort name="x_V" object="x_V" protocol="ap_none"/>
+            </module>
+          </module>
+          <port name="M_AXI_GMEM" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="S_AXI_CONTROL" mode="slave" range="0x1000" dataWidth="32" portType="addressable" base="0x0"/>
+          <arg name="in1" addressQualifier="1" id="0" port="M_AXI_GMEM" size="0x8" offset="0x10" hostOffset="0x0" hostSize="0x8" type="ap_fixed&lt;32, 16, 5, 3, 0&gt;*"/>
+          <arg name="in2" addressQualifier="1" id="1" port="M_AXI_GMEM" size="0x8" offset="0x1C" hostOffset="0x0" hostSize="0x8" type="ap_fixed&lt;32, 16, 5, 3, 0&gt;*"/>
+          <arg name="out_r" addressQualifier="1" id="2" port="M_AXI_GMEM" size="0x8" offset="0x28" hostOffset="0x0" hostSize="0x8" type="ap_fixed&lt;32, 16, 5, 3, 0&gt;*"/>
+          <arg name="size" addressQualifier="0" id="3" port="S_AXI_CONTROL" size="0x4" offset="0x34" hostOffset="0x0" hostSize="0x4" type="int"/>
+          <compileWorkGroupSize x="1" y="1" z="1"/>
+          <maxWorkGroupSize x="1" y="1" z="1"/>
+          <string_table/>
+          <instance name="monte_sim_1">
+            <addrRemap base="0x000000001D060000" port="S_AXI_CONTROL"/>
+          </instance>
+        </kernel>
+        <connection srcType="core" srcInst="OCL_REGION_0" srcPort="slr1/interconnect_axilite_user_1_M01_AXI" dstType="kernel" dstInst="monte_sim_1" dstPort="S_AXI_CONTROL"/>
+        <connection srcType="core" srcInst="OCL_REGION_0" srcPort="memory_subsystem" dstType="kernel" dstInst="monte_sim_1" dstPort="M_AXI_GMEM"/>
+        <connection srcType="core" srcInst="OCL_REGION_0" srcPort="slr1/interconnect_axilite_user_1_M01_AXI" dstType="kernel" dstInst="monte_sim_dev_1" dstPort="S_AXI_CONTROL"/>
+        <connection srcType="core" srcInst="OCL_REGION_0" srcPort="memory_subsystem" dstType="kernel" dstInst="monte_sim_dev_1" dstPort="M_AXI_GMEM"/>
+      </core>
+    </device>
+  </platform>
+</project>

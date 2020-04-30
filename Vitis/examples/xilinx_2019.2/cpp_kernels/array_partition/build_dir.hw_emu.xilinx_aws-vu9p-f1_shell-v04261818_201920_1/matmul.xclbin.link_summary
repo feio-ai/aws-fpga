@@ -1,0 +1,1227 @@
+<ENTRY>
+{
+ "session": {
+  "name": "v++_link_matmul",
+  "pid": "0",
+  "uuid": "8fd5d4ed-6583-44ee-9d8a-5e0e46f7c37f",
+  "description": "",
+  "timestamp": "0",
+  "outputFiles": [
+   {
+    "type": "JSON",
+    "mode": "CLIENT_ONLY",
+    "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/.tlog/v++_link_matmul.xtl",
+    "continuous": true
+   },
+   {
+    "type": "JSON",
+    "mode": "LOCAL_IF_NO_CONNECT",
+    "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xclbin.link_summary",
+    "continuous": true
+   },
+   {
+    "type": "BINARY_PROTOBUF",
+    "mode": "LOCAL_IF_NO_CONNECT",
+    "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xclbin.link_summary.pb",
+    "continuous": true
+   }
+  ]
+ },
+ "thisFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xclbin.link_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Wed Apr 29 19:05:33 2020",
+ "timestampMillis": "1588187133686",
+ "buildStep": {
+  "cmdId": "0ce1d939-dd04-4a08-8b32-a652b09362cc",
+  "name": "v++",
+  "logFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/link.steps.log",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ --xp param:compiler.lockFlowCritSlackThreshold=0 --xp vivado_param:hd.routingContainmentAreaExpansion=true --xp vivado_param:hd.supportClockNetCrossDiffReconfigurablePartitions=1 --xp vivado_param:bitstream.enablePR=4123 --xp vivado_param:physynth.ultraRAMOptOutput=false --xp vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MAX_URAM_CASCADE_HEIGHT}={1} --xp vivado_param:synth.elaboration.rodinMoreOptions={rt::set_parameter disableOregPackingUram true}  --xp \"vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\" -t hw_emu --platform /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm --save-temps -g --temp_dir ./build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1 -l -obuild_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xclbin _x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xo _x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul_partition.xo ",
+  "args": [
+   "--xp",
+   "param:compiler.lockFlowCritSlackThreshold=0",
+   "--xp",
+   "vivado_param:hd.routingContainmentAreaExpansion=true",
+   "--xp",
+   "vivado_param:hd.supportClockNetCrossDiffReconfigurablePartitions=1",
+   "--xp",
+   "vivado_param:bitstream.enablePR=4123",
+   "--xp",
+   "vivado_param:physynth.ultraRAMOptOutput=false",
+   "--xp",
+   "vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MAX_URAM_CASCADE_HEIGHT}={1}",
+   "--xp",
+   "vivado_param:synth.elaboration.rodinMoreOptions={rt::set_parameter disableOregPackingUram true}",
+   "-t",
+   "hw_emu",
+   "--platform",
+   "/home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm",
+   "--save-temps",
+   "-g",
+   "--temp_dir",
+   "./build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1",
+   "-l",
+   "-obuild_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xclbin",
+   "_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xo",
+   "_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul_partition.xo"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:05:33 2020",
+ "timestampMillis": "1588187133686",
+ "status": {
+  "cmdId": "0ce1d939-dd04-4a08-8b32-a652b09362cc",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Wed Apr 29 19:05:40 2020",
+ "timestampMillis": "1588187140564",
+ "buildSummary": {
+  "hardwarePlatform": "xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm",
+  "hardwareDsa": "xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xsa",
+  "platformDirectory": "/home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1",
+  "runtime": "OpenCL",
+  "systemConfig": "Linux",
+  "flow": "BF_LINK",
+  "target": "TT_HW_EMU",
+  "binaryContainer": {
+   "base": {
+    "type": "BT_UKNOWN",
+    "name": "matmul",
+    "file": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xclbin",
+    "reports": []
+   },
+   "kernels": []
+  },
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "matmul",
+     "file": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xo",
+     "reports": []
+    },
+    "sources": [
+     "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp"
+    ],
+    "cuNames": [
+     "matmul_1"
+    ]
+   },
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "matmul_partition",
+     "file": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul_partition.xo",
+     "reports": []
+    },
+    "sources": [
+     "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp"
+    ],
+    "cuNames": [
+     "matmul_partition_1"
+    ]
+   }
+  ]
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:05:40 2020",
+ "timestampMillis": "1588187140633",
+ "buildStep": {
+  "cmdId": "9631532e-8e9c-4fbc-8e2e-f7a86fcded0a",
+  "name": "system_link",
+  "logFile": "",
+  "commandLine": "system_link --xo /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xo --xo /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul_partition.xo -keep --xpfm /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm --target emu --output_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int --temp_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link",
+  "args": [
+   "--xo",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xo",
+   "--xo",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/_x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul_partition.xo",
+   "-keep",
+   "--xpfm",
+   "/home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm",
+   "--target",
+   "emu",
+   "--output_dir",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int",
+   "--temp_dir",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/sys_link"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:05:40 2020",
+ "timestampMillis": "1588187140633",
+ "status": {
+  "cmdId": "9631532e-8e9c-4fbc-8e2e-f7a86fcded0a",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:05:53 2020",
+ "timestampMillis": "1588187153242",
+ "status": {
+  "cmdId": "9631532e-8e9c-4fbc-8e2e-f7a86fcded0a",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:05:53 2020",
+ "timestampMillis": "1588187153243",
+ "buildStep": {
+  "cmdId": "4749b6de-592d-44dc-8b5d-7ea71105d478",
+  "name": "cf2sw",
+  "logFile": "",
+  "commandLine": "cf2sw -sdsl /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/sdsl.dat -rtd /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/cf2sw.rtd -xclbin /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xclbin_orig.xml -o /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xclbin_orig.1.xml",
+  "args": [
+   "-sdsl",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/sdsl.dat",
+   "-rtd",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/cf2sw.rtd",
+   "-xclbin",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xclbin_orig.xml",
+   "-o",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xclbin_orig.1.xml"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:05:53 2020",
+ "timestampMillis": "1588187153244",
+ "status": {
+  "cmdId": "4749b6de-592d-44dc-8b5d-7ea71105d478",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:05:54 2020",
+ "timestampMillis": "1588187154723",
+ "status": {
+  "cmdId": "4749b6de-592d-44dc-8b5d-7ea71105d478",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:05:54 2020",
+ "timestampMillis": "1588187154724",
+ "buildStep": {
+  "cmdId": "8060edcd-3d21-477a-a73b-6996f3129b9c",
+  "name": "rtd2_system_diagram",
+  "logFile": "",
+  "commandLine": "rtd2SystemDiagram --rtdJsonFileName /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/cf2sw.rtd --diagramJsonFileName /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModel.json --platformFilePath /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2700185 --generatedByTimeStamp Thu Oct 24 18:45:48 MDT 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw_emu --platform /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm --save-temps -g --temp_dir ./build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1 -l -obuild_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xclbin _x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xo _x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul_partition.xo  --generatedByXclbinName matmul --kernelInfoDataFileName /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/kernel_info.dat",
+  "args": [
+   "--rtdJsonFileName",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/cf2sw.rtd",
+   "--diagramJsonFileName",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModel.json",
+   "--platformFilePath",
+   "/home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm",
+   "--generatedByName",
+   "v++",
+   "--generatedByVersion",
+   "2019.2",
+   "--generatedByChangeList",
+   "2700185",
+   "--generatedByTimeStamp",
+   "Thu Oct 24 18:45:48 MDT 2019",
+   "--generatedByOptions",
+   "/opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw_emu --platform /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm --save-temps -g --temp_dir ./build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1 -l -obuild_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xclbin _x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul.xo _x.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/matmul_partition.xo ",
+   "--generatedByXclbinName",
+   "matmul",
+   "--kernelInfoDataFileName",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/kernel_info.dat"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:05:54 2020",
+ "timestampMillis": "1588187154724",
+ "status": {
+  "cmdId": "8060edcd-3d21-477a-a73b-6996f3129b9c",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Apr 29 19:05:56 2020",
+ "timestampMillis": "1588187156684",
+ "report": {
+  "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModel.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:05:56 2020",
+ "timestampMillis": "1588187156690",
+ "status": {
+  "cmdId": "8060edcd-3d21-477a-a73b-6996f3129b9c",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:05:56 2020",
+ "timestampMillis": "1588187156691",
+ "buildStep": {
+  "cmdId": "a4a005d4-9b23-45e2-aed0-ced1e08504d5",
+  "name": "vpl",
+  "logFile": "",
+  "commandLine": "vpl -t hw_emu -f /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm -g -s --output_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int --log_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/logs/link --report_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/reports/link --config /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/vplConfig.ini -k /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link --emulation_mode debug_waveform --no-info --tlog_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/.tlog/v++_link_matmul --iprepo /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/ip_repo/xilinx_com_hls_matmul_partition_1_0 --iprepo /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/ip_repo/xilinx_com_hls_matmul_1_0 --messageDb /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/run_link/vpl.pb /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/dr.bd.tcl",
+  "args": [
+   "-t",
+   "hw_emu",
+   "-f",
+   "/home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm",
+   "-g",
+   "-s",
+   "--output_dir",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int",
+   "--log_dir",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/logs/link",
+   "--report_dir",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/reports/link",
+   "--config",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/vplConfig.ini",
+   "-k",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/kernel_info.dat",
+   "--webtalk_flag",
+   "Vitis",
+   "--temp_dir",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link",
+   "--emulation_mode",
+   "debug_waveform",
+   "--no-info",
+   "--tlog_dir",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/.tlog/v++_link_matmul",
+   "--iprepo",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/ip_repo/xilinx_com_hls_matmul_partition_1_0",
+   "--iprepo",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/ip_repo/xilinx_com_hls_matmul_1_0",
+   "--messageDb",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/run_link/vpl.pb",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/dr.bd.tcl"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:05:56 2020",
+ "timestampMillis": "1588187156692",
+ "status": {
+  "cmdId": "a4a005d4-9b23-45e2-aed0-ced1e08504d5",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Wed Apr 29 19:05:58 2020",
+ "timestampMillis": "1588187158582",
+ "buildStep": {
+  "cmdId": "5c59b13c-9ecc-441e-8151-0bcd6a667650",
+  "name": "vpl",
+  "logFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/link.steps.log",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/vpl -t hw_emu -f /home/centos/src/project_data/aws-fpga/Vitis/aws_platform/xilinx_aws-vu9p-f1_shell-v04261818_201920_1/xilinx_aws-vu9p-f1_shell-v04261818_201920_1.xpfm -g -s --output_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int --log_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/logs/link --report_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/reports/link --config /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/vplConfig.ini -k /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link --emulation_mode debug_waveform --no-info --tlog_dir /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/.tlog/v++_link_matmul --iprepo /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/ip_repo/xilinx_com_hls_matmul_partition_1_0 --iprepo /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/ip_repo/xilinx_com_hls_matmul_1_0 --messageDb /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/run_link/vpl.pb /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/dr.bd.tcl ",
+  "args": [],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:05:58 2020",
+ "timestampMillis": "1588187158582",
+ "status": {
+  "cmdId": "5c59b13c-9ecc-441e-8151-0bcd6a667650",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:06:03 2020",
+ "timestampMillis": "1588187163741",
+ "buildStep": {
+  "cmdId": "06d52286-1d55-4b38-8dc6-0cdf482d7412",
+  "name": "vivado",
+  "logFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/vivado/vpl/vivado.log",
+  "commandLine": "vivado -log vivado.log -applog -m64 -messageDb vivado.pb -mode batch -source vpl.tcl -notrace",
+  "args": [
+   "-log",
+   "vivado.log",
+   "-applog",
+   " -m64",
+   "-messageDb",
+   "vivado.pb",
+   "-mode",
+   "batch",
+   "-source",
+   "vpl.tcl",
+   "-notrace"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:06:03 2020",
+ "timestampMillis": "1588187163742",
+ "status": {
+  "cmdId": "06d52286-1d55-4b38-8dc6-0cdf482d7412",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819347",
+ "status": {
+  "cmdId": "06d52286-1d55-4b38-8dc6-0cdf482d7412",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819599",
+ "status": {
+  "cmdId": "5c59b13c-9ecc-441e-8151-0bcd6a667650",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819606",
+ "status": {
+  "cmdId": "a4a005d4-9b23-45e2-aed0-ced1e08504d5",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819607",
+ "buildStep": {
+  "cmdId": "635b8c16-e868-48b0-a994-f9da69449d25",
+  "name": "rtdgen",
+  "logFile": "",
+  "commandLine": "rtdgen",
+  "args": [],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819608",
+ "status": {
+  "cmdId": "635b8c16-e868-48b0-a994-f9da69449d25",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819608",
+ "buildStep": {
+  "cmdId": "020e479e-f103-468b-9dd5-a08e608c2df7",
+  "name": "xrflink",
+  "logFile": "",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/xrflink -f /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf --hls /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/debug/matmul_partition.xrf",
+  "args": [
+   "-f",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf",
+   "--hls",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/debug/matmul_partition.xrf"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819609",
+ "status": {
+  "cmdId": "020e479e-f103-468b-9dd5-a08e608c2df7",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819682",
+ "status": {
+  "cmdId": "020e479e-f103-468b-9dd5-a08e608c2df7",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819683",
+ "buildStep": {
+  "cmdId": "04618189-82d9-4c11-88c3-00e0e9b50228",
+  "name": "xrflink",
+  "logFile": "",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/xrflink -f /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf --hls /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/debug/matmul.xrf",
+  "args": [
+   "-f",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf",
+   "--hls",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/debug/matmul.xrf"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819683",
+ "status": {
+  "cmdId": "04618189-82d9-4c11-88c3-00e0e9b50228",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819751",
+ "status": {
+  "cmdId": "04618189-82d9-4c11-88c3-00e0e9b50228",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819752",
+ "buildStep": {
+  "cmdId": "fde03353-165f-43a7-8abf-0cb41d179968",
+  "name": "gcc",
+  "logFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul_partition/matmul_partition_matmul_partition_gpp.log",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/xcpp -c -g -fPIC /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp -o /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp.o -I/opt/Xilinx/Vivado/2019.2/bin/../include -I/opt/Xilinx/Vitis/2019.2/bin/../include -g -I/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src -g",
+  "args": [
+   "-c",
+   "-g",
+   "-fPIC",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp",
+   "-o",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp.o",
+   "-I/opt/Xilinx/Vivado/2019.2/bin/../include",
+   "-I/opt/Xilinx/Vitis/2019.2/bin/../include",
+   "-g",
+   "-I/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src",
+   "-g"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819753",
+ "status": {
+  "cmdId": "fde03353-165f-43a7-8abf-0cb41d179968",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819791",
+ "status": {
+  "cmdId": "fde03353-165f-43a7-8abf-0cb41d179968",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819792",
+ "buildStep": {
+  "cmdId": "1e872f98-a62a-4bd4-97c9-a204edd8e812",
+  "name": "ar",
+  "logFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul_partition/matmul_partition.ar.log",
+  "commandLine": "/opt/Xilinx/Vivado/2019.2/tps/lnx64/binutils-2.26/bin/ar -cr /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp.o.a /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp.o",
+  "args": [
+   "-cr",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp.o.a",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp.o"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819792",
+ "status": {
+  "cmdId": "1e872f98-a62a-4bd4-97c9-a204edd8e812",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819795",
+ "status": {
+  "cmdId": "1e872f98-a62a-4bd4-97c9-a204edd8e812",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819796",
+ "buildStep": {
+  "cmdId": "35972db8-13be-44af-8d80-d18e2bdd511e",
+  "name": "gcc",
+  "logFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul/matmul_matmul_gpp.log",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/xcpp -c -g -fPIC /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp -o /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp.o -I/opt/Xilinx/Vivado/2019.2/bin/../include -I/opt/Xilinx/Vitis/2019.2/bin/../include -g -I/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src -g",
+  "args": [
+   "-c",
+   "-g",
+   "-fPIC",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp",
+   "-o",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp.o",
+   "-I/opt/Xilinx/Vivado/2019.2/bin/../include",
+   "-I/opt/Xilinx/Vitis/2019.2/bin/../include",
+   "-g",
+   "-I/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/src",
+   "-g"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819797",
+ "status": {
+  "cmdId": "35972db8-13be-44af-8d80-d18e2bdd511e",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819830",
+ "status": {
+  "cmdId": "35972db8-13be-44af-8d80-d18e2bdd511e",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819830",
+ "buildStep": {
+  "cmdId": "1e922ea2-41fb-4b0b-8bae-96c4bb7147ac",
+  "name": "ar",
+  "logFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul/matmul.ar.log",
+  "commandLine": "/opt/Xilinx/Vivado/2019.2/tps/lnx64/binutils-2.26/bin/ar -cr /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp.o.a /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp.o",
+  "args": [
+   "-cr",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp.o.a",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp.o"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819831",
+ "status": {
+  "cmdId": "1e922ea2-41fb-4b0b-8bae-96c4bb7147ac",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819834",
+ "status": {
+  "cmdId": "1e922ea2-41fb-4b0b-8bae-96c4bb7147ac",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819834",
+ "buildStep": {
+  "cmdId": "4cdccbeb-fc66-46cf-9c4f-5e2802814210",
+  "name": "g++",
+  "logFile": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.gpp_so.log",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/xcpp -Wall -shared -Wl,-whole-archive,-soname,matmul.so -o matmul.so /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp.o.a /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp.o.a -Wl,--no-whole-archive",
+  "args": [
+   "-Wall",
+   "-shared",
+   "-Wl,-whole-archive,-soname,matmul.so",
+   "-o",
+   "matmul.so",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul_partition/matmul_partition/cpu_sources/matmul_partition.cpp.o.a",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xo/matmul/matmul/cpu_sources/matmul.cpp.o.a",
+   "-Wl,--no-whole-archive"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819835",
+ "status": {
+  "cmdId": "4cdccbeb-fc66-46cf-9c4f-5e2802814210",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819892",
+ "status": {
+  "cmdId": "4cdccbeb-fc66-46cf-9c4f-5e2802814210",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819892",
+ "buildStep": {
+  "cmdId": "c9bc4498-fe94-46cf-901e-a8f84357d680",
+  "name": "xrflink",
+  "logFile": "",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/xrflink -f /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf --DWARF /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.so",
+  "args": [
+   "-f",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf",
+   "--DWARF",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.so"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819893",
+ "status": {
+  "cmdId": "c9bc4498-fe94-46cf-901e-a8f84357d680",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819960",
+ "status": {
+  "cmdId": "c9bc4498-fe94-46cf-901e-a8f84357d680",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819963",
+ "report": {
+  "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul_xml.rtd",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "XCLBIN_INFO"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819964",
+ "buildStep": {
+  "cmdId": "fae2b721-dd2e-42c0-b290-1180f287774b",
+  "name": "cf2sw",
+  "logFile": "",
+  "commandLine": "cf2sw -a /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/address_map.xml -sdsl /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/sdsl.dat -xclbin /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xclbin_orig.xml -rtd /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.rtd -o /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xml",
+  "args": [
+   "-a",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/address_map.xml",
+   "-sdsl",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/sdsl.dat",
+   "-xclbin",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/xclbin_orig.xml",
+   "-rtd",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.rtd",
+   "-o",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xml"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:16:59 2020",
+ "timestampMillis": "1588187819965",
+ "status": {
+  "cmdId": "fae2b721-dd2e-42c0-b290-1180f287774b",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:01 2020",
+ "timestampMillis": "1588187821524",
+ "status": {
+  "cmdId": "fae2b721-dd2e-42c0-b290-1180f287774b",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:17:06 2020",
+ "timestampMillis": "1588187826332",
+ "buildStep": {
+  "cmdId": "13771a4b-e207-4cb2-9526-0c2839f1206d",
+  "name": "xrflink",
+  "logFile": "",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/xrflink -f /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf --kernel /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xml",
+  "args": [
+   "-f",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf",
+   "--kernel",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xml"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:06 2020",
+ "timestampMillis": "1588187826333",
+ "status": {
+  "cmdId": "13771a4b-e207-4cb2-9526-0c2839f1206d",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:06 2020",
+ "timestampMillis": "1588187826401",
+ "status": {
+  "cmdId": "13771a4b-e207-4cb2-9526-0c2839f1206d",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:17:06 2020",
+ "timestampMillis": "1588187826401",
+ "buildStep": {
+  "cmdId": "5cb4e55b-9077-42ba-877e-49ef78b0eaed",
+  "name": "xrflink",
+  "logFile": "",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/xrflink -f /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf --hierarchy /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/_kernel_inst_paths.dat",
+  "args": [
+   "-f",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf",
+   "--hierarchy",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/_kernel_inst_paths.dat"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:06 2020",
+ "timestampMillis": "1588187826402",
+ "status": {
+  "cmdId": "5cb4e55b-9077-42ba-877e-49ef78b0eaed",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:06 2020",
+ "timestampMillis": "1588187826469",
+ "status": {
+  "cmdId": "5cb4e55b-9077-42ba-877e-49ef78b0eaed",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:17:06 2020",
+ "timestampMillis": "1588187826470",
+ "buildStep": {
+  "cmdId": "af9a8b5c-b490-42da-8a7e-a3063f56efba",
+  "name": "rtd2_system_diagram",
+  "logFile": "",
+  "commandLine": "rtd2SystemDiagram --rtdJsonFileName /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.rtd --diagramJsonFileName /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModel.json --diagramWithAddressesAndSlrsJsonFileName /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModelSlrBaseAddress.json",
+  "args": [
+   "--rtdJsonFileName",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.rtd",
+   "--diagramJsonFileName",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModel.json",
+   "--diagramWithAddressesAndSlrsJsonFileName",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModelSlrBaseAddress.json"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:06 2020",
+ "timestampMillis": "1588187826470",
+ "status": {
+  "cmdId": "af9a8b5c-b490-42da-8a7e-a3063f56efba",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828231",
+ "report": {
+  "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModelSlrBaseAddress.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM_PLUS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828237",
+ "status": {
+  "cmdId": "af9a8b5c-b490-42da-8a7e-a3063f56efba",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828238",
+ "status": {
+  "cmdId": "635b8c16-e868-48b0-a994-f9da69449d25",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828239",
+ "buildStep": {
+  "cmdId": "1d518b99-3565-4877-bb0e-9eec8a9d8c86",
+  "name": "xclbinutil",
+  "logFile": "",
+  "commandLine": "xclbinutil --key-value SYS:mode:hw_emu --add-section DEBUG_DATA:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf --add-section DEBUG_IP_LAYOUT:JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/behav.xse --force --add-section :JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.rtd --append-section :JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul_xml.rtd --add-section BUILD_METADATA:JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul_build.rtd --add-section EMBEDDED_METADATA:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xml --add-section SYSTEM_METADATA:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModelSlrBaseAddress.json --key-value SYS:PlatformVBNV:xilinx_aws-vu9p-f1_shell-v04261818_201920_1 --output /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xcp",
+  "args": [
+   "--key-value",
+   "SYS:mode:hw_emu",
+   "--add-section",
+   "DEBUG_DATA:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/consolidated.cf",
+   "--add-section",
+   "DEBUG_IP_LAYOUT:JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/debug_ip_layout.rtd",
+   "--add-section",
+   "BITSTREAM:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/behav.xse",
+   "--force",
+   "--add-section",
+   ":JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.rtd",
+   "--append-section",
+   ":JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/appendSection.rtd",
+   "--add-section",
+   "CLOCK_FREQ_TOPOLOGY:JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul_xml.rtd",
+   "--add-section",
+   "BUILD_METADATA:JSON:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul_build.rtd",
+   "--add-section",
+   "EMBEDDED_METADATA:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xml",
+   "--add-section",
+   "SYSTEM_METADATA:RAW:/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/systemDiagramModelSlrBaseAddress.json",
+   "--key-value",
+   "SYS:PlatformVBNV:xilinx_aws-vu9p-f1_shell-v04261818_201920_1",
+   "--output",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xcp"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828239",
+ "status": {
+  "cmdId": "1d518b99-3565-4877-bb0e-9eec8a9d8c86",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828292",
+ "status": {
+  "cmdId": "1d518b99-3565-4877-bb0e-9eec8a9d8c86",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828293",
+ "buildStep": {
+  "cmdId": "532cfaa6-1a8f-4d93-8a29-2e51ee71b827",
+  "name": "xclbinutilinfo",
+  "logFile": "",
+  "commandLine": "xclbinutil --quiet --info /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xclbin.info --input /home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xcp",
+  "args": [
+   "--quiet",
+   "--info",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xclbin.info",
+   "--input",
+   "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/link/int/matmul.xcp"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828294",
+ "status": {
+  "cmdId": "532cfaa6-1a8f-4d93-8a29-2e51ee71b827",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828785",
+ "status": {
+  "cmdId": "532cfaa6-1a8f-4d93-8a29-2e51ee71b827",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828790",
+ "report": {
+  "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/reports/link/system_estimate_matmul.xtxt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_SYSTEM_ESTIMATE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828843",
+ "report": {
+  "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/reports/link/v++_link_matmul_guidance.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828843",
+ "report": {
+  "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/v++_link_matmul_guidance.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828885",
+ "report": {
+  "path": "/home/centos/src/project_data/aws-fpga/Vitis/examples/xilinx_2019.2/cpp_kernels/array_partition/build_dir.hw_emu.xilinx_aws-vu9p-f1_shell-v04261818_201920_1/logs/optraceViewer.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "OPERATION_TRACE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Apr 29 19:17:08 2020",
+ "timestampMillis": "1588187828886",
+ "status": {
+  "cmdId": "0ce1d939-dd04-4a08-8b32-a652b09362cc",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
