@@ -10,6 +10,7 @@
 
 
 typedef ap_fixed<32,16> fix_type;
+typedef ap_fixed<16,7> red_fix_type;
 typedef ap_fixed<8,3> scalar_type;
 
 const fix_type ov_2 = 0.5;
@@ -78,7 +79,6 @@ void monte_sim_dev(
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
 
-                
 
             monte_sim_dev:
                 for (int j = 0; j < chunk_size; j++) {
@@ -86,15 +86,15 @@ void monte_sim_dev(
                     #pragma HLS PIPELINE II=1
 
                     fix_type x = v1_buffer[j];
-                    fix_type hls_p = sig * sig;
+                    fix_type hls_p = hls::pow(sig, 2);
                     fix_type hls_sq = hls::sqrt(t);
                     fix_type xo = (r - ( hls_p / 2 ) * t) + ( x * sig * hls_sq);
-                    fix_type x2 = xo * xo;
-                    fix_type x3 = x2 * xo;
-                    fix_type x4 = x2 * x2;
-                    fix_type x5 = x2 * x3;
-                    fix_type x6 = x3 * x3;
-                    fix_type x7 = x3 * x4;
+                    fix_type x2 = hls::pow(xo, 2);
+                    fix_type x3 = hls::pow(xo, 3);
+                    fix_type x4 = hls::pow(x2, 2);
+                    fix_type x5 = hls::pow(x2, 3);
+                    fix_type x6 = hls::pow(x4, 2);
+                    fix_type x7 = hls::pow(x4, 3);
 
                     fix_type exp_result = 1 + xo + (x2 * ov_2) + (x3 * ov_6) + (x4 * ov_24) + (x5 * ov_120) + (x6 * ov_720) + (x7 * ov_5040);
                     fix_type s = so * exp_result;
@@ -108,6 +108,23 @@ void monte_sim_dev(
                     #pragma HLS PIPELINE II=1
                     out_r[i + j] = vout_buffer[j];
                 }
+
+                /*  USING BUILT IN FUNCTIONS
+                fix_type duo = 2;
+            monte_sim_dev:
+                for (int j = 0; j < chunk_size; j++) {
+                    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
+                    #pragma HLS PIPELINE II=1
+                   
+                    
+                    fix_type x = v1_buffer[j];
+                    fix_type hls_p = hls::pow(sig, duo);
+                    fix_type hls_sq = hls::sqrt(t);
+                    fix_type s = so * hls::exp( (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq) );
+                    // ap_fixed<16,7> z = hls::exp(x);
+                    vout_buffer[j] = s;
+                }
+*/
             }
         
     }

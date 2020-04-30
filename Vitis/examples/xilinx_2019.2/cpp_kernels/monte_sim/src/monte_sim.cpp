@@ -61,7 +61,7 @@ void monte_sim(fix_type *in1, fix_type *in2, fix_type *out_r, int size) {
             read2:
                 for (int j = 0; j < chunk_size; j++) {
                     // #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-                    // #pragma HLS PIPELINE II=1
+                    #pragma HLS PIPELINE II=1
                     v2_buffer[j] = in2[i + j];
                 }
 
@@ -91,22 +91,7 @@ void monte_sim(fix_type *in1, fix_type *in2, fix_type *out_r, int size) {
                     // ap_fixed<16,7> z = hls::exp(x);
                     vout_buffer[j] = s;
                 }
-/*
-                fix_type duo = 2;
-            monte_sim:
-                for (int j = 0; j < chunk_size; j++) {
-                    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-                    #pragma HLS PIPELINE II=1
-                   
-                    
-                    fix_type x = v1_buffer[j];
-                    fix_type hls_p = hls::pow(sig, duo);
-                    fix_type hls_sq = hls::sqrt(t);
-                    fix_type s = so * hls::exp( (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq) );
-                    // ap_fixed<16,7> z = hls::exp(x);
-                    vout_buffer[j] = s;
-                }
-*/
+
             //burst write the result
             write:
                 for (int j = 0; j < chunk_size; j++) {
