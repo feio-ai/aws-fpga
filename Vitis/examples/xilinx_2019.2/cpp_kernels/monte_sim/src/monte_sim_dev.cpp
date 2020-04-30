@@ -79,22 +79,23 @@ void monte_sim_dev(
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
 
-
+                fix_type duo = 2;
+                fix_type trio = 3;
             monte_sim_dev:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
                     #pragma HLS PIPELINE II=1
 
                     fix_type x = v1_buffer[j];
-                    fix_type hls_p = hls::pow(sig, 2);
+                    fix_type hls_p = hls::pow(sig, duo);
                     fix_type hls_sq = hls::sqrt(t);
-                    fix_type xo = (r - ( hls_p / 2 ) * t) + ( x * sig * hls_sq);
-                    fix_type x2 = hls::pow(xo, 2);
-                    fix_type x3 = hls::pow(xo, 3);
-                    fix_type x4 = hls::pow(x2, 2);
-                    fix_type x5 = hls::pow(x2, 3);
-                    fix_type x6 = hls::pow(x4, 2);
-                    fix_type x7 = hls::pow(x4, 3);
+                    fix_type xo = (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq);
+                    fix_type x2 = hls::pow(xo, duo);
+                    fix_type x3 = hls::pow(xo, trio);
+                    fix_type x4 = hls::pow(x2, duo);
+                    fix_type x5 = hls::pow(x2, trio);
+                    fix_type x6 = hls::pow(x4, duo);
+                    fix_type x7 = hls::pow(x4, trio);
 
                     fix_type exp_result = 1 + xo + (x2 * ov_2) + (x3 * ov_6) + (x4 * ov_24) + (x5 * ov_120) + (x6 * ov_720) + (x7 * ov_5040);
                     fix_type s = so * exp_result;
