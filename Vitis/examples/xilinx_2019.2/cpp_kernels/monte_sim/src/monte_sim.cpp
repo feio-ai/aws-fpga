@@ -10,6 +10,7 @@
 
 
 typedef ap_fixed<32,16> fix_type;
+typedef ap_fixed<16,7> red_fix_type;
 typedef ap_fixed<8,3> scalar_type;
 
 const fix_type ov_2 = 0.5;
@@ -26,7 +27,12 @@ const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
-void monte_sim(fix_type *in1, fix_type *in2, fix_type *out_r, int size) {
+void monte_sim(
+                fix_type *in1,
+                fix_type *in2,
+                fix_type *out_r,
+                int size
+    ) {
 
         // Buffer inputs
         #pragma HLS INTERFACE m_axi port=in1 offset=slave bundle=gmem
@@ -59,7 +65,7 @@ void monte_sim(fix_type *in1, fix_type *in2, fix_type *out_r, int size) {
                 }
 
             read2:
-                for (int j = 0; j < chunk_size; j++) {
+                for (int j = 0; j < 4; j++) {
                     // #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
                     #pragma HLS PIPELINE II=1
                     v2_buffer[j] = in2[i + j];
@@ -70,25 +76,29 @@ void monte_sim(fix_type *in1, fix_type *in2, fix_type *out_r, int size) {
                 fix_type r = v2_buffer[2];
                 fix_type sig = v2_buffer[3];
 
-            monte_sim_taylor:
+                // PIPELINE pragma reduces the initiation interval for loop by allowing the
+                // concurrent executions of operations
+
+                fix_type duo = 2;
+                fix_type trio = 3;
+            monte_sim:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
                     #pragma HLS PIPELINE II=1
 
                     fix_type x = v1_buffer[j];
-                    fix_type hls_p = sig * sig;
+                    fix_type hls_p = hls::pow(sig, duo);
                     fix_type hls_sq = hls::sqrt(t);
-                    fix_type xo = (r - ( hls_p / 2 ) * t) + ( x * sig * hls_sq);
-                    fix_type x2 = xo * xo;
-                    fix_type x3 = x2 * xo;
-                    fix_type x4 = x2 * x2;
-                    fix_type x5 = x2 * x3;
-                    fix_type x6 = x3 * x3;
-                    fix_type x7 = x3 * x4;
+                    fix_type xo = (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq);
+                    fix_type x2 = hls::pow(xo, duo);
+                    fix_type x3 = hls::pow(xo, trio);
+                    fix_type x4 = hls::pow(x2, duo);
+                    fix_type x5 = hls::pow(x2, trio);
+                    fix_type x6 = hls::pow(x4, duo);
+                    fix_type x7 = hls::pow(x4, trio);
 
                     fix_type exp_result = 1 + xo + (x2 * ov_2) + (x3 * ov_6) + (x4 * ov_24) + (x5 * ov_120) + (x6 * ov_720) + (x7 * ov_5040);
                     fix_type s = so * exp_result;
-                    // ap_fixed<16,7> z = hls::exp(x);
                     vout_buffer[j] = s;
                 }
 
@@ -99,6 +109,7 @@ void monte_sim(fix_type *in1, fix_type *in2, fix_type *out_r, int size) {
                     #pragma HLS PIPELINE II=1
                     out_r[i + j] = vout_buffer[j];
                 }
+
             }
         
     }
