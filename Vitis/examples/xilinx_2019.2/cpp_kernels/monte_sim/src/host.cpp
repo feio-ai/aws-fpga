@@ -97,7 +97,8 @@ void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_in1,
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
 }
 
-void verify(vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_in1,
+void exp_verify(vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_in1,
+            vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_const,
             vector<float, aligned_allocator<float>> &exp_source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
     bool match = true;
@@ -106,7 +107,8 @@ void verify(vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_in
         if (conv_hw_res != exp_source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << " val = " << exp_source_in1[i] << " CPU result = " << exp_source_sw_results[i]
-                      << " Device result = " << source_hw_results[i]
+                      << " Device result = " << source_hw_results[i] << "Constants: " << exp_source_const[0]
+                      << ", " << exp_source_const[1] << ", " << exp_source_const[2] ", " << exp_source_const[3] ", " << exp_source_const[4]
                       << std::endl;
             match = false;
             // break;
@@ -315,7 +317,7 @@ int main(int argc, char **argv) {
                                                      &nstimeend_exp));
     auto monte_sim_dev_time = nstimeend_exp - nstimestart_exp;
 
-    verify(source_in1, source_sw_results, source_hw_results);
+    exp_verify(exp_source_in1, exp_source_const, exp_source_sw_results, source_hw_results);
 
     printf("|-------------------------+-------------------------|\n"
            "| Kernel                  |    Wall-Clock Time (ns) |\n"
