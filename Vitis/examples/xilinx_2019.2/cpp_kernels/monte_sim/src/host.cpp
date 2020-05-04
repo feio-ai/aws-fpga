@@ -58,8 +58,8 @@ exp_fix_type exp_rand_fix_gen() {
     float y = phi(x);
 
     // bitset<BIT_SET> bset1;
-    red_fix_type o = static_cast<red_fix_type>(y);
-    exp_fix_type out = static_cast<exp_fix_type>(o);
+    // red_fix_type o = static_cast<red_fix_type>(y);
+    exp_fix_type out = static_cast<exp_fix_type>(y);
     // fix_type out = o.range(24, 8);
 
     return out;
