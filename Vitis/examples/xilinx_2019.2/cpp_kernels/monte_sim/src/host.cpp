@@ -16,7 +16,7 @@ using std::generate;
 using std::uniform_real_distribution;
 using std::vector;
 
-#define DATA_SIZE 4096
+#define DATA_SIZE 10000
 #define CONST_SIZE 4
 
 

@@ -6,7 +6,7 @@
 #include "ap_fixed.h"
 
 #define BUFFER_SIZE 1024
-#define DATA_SIZE 4096
+#define DATA_SIZE 10000
 
 
 typedef ap_fixed<32,16> fix_type;
@@ -18,7 +18,7 @@ const fix_type ov_6 = 0.166667;
 const fix_type ov_24 = 0.416667;
 const fix_type ov_120 = 0.008333;
 const fix_type ov_720 = 0.0013889;
-const fix_type ov_5040 = 0.000198413;
+// const fix_type ov_5040 = 0.000198413;
 
 
 
@@ -66,7 +66,7 @@ void monte_sim(
 
             read2:
                 for (int j = 0; j < 4; j++) {
-                    // #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
+                    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
                     #pragma HLS PIPELINE II=1
                     v2_buffer[j] = in2[i + j];
                 }
@@ -96,9 +96,9 @@ void monte_sim(
                     fix_type x4 = hls::pow(x2, duo);
                     fix_type x5 = hls::pow(x2, trio);
                     fix_type x6 = hls::pow(x4, duo);
-                    fix_type x7 = hls::pow(x4, trio);
+                    
 
-                    fix_type exp_result = 1 + xo + (x2 * ov_2) + (x3 * ov_6) + (x4 * ov_24) + (x5 * ov_120) + (x6 * ov_720) + (x7 * ov_5040);
+                    fix_type exp_result = 1 + xo + (x2 * ov_2) + (x3 * ov_6) + (x4 * ov_24) + (x5 * ov_120) + (x6 * ov_720);
                     fix_type s = so * exp_result;
                     vout_buffer[j] = s;
                 }

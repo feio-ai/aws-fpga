@@ -6,7 +6,7 @@
 #include "ap_fixed.h"
 
 #define BUFFER_SIZE 1024
-#define DATA_SIZE 4096
+#define DATA_SIZE 10000
 
 
 
