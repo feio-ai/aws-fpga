@@ -9,7 +9,7 @@
 #define DATA_SIZE 4096
 
 
-//typedef ap_fixed<32,16> fix_type;
+
 typedef ap_fixed<16,7> fix_type;
 typedef ap_fixed<8,3> scalar_type;
 
@@ -80,10 +80,10 @@ void monte_sim_dev(
                    
                     
                     fix_type x = v1_buffer[j];
-                    fix_type hls_p = hls::pow(sig, duo);
+                    fix_type hls_p = hls::pow(sig, 2);
                     fix_type hls_sq = hls::sqrt(t);
-                    fix_type s = so * hls::exp( (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq) );
-                    // ap_fixed<16,7> z = hls::exp(x);
+                    fix_type hls_exp_c = hls::exp( (r - ( hls_p / 2 ) * t) + ( x * sig * hls_sq) );
+                    fix_type s = so * hls_exp_c;
                     vout_buffer[j] = s;
                 }
 
