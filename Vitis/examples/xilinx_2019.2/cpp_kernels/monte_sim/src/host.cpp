@@ -325,7 +325,7 @@ int main(int argc, char **argv) {
                                                      &nstimeend_exp));
     auto monte_sim_dev_time = nstimeend_exp - nstimestart_exp;
 
-    exp_verify(exp_source_in1, exp_source_const, exp_source_sw_results, source_hw_results);
+    exp_verify(exp_source_in1, exp_source_const, exp_source_sw_results, exp_source_hw_results);
 
     printf("|-------------------------+-------------------------|\n"
            "| Kernel                  |    Wall-Clock Time (ns) |\n"
