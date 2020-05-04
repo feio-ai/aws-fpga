@@ -73,6 +73,11 @@ void monte_sim_dev(
                 // concurrent executions of operations
 
             fix_type duo = 2;
+            fix_type hls_p = hls::pow(sig, 2);
+            fix_type hls_sq = hls::sqrt(t);
+            fix_type cons1 = r - (hls_p / 2) * t;
+            fix_type cons2 = sig * hls_sq;
+
             monte_sim_dev:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
@@ -80,9 +85,8 @@ void monte_sim_dev(
                    
                     
                     fix_type x = v1_buffer[j];
-                    fix_type hls_p = hls::pow(sig, 2);
-                    fix_type hls_sq = hls::sqrt(t);
-                    fix_type hls_exp_c = hls::exp( (r - ( hls_p / 2 ) * t) + ( x * sig * hls_sq) );
+
+                    fix_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
                     fix_type s = so * hls_exp_c;
                     vout_buffer[j] = s;
                 }

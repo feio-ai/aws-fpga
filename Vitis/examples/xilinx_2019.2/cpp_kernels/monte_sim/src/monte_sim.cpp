@@ -81,14 +81,15 @@ void monte_sim(
 
                 fix_type duo = 2;
                 fix_type trio = 3;
+                fix_type hls_p = hls::pow(sig, duo);
+                fix_type hls_sq = hls::sqrt(t);
             monte_sim:
                 for (int j = 0; j < chunk_size; j++) {
                     #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
                     #pragma HLS PIPELINE II=1
 
                     fix_type x = v1_buffer[j];
-                    fix_type hls_p = hls::pow(sig, duo);
-                    fix_type hls_sq = hls::sqrt(t);
+                    
                     fix_type xo = (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq);
                     fix_type x2 = hls::pow(xo, duo);
                     fix_type x3 = hls::pow(xo, trio);
