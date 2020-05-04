@@ -107,7 +107,7 @@ void exp_verify(vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_sourc
         if (conv_hw_res != exp_source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << " val = " << exp_source_in1[i] << " CPU result = " << exp_source_sw_results[i]
-                      << " Device result = " << exp_source_hw_results[i] << "or: " << conv_hw_res
+                      << " Device result = " << exp_source_hw_results[i]
                       << std::endl;
             match = false;
             // break;
