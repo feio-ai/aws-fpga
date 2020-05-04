@@ -112,7 +112,7 @@ void exp_verify(vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_sourc
             match = false;
             // break;
         } else {
-            std::cout << "SW result = " << exp_source_sw_results[i] << " Device result = " << source_hw_results[i] << std::endl;
+            std::cout << "SW result = " << exp_source_sw_results[i] << " Device result = " << exp_source_hw_results[i] << std::endl;
         }
     }
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
@@ -143,7 +143,7 @@ int main(int argc, char **argv) {
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_const(CONST_SIZE);
     std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_const(CONST_SIZE);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_hw_results(DATA_SIZE);
-    std::vector<red_fix_type, aligned_allocator<red_fix_type>> exp_source_hw_results(DATA_SIZE);
+    std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_hw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> exp_source_sw_results(DATA_SIZE);
 
