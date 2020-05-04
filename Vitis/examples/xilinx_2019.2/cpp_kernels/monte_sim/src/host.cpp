@@ -128,6 +128,7 @@ int main(int argc, char **argv) {
     size_t vector_size_bytes = sizeof(red_fix_type) * DATA_SIZE;
     size_t const_vector_size_bytes = sizeof(red_fix_type) * CONST_SIZE;
     size_t exp_vector_size_bytes = sizeof(exp_fix_type) * DATA_SIZE;
+    size_t exp_const_vector_size_bytes = sizeof(exp_fix_type) * CONST_SIZE;
 
 
     cl_int err;
@@ -139,7 +140,7 @@ int main(int argc, char **argv) {
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_in1(DATA_SIZE);
     std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_in1(DATA_SIZE);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_const(CONST_SIZE);
-    // std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_const(CONST_SIZE);
+    std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_const(CONST_SIZE);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_hw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> exp_source_sw_results(DATA_SIZE);
@@ -159,6 +160,11 @@ int main(int argc, char **argv) {
     source_const.at(1) = (float)(50.0); // so
     source_const.at(2) = (float)(0.05); // r
     source_const.at(3) = (float)(0.2); // sigma
+
+    exp_source_const.at(0) = (exp_fix_type)(0.5); // time
+    exp_source_const.at(1) = (exp_fix_type)(50.0); // so
+    exp_source_const.at(2) = (exp_fix_type)(0.05); // r
+    exp_source_const.at(3) = (exp_fix_type)(0.2); // sigma
 
 
     
@@ -239,14 +245,14 @@ int main(int argc, char **argv) {
                                     const_vector_size_bytes,
                                     source_const.data(),
                                     &err));
-/*
+
     OCL_CHECK(err,
-                cl::Buffer buffer_in2_exp(context,
+                cl::Buffer exp_buffer_in2(context,
                                     CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
                                     exp_const_vector_size_bytes,
-                                    source_const_exp.data(),
+                                    exp_source_const.data(),
                                     &err));
-*/
+
     OCL_CHECK(err,
                 cl::Buffer buffer_output(context,
                                         CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY,
@@ -290,12 +296,12 @@ int main(int argc, char **argv) {
 
     OCL_CHECK(err, kernel_monte_sim_dev = cl::Kernel(program, "monte_sim_dev", &err));    
     OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(0, exp_buffer_in1));
-    OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(1, buffer_in2));
+    OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(1, exp_buffer_in2));
     OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(2, buffer_output));
     OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(3, size));
 
     // Copy input data to device global memory
-    OCL_CHECK(err, err = q.enqueueMigrateMemObjects({exp_buffer_in1, buffer_in2}, 0));
+    OCL_CHECK(err, err = q.enqueueMigrateMemObjects({exp_buffer_in1, exp_buffer_in2}, 0));
     OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim_dev, NULL, &event));
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_output},
                                                     CL_MIGRATE_MEM_OBJECT_HOST));
