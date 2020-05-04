@@ -100,15 +100,14 @@ void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_in1,
 void exp_verify(vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_in1,
             vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_const,
             vector<float, aligned_allocator<float>> &exp_source_sw_results,
-            vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
+            vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_hw_results) {
     bool match = true;
     for (int i = 0; i < 10; i++) {
-        float conv_hw_res = static_cast<float>(source_hw_results[i]);
+        float conv_hw_res = static_cast<float>(exp_source_hw_results[i]);
         if (conv_hw_res != exp_source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << " val = " << exp_source_in1[i] << " CPU result = " << exp_source_sw_results[i]
-                      << " Device result = " << source_hw_results[i] << "Constants: " << exp_source_const[0]
-                      << ", " << exp_source_const[1] << ", " << exp_source_const[2] << ", " << exp_source_const[3] << ", " << exp_source_const[4]
+                      << " Device result = " << exp_source_hw_results[i] << "or: " << conv_hw_res
                       << std::endl;
             match = false;
             // break;
@@ -144,6 +143,7 @@ int main(int argc, char **argv) {
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_const(CONST_SIZE);
     std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_const(CONST_SIZE);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_hw_results(DATA_SIZE);
+    std::vector<red_fix_type, aligned_allocator<red_fix_type>> exp_source_hw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> exp_source_sw_results(DATA_SIZE);
 
@@ -191,6 +191,7 @@ int main(int argc, char **argv) {
         float exp_z = so * exp( (r - ( pow(sig , 2) / 2 ) * t) + ( exp_x1 * sig * sqrt(t)) );
 
         exp_source_sw_results[i] = exp_z;
+        exp_source_hw_results[i] = 0;
     }
 
     // -------------------------------------------------------------------------
@@ -262,6 +263,13 @@ int main(int argc, char **argv) {
                                         source_hw_results.data(),
                                         &err));
 
+    OCL_CHECK(err,
+                cl::Buffer exp_buffer_output(context,
+                                        CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY,
+                                        exp_vector_size_bytes,
+                                        exp_source_hw_results.data(),
+                                        &err));
+
 
     int size = DATA_SIZE;
 
@@ -299,13 +307,13 @@ int main(int argc, char **argv) {
     OCL_CHECK(err, kernel_monte_sim_dev = cl::Kernel(program, "monte_sim_dev", &err));    
     OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(0, exp_buffer_in1));
     OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(1, exp_buffer_in2));
-    OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(2, buffer_output));
+    OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(2, exp_buffer_output));
     OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(3, size));
 
     // Copy input data to device global memory
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({exp_buffer_in1, exp_buffer_in2}, 0));
     OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim_dev, NULL, &event));
-    OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_output},
+    OCL_CHECK(err, err = q.enqueueMigrateMemObjects({exp_buffer_output},
                                                     CL_MIGRATE_MEM_OBJECT_HOST));
     q.finish();
 
