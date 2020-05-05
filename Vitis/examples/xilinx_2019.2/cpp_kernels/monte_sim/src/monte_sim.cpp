@@ -5,7 +5,7 @@
 #include "hls_math.h"
 #include "ap_fixed.h"
 
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 1000
 #define DATA_SIZE 10000
 
 
@@ -19,8 +19,6 @@ const fix_type ov_24 = 0.416667;
 const fix_type ov_120 = 0.008333;
 const fix_type ov_720 = 0.0013889;
 // const fix_type ov_5040 = 0.000198413;
-
-
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;

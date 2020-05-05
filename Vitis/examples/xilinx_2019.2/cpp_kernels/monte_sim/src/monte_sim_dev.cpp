@@ -5,7 +5,7 @@
 #include "hls_math.h"
 #include "ap_fixed.h"
 
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 1000
 #define DATA_SIZE 10000
 
 
@@ -101,22 +101,6 @@ void monte_sim_dev(
                     out_r[i + j] = vout_buffer[j];
                 }
 
-                /*  USING BUILT IN FUNCTIONS
-                fix_type duo = 2;
-            monte_sim_dev:
-                for (int j = 0; j < chunk_size; j++) {
-                    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-                    #pragma HLS PIPELINE II=1
-                   
-                    
-                    fix_type x = v1_buffer[j];
-                    fix_type hls_p = hls::pow(sig, duo);
-                    fix_type hls_sq = hls::sqrt(t);
-                    fix_type s = so * hls::exp( (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq) );
-                    // ap_fixed<16,7> z = hls::exp(x);
-                    vout_buffer[j] = s;
-                }
-*/
             }
         
     }
