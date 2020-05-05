@@ -48,9 +48,9 @@ void monte_sim(
 
     // Read Constants loop
     for (int z = 0; z < 4; z++) {
-        #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-        #pragma HLS PIPELINE II=1
-        v2_buffer[z] = in2[i + z];
+        // #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
+        // #pragma HLS PIPELINE II=1
+        v2_buffer[z] = in2[z];
     }
 
     fix_type t = v2_buffer[0];
