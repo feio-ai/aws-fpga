@@ -7,7 +7,9 @@
 #include <cstdio>
 #include <random>
 #include <vector>
-// #include <bits/stdc++.h>
+#include <iostream>
+#include <fstream>
+#include <iterator>
 #include <cmath>
 #include "ap_fixed.h"
 
@@ -80,20 +82,11 @@ red_fix_type rand_fix_gen() {
 void verify(
             vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
-    bool match = true;
-    for (int i = 0; i < 10; i++) {
-        float conv_hw_res = static_cast<float>(source_hw_results[i]);
-        if (conv_hw_res != source_sw_results[i]) {
-            std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << " CPU result = " << source_sw_results[i]
-                      << " Device result = " << source_hw_results[i]
-                      << std::endl;
-            match = false;
-            // break;
-        } else {
-            std::cout << "SW result = " << source_sw_results[i] << " Device result = " << source_hw_results[i] << std::endl;
-        }
-    }
+    bool match = false;
+    std::ofstream output_file("./example.txt");
+    std::ostream_iterator<float> output_iterator(output_file, "\n");
+    std::copy(source_sw_results.begin(), source_sw_results.end(), output_iterator);
+
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
 }
 
@@ -119,7 +112,7 @@ void exp_verify(
 
 void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
-                
+
     float sum_err = 0;
     float hw_sum_val = 0;
     float sw_sum_val = 0;
@@ -128,9 +121,6 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         // Count annomaly numbers
         
-        if (conv_hw_res < 30) {
-            anom_incr += 1;
-        }
 
         hw_sum_val += conv_hw_res;
         sw_sum_val += source_sw_results[i];
@@ -144,8 +134,7 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
     float avg_err = sum_err / DATA_SIZE;
     std::cout << "Average Percent Error: " << avg_err
               << " Average Stock Value (HW): " << hw_avg_val
-              << " Average Stock Value (SW): " << sw_avg_val
-              << " Number of anomalies: " << anom_incr 
+              << " Average Stock Value (SW): " << sw_avg_val 
               << std::endl;
 
 }
