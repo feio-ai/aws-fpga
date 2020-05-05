@@ -135,7 +135,8 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
             sum_err = sum_err + ((source_hw_results[i] - conv_sw_res) / conv_sw_res); 
         } 
     }
-    float avg_val = sum_val / DATA_SIZE;
+
+    red_fix_type avg_val = sum_val / DATA_SIZE;
     float sw_avg_val = sw_sum_val / DATA_SIZE;
     float avg_err = sum_err / DATA_SIZE;
     std::cout << "Average Percent Error: " << avg_err
