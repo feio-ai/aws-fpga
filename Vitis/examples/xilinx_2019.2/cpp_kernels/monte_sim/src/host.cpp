@@ -139,7 +139,7 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
 }
 
 void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_results,
-            vector<red_fix_type, aligned_allocator<red_fix_type>> &exp_source_hw_results) {
+            vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_hw_results) {
     
     float sum_err = 0;
     float sum_val = 0;
