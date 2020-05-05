@@ -88,8 +88,8 @@ void verify(
     std::copy(source_sw_results.begin(), source_sw_results.end(), output_iterator);
 
     std::ofstream f("./monte_sim_hw_res.csv");
-    std::ostream_iterator<red_fix_type> output_iterator(f, "\n");
-    std::copy(source_hw_results.begin(), source_hw_results.end(), output_iterator);
+    std::ostream_iterator<red_fix_type> output_iter(f, "\n");
+    std::copy(source_hw_results.begin(), source_hw_results.end(), output_iter);
 
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
 }
