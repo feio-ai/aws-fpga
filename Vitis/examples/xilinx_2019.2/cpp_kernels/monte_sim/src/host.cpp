@@ -119,7 +119,6 @@ void exp_verify(
 
 void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
-    float percent_error[DATA_SIZE]; 
     float sum_err = 0;
     float sum_val = 0;
     float sw_sum_val = 0;
@@ -127,8 +126,7 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         sum_val = sum_val + conv_hw_res;
         sw_sum_val = sw_sum_val + source_sw_results;
-        percent_error = ( conv_hw_res - source_sw_results[i] ) / source_sw_results[i];
-        sum_err = sum_err + percent_error;   
+        sum_err = sum_err + (( conv_hw_res - source_sw_results[i] ) / source_sw_results[i]);   
     }
     float avg_val = sum_val / DATA_SIZE;
     float sw_avg_val = sw_sum_val / DATA_SIZE;
@@ -142,7 +140,7 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
 
 void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &exp_source_hw_results) {
-    float percent_error[DATA_SIZE]; 
+    
     float sum_err = 0;
     float sum_val = 0;
     float sw_sum_val = 0;
@@ -150,8 +148,7 @@ void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_resu
         float conv_hw_res = static_cast<float>(exp_source_hw_results[i]);
         sum_val = sum_val + conv_hw_res;
         sw_sum_val = sw_sum_val + exp_source_sw_results;
-        percent_error = ( conv_hw_res - exp_source_sw_results[i] ) / exp_source_sw_results[i];
-        sum_err = sum_err + percent_error;   
+        sum_err = sum_err + (( conv_hw_res - exp_source_sw_results[i] ) / exp_source_sw_results[i]);   
     }
     float avg_val = sum_val / DATA_SIZE;
     float sw_avg_val = sw_sum_val / DATA_SIZE;
