@@ -77,7 +77,7 @@ red_fix_type rand_fix_gen() {
     return o;
 }
 
-void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_in1,
+void verify(
             vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
     bool match = true;
@@ -85,7 +85,7 @@ void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_in1,
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         if (conv_hw_res != source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << " val = " << source_in1[i] << " CPU result = " << source_sw_results[i]
+            std::cout << " CPU result = " << source_sw_results[i]
                       << " Device result = " << source_hw_results[i]
                       << std::endl;
             match = false;
@@ -97,8 +97,7 @@ void verify(vector<red_fix_type, aligned_allocator<red_fix_type>> &source_in1,
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
 }
 
-void exp_verify(vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_in1,
-            vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_const,
+void exp_verify(
             vector<float, aligned_allocator<float>> &exp_source_sw_results,
             vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_hw_results) {
     bool match = true;
@@ -106,7 +105,7 @@ void exp_verify(vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_sourc
         float conv_hw_res = static_cast<float>(exp_source_hw_results[i]);
         if (conv_hw_res != exp_source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << " val = " << exp_source_in1[i] << " CPU result = " << exp_source_sw_results[i]
+            std::cout << " CPU result = " << exp_source_sw_results[i]
                       << " Device result = " << exp_source_hw_results[i]
                       << std::endl;
             match = false;
@@ -118,6 +117,51 @@ void exp_verify(vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_sourc
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
 }
 
+void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
+            vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
+    float percent_error[DATA_SIZE]; 
+    float sum_err = 0;
+    float sum_val = 0;
+    float sw_sum_val = 0;
+    for (int i = 0; i < DATA_SIZE; i++) {
+        float conv_hw_res = static_cast<float>(source_hw_results[i]);
+        sum_val = sum_val + conv_hw_res;
+        sw_sum_val = sw_sum_val + source_sw_results;
+        percent_error = ( conv_hw_res - source_sw_results[i] ) / source_sw_results[i];
+        sum_err = sum_err + percent_error;   
+    }
+    float avg_val = sum_val / DATA_SIZE;
+    float sw_avg_val = sw_sum_val / DATA_SIZE;
+    float avg_err = sum_err / DATA_SIZE;
+    std::cout << "Average Percent Error: " << avg_err
+              << "Average Stock Value (HW): " << avg_val
+              << "Average Stock Value (SW): " << sw_avg_val 
+              << std::endl;
+
+}
+
+void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_results,
+            vector<red_fix_type, aligned_allocator<red_fix_type>> &exp_source_hw_results) {
+    float percent_error[DATA_SIZE]; 
+    float sum_err = 0;
+    float sum_val = 0;
+    float sw_sum_val = 0;
+    for (int i = 0; i < DATA_SIZE; i++) {
+        float conv_hw_res = static_cast<float>(exp_source_hw_results[i]);
+        sum_val = sum_val + conv_hw_res;
+        sw_sum_val = sw_sum_val + exp_source_sw_results;
+        percent_error = ( conv_hw_res - exp_source_sw_results[i] ) / exp_source_sw_results[i];
+        sum_err = sum_err + percent_error;   
+    }
+    float avg_val = sum_val / DATA_SIZE;
+    float sw_avg_val = sw_sum_val / DATA_SIZE;
+    float avg_err = sum_err / DATA_SIZE;
+    std::cout << "Average Percent Error: " << avg_err
+              << "Average Stock Value (HW): " << avg_val
+              << "Average Stock Value (SW): " << sw_avg_val 
+              << std::endl;
+
+}
 
 int main(int argc, char **argv) {
     if (argc != 2) {
@@ -299,7 +343,8 @@ int main(int argc, char **argv) {
                                                      &nstimeend));
     auto monte_sim_time = nstimeend - nstimestart;
 
-    verify(source_in1, source_sw_results, source_hw_results);
+    verify(source_sw_results, source_hw_results);
+    acc_measure(source_sw_results, source_hw_results);
 
     printf("--------------------------------------------------------\n"
            "Results from HLS exp function with reduced fixed point precision and range\n");
@@ -325,7 +370,8 @@ int main(int argc, char **argv) {
                                                      &nstimeend_exp));
     auto monte_sim_dev_time = nstimeend_exp - nstimestart_exp;
 
-    exp_verify(exp_source_in1, exp_source_const, exp_source_sw_results, exp_source_hw_results);
+    exp_verify(exp_source_sw_results, exp_source_hw_results);
+    exp_acc_measure(exp_source_sw_results, exp_source_hw_results);
 
     printf("|-------------------------+-------------------------|\n"
            "| Kernel                  |    Wall-Clock Time (ns) |\n"
