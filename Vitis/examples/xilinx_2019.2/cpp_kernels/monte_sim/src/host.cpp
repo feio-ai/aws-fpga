@@ -116,7 +116,7 @@ void exp_verify(
     }
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
 }
-/*
+
 void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
     float sum_err = 0;
@@ -125,7 +125,7 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
     for (int i = 0; i < DATA_SIZE; i++) {
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         sum_val = sum_val + conv_hw_res;
-        sw_sum_val = sw_sum_val + source_sw_results;
+        sw_sum_val = sw_sum_val + source_sw_results[i];
         sum_err = sum_err + (( conv_hw_res - source_sw_results[i] ) / source_sw_results[i]);   
     }
     float avg_val = sum_val / DATA_SIZE;
@@ -147,7 +147,7 @@ void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_resu
     for (int i = 0; i < DATA_SIZE; i++) {
         float conv_hw_res = static_cast<float>(exp_source_hw_results[i]);
         sum_val = sum_val + conv_hw_res;
-        sw_sum_val = sw_sum_val + exp_source_sw_results;
+        sw_sum_val = sw_sum_val + exp_source_sw_results[i];
         sum_err = sum_err + (( conv_hw_res - exp_source_sw_results[i] ) / exp_source_sw_results[i]);   
     }
     float avg_val = sum_val / DATA_SIZE;
@@ -159,7 +159,7 @@ void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_resu
               << std::endl;
 
 }
-*/
+
 int main(int argc, char **argv) {
     if (argc != 2) {
         std::cout << "Usage: " << argv[0] << " <XCLBIN File" << std::endl;
@@ -341,7 +341,7 @@ int main(int argc, char **argv) {
     auto monte_sim_time = nstimeend - nstimestart;
 
     verify(source_sw_results, source_hw_results);
-    // acc_measure(source_sw_results, source_hw_results);
+    acc_measure(source_sw_results, source_hw_results);
 
     printf("--------------------------------------------------------\n"
            "Results from HLS exp function with reduced fixed point precision and range\n");
@@ -368,7 +368,7 @@ int main(int argc, char **argv) {
     auto monte_sim_dev_time = nstimeend_exp - nstimestart_exp;
 
     exp_verify(exp_source_sw_results, exp_source_hw_results);
-    // exp_acc_measure(exp_source_sw_results, exp_source_hw_results);
+    exp_acc_measure(exp_source_sw_results, exp_source_hw_results);
 
     printf("|-------------------------+-------------------------|\n"
            "| Kernel                  |    Wall-Clock Time (ns) |\n"
