@@ -119,14 +119,14 @@ void exp_verify(
 
 void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
-    float sum_err = 0;
-    float sum_val = 0;
+    red_fix_type sum_err = 0;
+    red_fix_type sum_val = 0;
     float sw_sum_val = 0;
     for (int i = 0; i < DATA_SIZE; i++) {
-        float conv_hw_res = static_cast<float>(source_hw_results[i]);
-        sum_val = sum_val + conv_hw_res;
+        red_fix_type conv_sw_res = static_cast<red_fix_type>(source_sw_results[i]);
+        sum_val = sum_val + source_hw_results[i];
         sw_sum_val = sw_sum_val + source_sw_results[i];
-        sum_err = sum_err + (abs( conv_hw_res - source_sw_results[i] ) / source_sw_results[i]);   
+        sum_err = sum_err + (abs( source_hw_results[i] - conv_sw_res ) / conv_sw_res);   
     }
     float avg_val = sum_val / DATA_SIZE;
     float sw_avg_val = sw_sum_val / DATA_SIZE;
