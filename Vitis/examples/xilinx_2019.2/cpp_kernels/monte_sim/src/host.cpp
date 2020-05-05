@@ -121,12 +121,19 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
     red_fix_type sum_err = 0;
     red_fix_type sum_val = 0;
+    red_fix_type neg_one = -1;
     float sw_sum_val = 0;
     for (int i = 0; i < DATA_SIZE; i++) {
         red_fix_type conv_sw_res = static_cast<red_fix_type>(source_sw_results[i]);
         sum_val = sum_val + source_hw_results[i];
         sw_sum_val = sw_sum_val + source_sw_results[i];
-        sum_err = sum_err + (abs( source_hw_results[i] - conv_sw_res ) / conv_sw_res);   
+
+        // custom abs check to avoid hls::math import... hate
+        if ((source_hw_results[i] - conv_sw_res) < 0){
+            sum_err = sum_err + (((neg_one) * (source_hw_results[i] - conv_sw_res )) / conv_sw_res);
+        } else {
+            sum_err = sum_err + ((source_hw_results[i] - conv_sw_res) / conv_sw_res); 
+        } 
     }
     float avg_val = sum_val / DATA_SIZE;
     float sw_avg_val = sw_sum_val / DATA_SIZE;
@@ -148,7 +155,7 @@ void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_resu
         float conv_hw_res = static_cast<float>(exp_source_hw_results[i]);
         sum_val = sum_val + conv_hw_res;
         sw_sum_val = sw_sum_val + exp_source_sw_results[i];
-        sum_err = sum_err + (abs(conv_hw_res - exp_source_sw_results[i]) / exp_source_sw_results[i]);   
+        sum_err = sum_err + ((conv_hw_res - exp_source_sw_results[i]) / exp_source_sw_results[i]);   
     }
     float avg_val = sum_val / DATA_SIZE;
     float sw_avg_val = sw_sum_val / DATA_SIZE;
