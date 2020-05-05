@@ -52,7 +52,7 @@ void monte_sim(
         #pragma HLS PIPELINE II=1
         v2_buffer[z] = in2[i + z];
     }
-    
+
     fix_type t = v2_buffer[0];
     fix_type so = v2_buffer[1];
     fix_type r = v2_buffer[2];
@@ -111,6 +111,6 @@ void monte_sim(
         
 }
 
-
+}
 
 
