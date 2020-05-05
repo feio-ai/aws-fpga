@@ -119,31 +119,33 @@ void exp_verify(
 
 void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
-    red_fix_type sum_err = 0;
-    red_fix_type sum_val = 0;
-    red_fix_type neg_one = -1;
+                
+    float sum_err = 0;
+    float hw_sum_val = 0;
     float sw_sum_val = 0;
+    int anom_incr = 0;
     for (int i = 0; i < DATA_SIZE; i++) {
-        red_fix_type conv_sw_res = static_cast<red_fix_type>(source_sw_results[i]);
-        red_fix_type j = static_cast<red_fix_type>(i);
-        sum_val += source_hw_results[j];
+        float conv_hw_res = static_cast<float>(source_hw_results[i]);
+        // Count annomaly numbers
+        
+        if (conv_hw_res < 30) {
+            anom_incr += 1;
+        }
+
+        hw_sum_val += conv_hw_res;
         sw_sum_val += source_sw_results[i];
 
-        // custom abs check to avoid hls::math import... hate
-        if ((source_hw_results[j] - conv_sw_res) < 0){
-            sum_err += (((neg_one) * (source_hw_results[j] - conv_sw_res )) / conv_sw_res);
-        } else {
-            sum_err += ((source_hw_results[j] - conv_sw_res) / conv_sw_res); 
-        } 
+        sum_err += abs(conv_hw_res - source_sw_results[i]) / source_sw_results[i];
+     
     }
 
-    red_fix_type avg_val = sum_val / DATA_SIZE;
-    float print_avg_val = static_cast<float>(avg_val);
+    float hw_avg_val = hw_sum_val / DATA_SIZE;
     float sw_avg_val = sw_sum_val / DATA_SIZE;
     float avg_err = sum_err / DATA_SIZE;
     std::cout << "Average Percent Error: " << avg_err
-              << " Average Stock Value (HW): " << print_avg_val
-              << " Average Stock Value (SW): " << sw_avg_val 
+              << " Average Stock Value (HW): " << hw_avg_val
+              << " Average Stock Value (SW): " << sw_avg_val
+              << " Number of anomalies: " << anom_incr 
               << std::endl;
 
 }
