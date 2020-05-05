@@ -137,10 +137,11 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
     }
 
     red_fix_type avg_val = sum_val / DATA_SIZE;
+    float print_avg_val = static_cast<float>(avg_val);
     float sw_avg_val = sw_sum_val / DATA_SIZE;
     float avg_err = sum_err / DATA_SIZE;
     std::cout << "Average Percent Error: " << avg_err
-              << " Average Stock Value (HW): " << avg_val
+              << " Average Stock Value (HW): " << print_avg_val
               << " Average Stock Value (SW): " << sw_avg_val 
               << std::endl;
 
