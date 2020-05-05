@@ -83,9 +83,13 @@ void verify(
             vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
     bool match = false;
-    std::ofstream output_file("./example.txt");
+    std::ofstream output_file("./monte_sim_sw_res.csv");
     std::ostream_iterator<float> output_iterator(output_file, "\n");
     std::copy(source_sw_results.begin(), source_sw_results.end(), output_iterator);
+
+    std::ofstream f("./monte_sim_hw_res.csv");
+    std::ostream_iterator<red_fix_type> output_iterator(f, "\n");
+    std::copy(source_hw_results.begin(), source_hw_results.end(), output_iterator);
 
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
 }
@@ -116,7 +120,7 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
     float sum_err = 0;
     float hw_sum_val = 0;
     float sw_sum_val = 0;
-    int anom_incr = 0;
+    
     for (int i = 0; i < DATA_SIZE; i++) {
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         // Count annomaly numbers
