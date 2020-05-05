@@ -116,7 +116,7 @@ void exp_verify(
     }
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
 }
-
+/*
 void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
     float sum_err = 0;
@@ -159,7 +159,7 @@ void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_resu
               << std::endl;
 
 }
-
+*/
 int main(int argc, char **argv) {
     if (argc != 2) {
         std::cout << "Usage: " << argv[0] << " <XCLBIN File" << std::endl;
@@ -341,7 +341,7 @@ int main(int argc, char **argv) {
     auto monte_sim_time = nstimeend - nstimestart;
 
     verify(source_sw_results, source_hw_results);
-    acc_measure(source_sw_results, source_hw_results);
+    // acc_measure(source_sw_results, source_hw_results);
 
     printf("--------------------------------------------------------\n"
            "Results from HLS exp function with reduced fixed point precision and range\n");
@@ -368,7 +368,7 @@ int main(int argc, char **argv) {
     auto monte_sim_dev_time = nstimeend_exp - nstimestart_exp;
 
     exp_verify(exp_source_sw_results, exp_source_hw_results);
-    exp_acc_measure(exp_source_sw_results, exp_source_hw_results);
+    // exp_acc_measure(exp_source_sw_results, exp_source_hw_results);
 
     printf("|-------------------------+-------------------------|\n"
            "| Kernel                  |    Wall-Clock Time (ns) |\n"
