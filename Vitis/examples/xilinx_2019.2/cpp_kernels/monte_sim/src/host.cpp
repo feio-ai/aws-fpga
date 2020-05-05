@@ -125,14 +125,15 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
     float sw_sum_val = 0;
     for (int i = 0; i < DATA_SIZE; i++) {
         red_fix_type conv_sw_res = static_cast<red_fix_type>(source_sw_results[i]);
-        sum_val = sum_val + source_hw_results[i];
-        sw_sum_val = sw_sum_val + source_sw_results[i];
+        red_fix_type j = static_cast<red_fix_type>(i);
+        sum_val += source_hw_results[j];
+        sw_sum_val += source_sw_results[i];
 
         // custom abs check to avoid hls::math import... hate
-        if ((source_hw_results[i] - conv_sw_res) < 0){
-            sum_err = sum_err + (((neg_one) * (source_hw_results[i] - conv_sw_res )) / conv_sw_res);
+        if ((source_hw_results[j] - conv_sw_res) < 0){
+            sum_err += (((neg_one) * (source_hw_results[j] - conv_sw_res )) / conv_sw_res);
         } else {
-            sum_err = sum_err + ((source_hw_results[i] - conv_sw_res) / conv_sw_res); 
+            sum_err += ((source_hw_results[j] - conv_sw_res) / conv_sw_res); 
         } 
     }
 
