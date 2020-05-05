@@ -126,14 +126,14 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         sum_val = sum_val + conv_hw_res;
         sw_sum_val = sw_sum_val + source_sw_results[i];
-        sum_err = sum_err + (( conv_hw_res - source_sw_results[i] ) / source_sw_results[i]);   
+        sum_err = sum_err + (abs( conv_hw_res - source_sw_results[i] ) / source_sw_results[i]);   
     }
     float avg_val = sum_val / DATA_SIZE;
     float sw_avg_val = sw_sum_val / DATA_SIZE;
     float avg_err = sum_err / DATA_SIZE;
     std::cout << "Average Percent Error: " << avg_err
-              << "Average Stock Value (HW): " << avg_val
-              << "Average Stock Value (SW): " << sw_avg_val 
+              << " Average Stock Value (HW): " << avg_val
+              << " Average Stock Value (SW): " << sw_avg_val 
               << std::endl;
 
 }
@@ -148,14 +148,14 @@ void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_resu
         float conv_hw_res = static_cast<float>(exp_source_hw_results[i]);
         sum_val = sum_val + conv_hw_res;
         sw_sum_val = sw_sum_val + exp_source_sw_results[i];
-        sum_err = sum_err + (( conv_hw_res - exp_source_sw_results[i] ) / exp_source_sw_results[i]);   
+        sum_err = sum_err + (abs(conv_hw_res - exp_source_sw_results[i]) / exp_source_sw_results[i]);   
     }
     float avg_val = sum_val / DATA_SIZE;
     float sw_avg_val = sw_sum_val / DATA_SIZE;
     float avg_err = sum_err / DATA_SIZE;
     std::cout << "Average Percent Error: " << avg_err
-              << "Average Stock Value (HW): " << avg_val
-              << "Average Stock Value (SW): " << sw_avg_val 
+              << " Average Stock Value (HW): " << avg_val
+              << " Average Stock Value (SW): " << sw_avg_val 
               << std::endl;
 
 }
