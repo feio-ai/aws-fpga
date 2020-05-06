@@ -6,7 +6,7 @@
 #include "ap_fixed.h"
 
 #define BUFFER_SIZE 1000
-#define DATA_SIZE 10000
+#define DATA_SIZE 100000
 
 typedef ap_fixed<16,7> fix_type;
 typedef ap_fixed<8,3> scalar_type;
@@ -38,7 +38,7 @@ void monte_sim_dev(
     fix_type vout_buffer[BUFFER_SIZE];
 
     #pragma HLS ARRAY_PARTITION variable = v1_buffer block factor = 10
-    
+
     for (int z = 0; z < 4; z++) {
         // #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
         // #pragma HLS PIPELINE II=1

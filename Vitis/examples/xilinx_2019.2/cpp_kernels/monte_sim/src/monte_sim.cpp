@@ -6,7 +6,7 @@
 #include "ap_fixed.h"
 
 #define BUFFER_SIZE 1000
-#define DATA_SIZE 10000
+#define DATA_SIZE 100000
 
 
 typedef ap_fixed<32,16> fix_type;
