@@ -37,6 +37,8 @@ void monte_sim_dev(
     fix_type v2_buffer[BUFFER_SIZE];
     fix_type vout_buffer[BUFFER_SIZE];
 
+    #pragma HLS ARRAY_PARTITION variable = v1_buffer block factor = 10
+    
     for (int z = 0; z < 4; z++) {
         // #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
         // #pragma HLS PIPELINE II=1
