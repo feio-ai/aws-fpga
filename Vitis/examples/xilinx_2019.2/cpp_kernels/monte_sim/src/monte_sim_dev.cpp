@@ -102,7 +102,7 @@ void monte_sim_dev(
             #pragma HLS PIPELINE II=1
 
             input_type x = v1_buffer[j];
-            fix_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
+            input_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
             fix_type s = so * hls_exp_c;
             vout_buffer[j] = s;
         }
