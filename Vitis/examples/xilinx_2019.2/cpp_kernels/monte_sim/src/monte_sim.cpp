@@ -79,9 +79,10 @@ void monte_sim(
     monte_sim:
         for (int j = 0; j < chunk_size; j++) {
         #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-        #pragma HLS PIPELINE
+        #pragma HLS PIPELINE II = 1
             for (fix_type k = 1; k < 7; k++){ 
                 #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
+                
                 fix_type x = v1_buffer[j];
                 fix_type xo = cons1 + ( x * cons2);
                 fix_type x1 = hls::pow(xo, k);
