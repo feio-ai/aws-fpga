@@ -8,6 +8,8 @@
 #define BUFFER_SIZE 1000
 #define DATA_SIZE 100000
 
+//typedef ap_fixed<32,16> input_type;
+
 typedef ap_fixed<16,7> fix_type;
 typedef ap_fixed<8,3> scalar_type;
 
@@ -33,6 +35,8 @@ void monte_sim_dev(
 #pragma HLS INTERFACE s_axilite port = size bundle = control
 #pragma HLS INTERFACE s_axilite port = return bundle = control
 
+
+    // input_type v1_buffer[]
     fix_type v1_buffer[BUFFER_SIZE];
     fix_type v2_buffer[BUFFER_SIZE];
     fix_type vout_buffer[BUFFER_SIZE];
