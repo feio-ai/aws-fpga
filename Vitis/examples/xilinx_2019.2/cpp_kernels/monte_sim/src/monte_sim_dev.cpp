@@ -9,9 +9,8 @@
 #define DATA_SIZE 100000
 
 typedef ap_fixed<32,16> input_type;
-
 typedef ap_fixed<16,7> fix_type;
-typedef ap_fixed<8,3> scalar_type;
+
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;

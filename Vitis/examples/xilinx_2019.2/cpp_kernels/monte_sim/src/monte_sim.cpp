@@ -10,8 +10,6 @@
 
 
 typedef ap_fixed<32,16> fix_type;
-typedef ap_fixed<16,7> red_fix_type;
-typedef ap_fixed<8,3> scalar_type;
 
 const fix_type ov_2 = 0.5;
 const fix_type ov_6 = 0.166667;
