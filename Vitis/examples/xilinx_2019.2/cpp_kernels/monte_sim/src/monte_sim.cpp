@@ -88,9 +88,11 @@ void monte_sim(
                 exp_results += x1 * loc;
 
             }
-        }
         fix_type s = so * exp_results;
         vout_buffer[j] = s;
+        exp_results = 1;
+        }
+        
 
             //burst write the result
     write:
