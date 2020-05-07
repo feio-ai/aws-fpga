@@ -70,17 +70,18 @@ void monte_sim(
         }
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
-
-        fix_type hls_p = hls::pow(sig, 2);
+        fix_type duo = 2;
+        fix_type hls_p = hls::pow(sig, duo);
         fix_type hls_sq = hls::sqrt(t);
-        fix_type cons1 = r - (hls_p / 2) * t;
+        fix_type cons1 = r - (hls_p / duo) * t;
         fix_type cons2 = sig * hls_sq;
         fix_type exp_results = 1;
     monte_sim:
         for (int j = 0; j < chunk_size; j++) {
+        #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
+        #pragma HLS PIPELINE
             for (fix_type k = 1; k < 7; k++){ 
                 #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-                #pragma HLS PIPELINE II=1
                 fix_type x = v1_buffer[j];
                 fix_type xo = cons1 + ( x * cons2);
                 fix_type x1 = hls::pow(xo, k);
