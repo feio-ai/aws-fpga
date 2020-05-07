@@ -84,8 +84,8 @@ void monte_sim_dev(
         input_type duo = 2;
         input_type hls_p = hls::pow(sig, 2);
         input_type hls_sq = hls::sqrt(t);
-        fix_type cons1 = r - (hls_p / 2) * t;
-        fix_type cons2 = sig * hls_sq;
+        input_type cons1 = r - (hls_p / 2) * t;
+        input_type cons2 = sig * hls_sq;
 
 
 /*
