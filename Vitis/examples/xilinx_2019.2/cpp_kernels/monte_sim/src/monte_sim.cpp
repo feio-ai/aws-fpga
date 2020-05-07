@@ -75,24 +75,24 @@ void monte_sim(
         fix_type hls_sq = hls::sqrt(t);
         fix_type cons1 = r - (hls_p / duo) * t;
         fix_type cons2 = sig * hls_sq;
-        fix_type exp_results = 1;
+        
     monte_sim:
         for (int j = 0; j < chunk_size; j++) {
-        #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-        #pragma HLS PIPELINE II = 1
-            for (fix_type k = 1; k < 7; k++){ 
-                #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
+            #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
+            #pragma HLS PIPELINE II = 1
                 
-                fix_type x = v1_buffer[j];
-                fix_type xo = cons1 + ( x * cons2);
-                fix_type x1 = hls::pow(xo, k);
-                fix_type loc = div_buffer[k];
-                exp_results += x1 * loc;
+            fix_type x = v1_buffer[j];
+            fix_type xo = cons1 + ( x * cons2);
 
-            }
-        fix_type s = so * exp_results;
-        vout_buffer[j] = s;
-        exp_results = 1;
+            fix_type x2 = hls::pow(xo, 2);
+            fix_type x3 = hls::pow(xo, 3);
+            fix_type x4 = hls::pow(xo, 4);
+            fix_type x5 = hls::pow(xo, 5);
+            fix_type x6 = hls::pow(xo, 6);
+
+            
+            vout_buffer[j] = 1 +  xo * div_buffer[0] + x2 * div_buffer[1] + x3 * div_buffer[2] + x4 * div_buffer[3] + x5 * div_buffer[4] + x6 * div_buffer[5];
+       
         }
         
 
