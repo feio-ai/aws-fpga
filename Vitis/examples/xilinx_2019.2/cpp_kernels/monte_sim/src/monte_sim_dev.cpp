@@ -8,7 +8,7 @@
 #define BUFFER_SIZE 1000
 #define DATA_SIZE 100000
 
-//typedef ap_fixed<32,16> input_type;
+typedef ap_fixed<32,16> input_type;
 
 typedef ap_fixed<16,7> fix_type;
 typedef ap_fixed<8,3> scalar_type;
@@ -19,8 +19,10 @@ const unsigned int c_size = BUFFER_SIZE;
 extern "C" {
 
 void monte_sim_dev(
-                fix_type *in1,
-                fix_type *in2,
+                input_type *in1,
+                input_type *in2,
+                // fix_type *in1,
+                // fix_type *in2,
                 fix_type *out_r,
                 int size
 ) {
@@ -36,9 +38,11 @@ void monte_sim_dev(
 #pragma HLS INTERFACE s_axilite port = return bundle = control
 
 
-    // input_type v1_buffer[]
-    fix_type v1_buffer[BUFFER_SIZE];
-    fix_type v2_buffer[BUFFER_SIZE];
+    input_type v1_buffer[BUFFER_SIZE];
+    input_type v2_buffer[BUFFER_SIZE];
+
+    // fix_type v1_buffer[BUFFER_SIZE];
+    // fix_type v2_buffer[BUFFER_SIZE];
     fix_type vout_buffer[BUFFER_SIZE];
 
     #pragma HLS ARRAY_PARTITION variable = v1_buffer block factor = 10
@@ -49,11 +53,17 @@ void monte_sim_dev(
         v2_buffer[z] = in2[z];
     }
 
+    input_type t = v2_buffer[0];
+    input_type so = v2_buffer[1];
+    input_type r = v2_buffer[2];
+    input_type sig = v2_buffer[3];
+    
+/*
     fix_type t = v2_buffer[0];
     fix_type so = v2_buffer[1];
     fix_type r = v2_buffer[2];
     fix_type sig = v2_buffer[3];
-        
+*/      
 
 
     for (int i = 0; i < size; i += BUFFER_SIZE) {
@@ -71,11 +81,20 @@ void monte_sim_dev(
             v1_buffer[j] = in1[i + j];
         }
 
+        input_type duo = 2;
+        input_type hls_p = hls::pow(sig, 2);
+        input_type hls_sq = hls::sqrt(t);
+        fix_type cons1 = r - (hls_p / 2) * t;
+        fix_type cons2 = sig * hls_sq;
+
+
+/*
         fix_type duo = 2;
         fix_type hls_p = hls::pow(sig, 2);
         fix_type hls_sq = hls::sqrt(t);
         fix_type cons1 = r - (hls_p / 2) * t;
         fix_type cons2 = sig * hls_sq;
+*/
 
     monte_sim_dev:
         for (int j = 0; j < chunk_size; j++) {
@@ -83,7 +102,6 @@ void monte_sim_dev(
             #pragma HLS PIPELINE II=1
 
             fix_type x = v1_buffer[j];
-
             fix_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
             fix_type s = so * hls_exp_c;
             vout_buffer[j] = s;

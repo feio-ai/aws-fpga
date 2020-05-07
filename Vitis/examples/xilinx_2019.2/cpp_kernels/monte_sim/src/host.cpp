@@ -124,8 +124,7 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
     for (int i = 0; i < DATA_SIZE; i++) {
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         // Count annomaly numbers
-        
-
+    
         hw_sum_val += conv_hw_res;
         sw_sum_val += source_sw_results[i];
 
@@ -151,9 +150,9 @@ void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_resu
     float sw_sum_val = 0;
     for (int i = 0; i < DATA_SIZE; i++) {
         float conv_hw_res = static_cast<float>(exp_source_hw_results[i]);
-        sum_val = sum_val + conv_hw_res;
-        sw_sum_val = sw_sum_val + exp_source_sw_results[i];
-        sum_err = sum_err + ((conv_hw_res - exp_source_sw_results[i]) / exp_source_sw_results[i]);   
+        sum_val += conv_hw_res;
+        sw_sum_val += exp_source_sw_results[i];
+        sum_err += ((conv_hw_res - exp_source_sw_results[i]) / exp_source_sw_results[i]);   
     }
     float avg_val = sum_val / DATA_SIZE;
     float sw_avg_val = sw_sum_val / DATA_SIZE;
@@ -185,9 +184,11 @@ int main(int argc, char **argv) {
     cl::Program program;
 
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_in1(DATA_SIZE);
-    std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_in1(DATA_SIZE);
+    // std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_in1(DATA_SIZE);
+    std::vector<red_fix_type, aligned_allocator<red_fix_type>> exp_source_in1(DATA_SIZE);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_const(CONST_SIZE);
-    std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_const(CONST_SIZE);
+    // std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_const(CONST_SIZE);
+    std::vector<red_fix_type, aligned_allocator<red_fix_type>> exp_source_const(CONST_SIZE);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_hw_results(DATA_SIZE);
     std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_hw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
@@ -195,7 +196,8 @@ int main(int argc, char **argv) {
 
     // Create the test data
     std::generate(source_in1.begin(), source_in1.end(), rand_fix_gen);
-    std::generate(exp_source_in1.begin(), exp_source_in1.end(), exp_rand_fix_gen);
+    std::generate(exp_source_in1.begin(), exp_source_in1.end(), rand_fix_gen);
+    // std::generate(exp_source_in1.begin(), exp_source_in1.end(), exp_rand_fix_gen);
    
 
     float t = 0.5;
@@ -208,12 +210,17 @@ int main(int argc, char **argv) {
     source_const.at(1) = (float)(50.0); // so
     source_const.at(2) = (float)(0.05); // r
     source_const.at(3) = (float)(0.2); // sigma
+    exp_source_const.at(0) = (float)(0.5); // time
+    exp_source_const.at(1) = (float)(50.0); // so
+    exp_source_const.at(2) = (float)(0.05); // r
+    exp_source_const.at(3) = (float)(0.2); // sigma
 
+/*
     exp_source_const.at(0) = (exp_fix_type)(0.5); // time
     exp_source_const.at(1) = (exp_fix_type)(50.0); // so
     exp_source_const.at(2) = (exp_fix_type)(0.05); // r
     exp_source_const.at(3) = (exp_fix_type)(0.2); // sigma
-
+*/
 
     
     for (int i = 0; i < DATA_SIZE; i++) {
@@ -224,10 +231,13 @@ int main(int argc, char **argv) {
         // float z = exp(x1); 
         float z = so * exp( (r - ( pow(sig , 2) / 2 ) * t) + ( x1 * sig * sqrt(t)) );
 
+
         source_sw_results[i] = z;
+        exp_source_sw_results[i] = z;
+        exp_source_hw_results[i] = 0;
         source_hw_results[i] = 0;
     }
-
+/*
     for (int i = 0; i < DATA_SIZE; i++) {
         
         exp_fix_type exp_x = exp_source_in1[i];
@@ -239,7 +249,7 @@ int main(int argc, char **argv) {
         exp_source_sw_results[i] = exp_z;
         exp_source_hw_results[i] = 0;
     }
-
+*/
     // -------------------------------------------------------------------------
     // OpenCL Host Area Start
     auto devices = xcl::get_xil_devices();
@@ -284,7 +294,8 @@ int main(int argc, char **argv) {
     OCL_CHECK(err,
                 cl::Buffer exp_buffer_in1(context,
                                     CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
-                                    exp_vector_size_bytes,
+                                    // exp_vector_size_bytes,
+                                    vector_size_bytes,
                                     exp_source_in1.data(),
                                     &err));
 
@@ -298,7 +309,8 @@ int main(int argc, char **argv) {
     OCL_CHECK(err,
                 cl::Buffer exp_buffer_in2(context,
                                     CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
-                                    exp_const_vector_size_bytes,
+                                    // exp_const_vector_size_bytes,
+                                    const_vector_size_bytes,
                                     exp_source_const.data(),
                                     &err));
 
