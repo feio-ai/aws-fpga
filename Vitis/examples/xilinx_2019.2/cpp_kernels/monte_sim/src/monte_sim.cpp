@@ -11,11 +11,8 @@
 
 typedef ap_fixed<32,16> fix_type;
 
-const fix_type ov_2 = 0.5;
-const fix_type ov_6 = 0.166667;
-const fix_type ov_24 = 0.416667;
-const fix_type ov_120 = 0.008333;
-const fix_type ov_720 = 0.0013889;
+fix_type div_buffer[6] =  {1, 0.5, 0.166667, 0.416667, 0.008333, 0.0013889};
+
 // const fix_type ov_5040 = 0.000198413;
 
 const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
@@ -74,29 +71,26 @@ void monte_sim(
                 // PIPELINE pragma reduces the initiation interval for loop by allowing the
                 // concurrent executions of operations
 
-        fix_type duo = 2;
-        fix_type trio = 3;
-        fix_type hls_p = hls::pow(sig, duo);
+        fix_type hls_p = hls::pow(sig, 2);
         fix_type hls_sq = hls::sqrt(t);
+        fix_type cons1 = r - (hls_p / 2) * t;
+        fix_type cons2 = sig * hls_sq;
+        fix_type exp_results = 1;
     monte_sim:
         for (int j = 0; j < chunk_size; j++) {
-            #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-            #pragma HLS PIPELINE II=1
+            for (fix_type k = 1; k < 7; k++){ 
+                #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
+                #pragma HLS PIPELINE II=1
+                fix_type x = v1_buffer[j];
+                fix_type xo = cons1 + ( x * cons2);
+                fix_type x1 = hls::pow(xo, k);
+                fix_type loc = div_buffer[k];
+                exp_results += x1 * loc;
 
-            fix_type x = v1_buffer[j];
-                    
-            fix_type xo = (r - ( hls_p / duo ) * t) + ( x * sig * hls_sq);
-            fix_type x2 = hls::pow(xo, duo);
-            fix_type x3 = hls::pow(xo, trio);
-            fix_type x4 = hls::pow(x2, duo);
-            fix_type x5 = hls::pow(x2, trio);
-            fix_type x6 = hls::pow(x4, duo);
-                    
-
-            fix_type exp_result = 1 + xo + (x2 * ov_2) + (x3 * ov_6) + (x4 * ov_24) + (x5 * ov_120) + (x6 * ov_720);
-            fix_type s = so * exp_result;
-            vout_buffer[j] = s;
+            }
         }
+        fix_type s = so * exp_results;
+        vout_buffer[j] = s;
 
             //burst write the result
     write:
