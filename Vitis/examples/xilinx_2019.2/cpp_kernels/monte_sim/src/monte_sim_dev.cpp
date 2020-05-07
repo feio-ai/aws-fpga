@@ -101,7 +101,7 @@ void monte_sim_dev(
             #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
             #pragma HLS PIPELINE II=1
 
-            fix_type x = v1_buffer[j];
+            input_type x = v1_buffer[j];
             fix_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
             fix_type s = so * hls_exp_c;
             vout_buffer[j] = s;
