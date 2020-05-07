@@ -23,7 +23,7 @@ void monte_sim_dev(
                 input_type *in2,
                 // fix_type *in1,
                 // fix_type *in2,
-                fix_type *out_r,
+                input_type *out_r,
                 int size
 ) {
 
@@ -43,7 +43,7 @@ void monte_sim_dev(
 
     // fix_type v1_buffer[BUFFER_SIZE];
     // fix_type v2_buffer[BUFFER_SIZE];
-    fix_type vout_buffer[BUFFER_SIZE];
+    input_type vout_buffer[BUFFER_SIZE];
 
     #pragma HLS ARRAY_PARTITION variable = v1_buffer block factor = 10
 
@@ -103,7 +103,7 @@ void monte_sim_dev(
 
             input_type x = v1_buffer[j];
             input_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
-            fix_type s = so * hls_exp_c;
+            input_type s = so * hls_exp_c;
             vout_buffer[j] = s;
         }
 

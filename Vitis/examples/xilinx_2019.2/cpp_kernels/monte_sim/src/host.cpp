@@ -96,7 +96,8 @@ void verify(
 
 void exp_verify(
             vector<float, aligned_allocator<float>> &exp_source_sw_results,
-            vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_hw_results) {
+            // vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_hw_results
+            vector<red_fix_type, aligned_allocator<red_fix_type>> &exp_source_hw_results) {
     bool match = true;
     for (int i = 0; i < 10; i++) {
         float conv_hw_res = static_cast<float>(exp_source_hw_results[i]);
@@ -131,7 +132,6 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
         sum_err += abs(conv_hw_res - source_sw_results[i]) / source_sw_results[i];
      
     }
-
     float hw_avg_val = hw_sum_val / DATA_SIZE;
     float sw_avg_val = sw_sum_val / DATA_SIZE;
     float avg_err = sum_err / DATA_SIZE;
@@ -143,11 +143,13 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
 }
 
 void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_results,
-            vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_hw_results) {
+            // vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_hw_results
+            vector<red_fix_type, aligned_allocator<red_fix_type>> &exp_source_hw_results) {
     
     float sum_err = 0;
     float sum_val = 0;
     float sw_sum_val = 0;
+
     for (int i = 0; i < DATA_SIZE; i++) {
         float conv_hw_res = static_cast<float>(exp_source_hw_results[i]);
         sum_val += conv_hw_res;
@@ -190,7 +192,9 @@ int main(int argc, char **argv) {
     // std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_const(CONST_SIZE);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> exp_source_const(CONST_SIZE);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_hw_results(DATA_SIZE);
-    std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_hw_results(DATA_SIZE);
+
+    std::vector<red_fix_type, aligned_allocator<red_fix_type>> exp_source_hw_results(DATA_SIZE);    
+    // std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_hw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> exp_source_sw_results(DATA_SIZE);
 
@@ -324,7 +328,7 @@ int main(int argc, char **argv) {
     OCL_CHECK(err,
                 cl::Buffer exp_buffer_output(context,
                                         CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY,
-                                        exp_vector_size_bytes,
+                                        vector_size_bytes,
                                         exp_source_hw_results.data(),
                                         &err));
 
