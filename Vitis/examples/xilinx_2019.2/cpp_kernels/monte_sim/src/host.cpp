@@ -54,19 +54,7 @@ float phi(float x) {
 
     return 0.5*(1.0 + sign*y);
 }
-/*
-exp_fix_type exp_rand_fix_gen() {
-    float x = gen_random();
-    float y = phi(x);
 
-    // bitset<BIT_SET> bset1;
-    // red_fix_type o = static_cast<red_fix_type>(y);
-    exp_fix_type out = static_cast<exp_fix_type>(y);
-    // fix_type out = o.range(24, 8);
-
-    return out;
-}
-*/
 
 red_fix_type rand_fix_gen() {
     float x = gen_random();
@@ -136,31 +124,6 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
 
 }
 
-/*
-void exp_acc_measure(vector<float, aligned_allocator<float>> &exp_source_sw_results,
-            // vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_hw_results
-            vector<red_fix_type, aligned_allocator<red_fix_type>> &exp_source_hw_results) {
-    
-    float sum_err = 0;
-    float sum_val = 0;
-    float sw_sum_val = 0;
-
-    for (int i = 0; i < DATA_SIZE; i++) {
-        float conv_hw_res = static_cast<float>(exp_source_hw_results[i]);
-        sum_val += conv_hw_res;
-        sw_sum_val += exp_source_sw_results[i];
-        sum_err += ((conv_hw_res - exp_source_sw_results[i]) / exp_source_sw_results[i]);   
-    }
-    float avg_val = sum_val / DATA_SIZE;
-    float sw_avg_val = sw_sum_val / DATA_SIZE;
-    float avg_err = sum_err / DATA_SIZE;
-    std::cout << "Average Percent Error: " << avg_err
-              << " Average Stock Value (HW): " << avg_val
-              << " Average Stock Value (SW): " << sw_avg_val 
-              << std::endl;
-
-}
-*/
 
 int main(int argc, char **argv) {
     if (argc != 2) {
@@ -182,35 +145,51 @@ int main(int argc, char **argv) {
     cl::Program program;
 
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_in1(DATA_SIZE);
-    // std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_in1(DATA_SIZE);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_const(CONST_SIZE);
-    // std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_const(CONST_SIZE);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_hw_results(DATA_SIZE);    
-    // std::vector<exp_fix_type, aligned_allocator<exp_fix_type>> exp_source_hw_results(DATA_SIZE);
     std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
 
     // Create the test data
     std::generate(source_in1.begin(), source_in1.end(), rand_fix_gen);
-    // std::generate(exp_source_in1.begin(), exp_source_in1.end(), exp_rand_fix_gen);
    
+    //float t = 0.5;
+    //float so = 50.0;
+    //float r = 0.05;
+    //float sig = 0.2;
 
-    float t = 0.5;
-    float so = 50.0;
-    float r = 0.05;
-    float sig = 0.2;
+    float t;
+    float so;
+    float r;
+    float sig;
+
+    std::cout << "Please enter the following info: " << std::endl;
+
+    std::cout << "Stock price? " << std::endl;
+    std::cin >> so;
+
+    std::cout << "\n";
+
+    std::cout << "Rate? " << std::endl;
+    std::cin >> r;
+
+    std::cout << "\n";
+
+    std::cout << "Volatility?  " << std::endl;
+    std::cin >> sig;
+
+    std::cout << "\n";
+
+    std::cout << "Time to expiry (years [0.1, 0.2 .. 1]? " << std::endl;
+    std::cout >> t;
 
 
-    source_const.at(0) = (float)(0.5); // time
-    source_const.at(1) = (float)(50.0); // so
-    source_const.at(2) = (float)(0.05); // r
-    source_const.at(3) = (float)(0.2); // sigma
 
-/*
-    exp_source_const.at(0) = (exp_fix_type)(0.5); // time
-    exp_source_const.at(1) = (exp_fix_type)(50.0); // so
-    exp_source_const.at(2) = (exp_fix_type)(0.05); // r
-    exp_source_const.at(3) = (exp_fix_type)(0.2); // sigma
-*/
+
+    source_const.at(0) = (float)(t); // time
+    source_const.at(1) = (float)(so); // so
+    source_const.at(2) = (float)(r); // r
+    source_const.at(3) = (float)(sig); // sigma
+
 
     
     for (int i = 0; i < DATA_SIZE; i++) {
@@ -225,19 +204,7 @@ int main(int argc, char **argv) {
         source_sw_results[i] = z;
         source_hw_results[i] = 0;
     }
-/*
-    for (int i = 0; i < DATA_SIZE; i++) {
-        
-        exp_fix_type exp_x = exp_source_in1[i];
-        float exp_x1 = static_cast<float>(exp_x);
-       
-        // float z = exp(x1); 
-        float exp_z = so * exp( (r - ( pow(sig , 2) / 2 ) * t) + ( exp_x1 * sig * sqrt(t)) );
 
-        exp_source_sw_results[i] = exp_z;
-        exp_source_hw_results[i] = 0;
-    }
-*/
     // -------------------------------------------------------------------------
     // OpenCL Host Area Start
     auto devices = xcl::get_xil_devices();
