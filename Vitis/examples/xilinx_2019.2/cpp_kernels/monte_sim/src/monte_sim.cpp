@@ -20,8 +20,6 @@ extern "C" {
 void monte_sim(
                 input_type *in1,
                 input_type *in2,
-                // fix_type *in1,
-                // fix_type *in2,
                 input_type *out_r,
                 int size
 ) {
