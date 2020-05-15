@@ -180,7 +180,7 @@ int main(int argc, char **argv) {
     std::cout << "\n";
 
     std::cout << "Time to expiry (years [0.1, 0.2 .. 1]? " << std::endl;
-    std::cout >> t;
+    std::cin >> t;
 
 
 
