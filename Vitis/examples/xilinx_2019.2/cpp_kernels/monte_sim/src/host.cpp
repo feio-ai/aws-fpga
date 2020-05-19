@@ -158,7 +158,7 @@ int main(int argc, char **argv) {
         
         if (j == NUM_STEPS){
             j = 0;
-            i++;
+            k++;
         }
         source_sw_results[itr] = sw_results[j][k];
     }
