@@ -49,14 +49,13 @@ read_const:
     fix_type r = v2_buffer[2];
     fix_type sig = v2_buffer[3];
 
-    for (int i = 0; i < size; i += BUFFER_SIZE) {
+    for (int i = 0; i < size * NUM_STEPS; i += BUFFER_SIZE) {
         int chunk_size = BUFFER_SIZE;
 
         if ((i + BUFFER_SIZE) > size)
             chunk_size = size - i;
 
     read1:
-
         for (int itr = 0, k = 0, j = 0; itr < chunk_size * NUM_STEPS; itr++, j++) {
             #pragma HLS PIPELINE II=1
             if (j == NUM_STEPS) {
@@ -75,7 +74,7 @@ read_const:
         for (int col = 0; col < BUFFER_SIZE; col++) {
             for (int row = 0; row < NUM_STEPS; row++) {
                 #pragma HLS PIPELINE II=1
-                fix_type result = (row == 0) ? so : vout_buffer[col][row];
+                fix_type result = (row == 0) ? so : vout_buffer[col][row - 1];
 
                 fix_type x = v1_buffer[row][col];
                 fix_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
