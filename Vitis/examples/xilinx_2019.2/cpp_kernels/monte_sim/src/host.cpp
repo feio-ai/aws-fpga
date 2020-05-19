@@ -139,7 +139,7 @@ int main(int argc, char **argv) {
     source_const.at(2) = (float)(r); // r
     source_const.at(3) = (float)(sig); // sigma
     
-    float dt = static_cast<float>(NUM_STEPS);
+    float dt = t / static_cast<float>(NUM_STEPS);
     float drift = exp(dt*(r - 0.5*sig*sig));
     float vol = sqrt(sig*sig*dt);
         
