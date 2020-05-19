@@ -114,7 +114,7 @@ int main(int argc, char **argv) {
     float so;
     float r;
     float sig;
-
+/*
     std::cout << "Please enter the following info: " << std::endl;
     std::cout << "Stock price? " << std::endl;
     std::cin >> so;
@@ -127,6 +127,12 @@ int main(int argc, char **argv) {
     std::cout << "\n";
     std::cout << "Time to expiry (years [0.1, 0.2 .. 1]? " << std::endl;
     std::cin >> t;
+*/
+
+    so = 50.0;
+    r = 0.07;
+    sig = 0.20;
+    t = 0.5;
 
     source_const.at(0) = (float)(t); // time
     source_const.at(1) = (float)(so); // so
