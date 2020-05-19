@@ -12,8 +12,8 @@
 typedef ap_fixed<32,16> fix_type;
 
 //TRIPCOUNT identifiers
-const unsigned int c_len = (DATA_SIZE * NUM_STEPS) / BUFFER_SIZE;
-const unsigned int c_size = BUFFER_SIZE;
+// const unsigned int c_len = (DATA_SIZE * NUM_STEPS) / BUFFER_SIZE;
+// const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
 
@@ -56,8 +56,8 @@ read_const:
             chunk_size = size - i;
 
     read1:
-        int k = i;
-        for (int itr = 0, j = 0; itr < chunk_size; itr++, j++) {
+
+        for (int itr = 0, k = 0, j = 0; itr < chunk_size; itr++, j++) {
             #pragma HLS PIPELINE II=1
             if (j == NUM_STEPS) {
                 j = 0;
@@ -75,14 +75,14 @@ read_const:
         for (int col = 0; col < BUFFER_SIZE; col++) {
             for (int row = 0; row < NUM_STEPS; row++) {
                 #pragma HLS PIPELINE II=1
-                fix_type result = (row == 0) ? so : vout_buffer[col][row - 1];
+                fix_type result = (row == 0) ? so : vout_buffer[col][row];
 
                 fix_type x = v1_buffer[row][col];
                 fix_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
                 vout_buffer[col][row] = result * hls_exp_c;
 
-                }
             }
+        }
             //burst write the result
 
     write:
