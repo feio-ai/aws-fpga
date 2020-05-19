@@ -69,7 +69,7 @@ read_const:
         fix_type hls_sq = hls::sqrt(t);
         fix_type cons1 = r - (hls_p / 2) * t;
         fix_type cons2 = sig * hls_sq;
-        fix_type l = 0;
+        
     monte_sim:
         for (int col = 0; col < BUFFER_SIZE; col++) {
             for (int row = 0; row < NUM_STEPS; row++) {
@@ -85,13 +85,13 @@ read_const:
             //burst write the result
 
     write:
-        for (int itr = 0, i = 0, j = 0; itr < chunk_size * NUM_STEPS; itr++, j++) {
+        for (int itr = 0, x = 0, z = 0; itr < chunk_size * NUM_STEPS; itr++, z++) {
             #pragma HLS PIPELINE II=1
-            if (j == NUM_STEPS) {
-                j = 0;
-                i++;
+            if (z == NUM_STEPS) {
+                z = 0;
+                x++;
             }
-            out_r[itr] = vout_buffer[i][j];
+            out_r[itr] = vout_buffer[x][z];
         }  
 
     }

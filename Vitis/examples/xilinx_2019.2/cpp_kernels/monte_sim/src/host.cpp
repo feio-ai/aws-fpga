@@ -143,12 +143,24 @@ int main(int argc, char **argv) {
     float drift = exp(dt*(r - 0.5*sig*sig));
     float vol = sqrt(sig*sig*dt);
         
-    source_sw_results[0] = so;
-    for (int i = 1; i < (DATA_SIZE * NUM_STEPS); i++) {
+    float sw_results [DATA_SIZE][NUM_STEPS];
+
+    for (int i = 0; i < DATA_SIZE; i++) {
+        for (int j = 0; j < NUM_STEPS; j++){
+            float result = (j == 0) ? so : sw_results[i][j - 1];
+            red_fix_type x = source_in1[i];
+            float x1 = static_cast<float>(x);
+            sw_results[i][j] = result * drift * exp(vol*x1);
+        }
+    }
+
+    for (int j = 0, k = 0, itr = 0; itr < (DATA_SIZE * NUM_STEPS); j++, itr++){
         
-        red_fix_type x = source_in1[i];
-        float x1 = static_cast<float>(x);
-        source_sw_results[i] = source_sw_results[i-1] * drift * exp(vol*x1);
+        if (j == NUM_STEPS){
+            j = 0;
+            i++;
+        }
+        source_sw_results[itr] = sw_results[j][k];
     }
 
     // -------------------------------------------------------------------------
