@@ -213,7 +213,6 @@ int main(int argc, char **argv) {
 
     cl::Event event;
     uint64_t nstimestart, nstimeend;
-    uint64_t nstimestart_exp, nstimeend_exp;
 
     OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim, NULL, &event));
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_output},

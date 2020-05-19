@@ -41,8 +41,6 @@ void monte_sim(
 // Read Constants loop
 read_const:
     for (int z = 0; z < 4; z++) {
-        // #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
-        // #pragma HLS PIPELINE II=1
         v2_buffer[z] = in2[z];
     }
 
@@ -52,7 +50,6 @@ read_const:
     fix_type sig = v2_buffer[3];
 
     for (int i = 0; i < size; i += BUFFER_SIZE) {
-        #pragma HLS LOOP_TRIPCOUNT min=c_len max=c_len
         int chunk_size = BUFFER_SIZE;
 
         if ((i + BUFFER_SIZE) > size)
@@ -61,7 +58,6 @@ read_const:
     read1:
         int k = i;
         for (int itr = 0, j = 0; itr < chunk_size * 100; itr++, j++) {
-            #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
             #pragma HLS PIPELINE II=1
             if (j == NUM_STEPS) {
                 j = 0;
@@ -77,12 +73,10 @@ read_const:
         fix_type l = 0;
     monte_sim:
         for (int col = 0; col < BUFFER_SIZE; col++) {
-            #pragma HLS LOOP_TRIPCOUNT min=c_dim max=c_dim
             for (int row = 0; row < NUM_STEPS; row++) {
-                #pragma HLS LOOP_TRIPCOUNT min=c_dim max=c_dim
                 #pragma HLS PIPELINE II=1
                 fix_type result = (row == 0) ? so : vout_buffer[col][row - 1];
-                
+
                 fix_type x = v1_buffer[row][col];
                 fix_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
                 vout_buffer[col][row] = result * hls_exp_c;
@@ -93,7 +87,6 @@ read_const:
 
     write:
         for (int itr = 0, j = 0; itr < chunk_size * NUM_STEPS; itr++, j++) {
-            #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
             #pragma HLS PIPELINE II=1
             if (j == NUM_STEPS) {
                 j = 0;
