@@ -13,58 +13,31 @@
 #include <cmath>
 #include "ap_fixed.h"
 
-using std::mt19937;
-using std::generate;
-using std::uniform_real_distribution;
+
 using std::vector;
 
 #define DATA_SIZE 500000
 #define CONST_SIZE 4
+#define NUM_STEPS 100
 
 
-typedef ap_fixed<16,7> exp_fix_type;
 typedef ap_fixed<32,16> red_fix_type;
 
-float gen_random() {
-    std::random_device seed;
-    static mt19937 re (seed());
-    static std::uniform_real_distribution<float> unif(-9.0, 9.0);
-    return unif(re);
-}
+red_fix_type gaussian_box_muller() {
+  float x = 0.0;
+  float y = 0.0;
+  float euclid_sq = 0.0;
 
-float phi(float x) {
-    // constants
-    float a1 =  0.254829592;
-    float a2 = -0.284496736;
-    float a3 =  1.421413741;
-    float a4 = -1.453152027;
-    float a5 =  1.061405429;
-    float p  =  0.3275911;
+  do {
+    x = 2.0 * rand() / static_cast<float>(RAND_MAX)-1;
+    y = 2.0 * rand() / static_cast<float>(RAND_MAX)-1;
+    euclid_sq = x*x + y*y;
+  } while (euclid_sq >= 1.0);  
 
-    // Save the sign of x
-    int sign = 1;
-    if (x < 0)
-        sign = -1;
-    
-    x = fabs(x)/sqrt(2.0);
+  float a1 = x*sqrt(-2*log(euclid_sq)/euclid_sq);
+  red_fix_type o1 = static_cast<red_fix_type>(a1);  
 
-    // A&S formula 7.1.26
-    float t = 1.0/(1.0 + p*x);
-    float y = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*exp(-x*x);
-
-    return 0.5*(1.0 + sign*y);
-}
-
-
-red_fix_type rand_fix_gen() {
-    float x = gen_random();
-    float y = phi(x);
-
-    // bitset<BIT_SET> bset1;
-    red_fix_type o = static_cast<red_fix_type>(y);
-    // fix_type out = o.range(24, 8);
-
-    return o;
+  return o1;
 }
 
 void verify(
@@ -82,20 +55,6 @@ void verify(
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
 }
 
-void exp_verify(
-            vector<float, aligned_allocator<float>> &source_sw_results,
-            // vector<exp_fix_type, aligned_allocator<exp_fix_type>> &exp_source_hw_results
-            vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
-    bool match = true;
-    std::ofstream output_file("./monte_sim_dev_sw_res.csv");
-    std::ostream_iterator<float> output_iterator(output_file, "\n");
-    std::copy(source_sw_results.begin(), source_sw_results.end(), output_iterator);
-
-    std::ofstream f("./monte_sim_dev_hw_res.csv");
-    std::ostream_iterator<red_fix_type> output_iter(f, "\n");
-    std::copy(source_hw_results.begin(), source_hw_results.end(), output_iter);
-    std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
-}
 
 void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
@@ -104,7 +63,7 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
     float hw_sum_val = 0;
     float sw_sum_val = 0;
     
-    for (int i = 0; i < DATA_SIZE; i++) {
+    for (int i = 0; i < (DATA_SIZE * NUM_STEPS); i++) {
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         // Count annomaly numbers
     
@@ -124,6 +83,8 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
 
 }
 
+void montesim_asian ( )
+
 
 int main(int argc, char **argv) {
     if (argc != 2) {
@@ -132,30 +93,23 @@ int main(int argc, char **argv) {
     }
 
     std::string binaryFile = argv[1];
-    size_t vector_size_bytes = sizeof(red_fix_type) * DATA_SIZE;
+    size_t vector_size_bytes = sizeof(red_fix_type) * DATA_SIZE * NUM_STEPS;
     size_t const_vector_size_bytes = sizeof(red_fix_type) * CONST_SIZE;
-    // size_t exp_vector_size_bytes = sizeof(exp_fix_type) * DATA_SIZE;
-    // size_t exp_const_vector_size_bytes = sizeof(exp_fix_type) * CONST_SIZE;
 
 
     cl_int err;
     cl::Context context;
-    cl::Kernel kernel_monte_sim, kernel_monte_sim_dev;
+    cl::Kernel kernel_monte_sim;
     cl::CommandQueue q;
     cl::Program program;
 
-    std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_in1(DATA_SIZE);
+    std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_in1(DATA_SIZE * NUM_STEPS);
     std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_const(CONST_SIZE);
-    std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_hw_results(DATA_SIZE);    
-    std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE);
+    std::vector<red_fix_type, aligned_allocator<red_fix_type>> source_hw_results(DATA_SIZE * NUM_STEPS, 0);    
+    std::vector<float, aligned_allocator<float>> source_sw_results(DATA_SIZE * NUM_STEPS);
 
     // Create the test data
-    std::generate(source_in1.begin(), source_in1.end(), rand_fix_gen);
-   
-    //float t = 0.5;
-    //float so = 50.0;
-    //float r = 0.05;
-    //float sig = 0.2;
+    std::generate(source_in1.begin(), source_in1.end(), gaussian_box_muller);
 
     float t;
     float so;
@@ -163,46 +117,33 @@ int main(int argc, char **argv) {
     float sig;
 
     std::cout << "Please enter the following info: " << std::endl;
-
     std::cout << "Stock price? " << std::endl;
     std::cin >> so;
-
     std::cout << "\n";
-
     std::cout << "Rate? " << std::endl;
     std::cin >> r;
-
     std::cout << "\n";
-
     std::cout << "Volatility?  " << std::endl;
     std::cin >> sig;
-
     std::cout << "\n";
-
     std::cout << "Time to expiry (years [0.1, 0.2 .. 1]? " << std::endl;
     std::cin >> t;
-
-
-
 
     source_const.at(0) = (float)(t); // time
     source_const.at(1) = (float)(so); // so
     source_const.at(2) = (float)(r); // r
     source_const.at(3) = (float)(sig); // sigma
-
-
     
-    for (int i = 0; i < DATA_SIZE; i++) {
+    float dt = static_cast<float>(NUM_STEPS);
+    float drift = exp(dt*(r - 0.5*sig*sig));
+    float vol = sqrt(sig*sig*dt);
+        
+    source_sw_results[0] = so;
+    for (int i = 1; i < (DATA_SIZE * NUM_STEPS); i++) {
         
         red_fix_type x = source_in1[i];
         float x1 = static_cast<float>(x);
-       
-        // float z = exp(x1); 
-        float z = so * exp( (r - ( pow(sig , 2) / 2 ) * t) + ( x1 * sig * sqrt(t)) );
-
-
-        source_sw_results[i] = z;
-        source_hw_results[i] = 0;
+        source_sw_results[i] = source_sw_results[i-1] * drift * exp(vol*x1);
     }
 
     // -------------------------------------------------------------------------
@@ -245,45 +186,21 @@ int main(int argc, char **argv) {
                                     vector_size_bytes,
                                     source_in1.data(),
                                     &err));
-/*  
-    OCL_CHECK(err,
-                cl::Buffer exp_buffer_in1(context,
-                                    CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
-                                    // exp_vector_size_bytes,
-                                    vector_size_bytes,
-                                    exp_source_in1.data(),
-                                    &err));
-*/
+
     OCL_CHECK(err,
                 cl::Buffer buffer_in2(context,
                                     CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
                                     const_vector_size_bytes,
                                     source_const.data(),
                                     &err));
-/*
-    OCL_CHECK(err,
-                cl::Buffer exp_buffer_in2(context,
-                                    CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
-                                    // exp_const_vector_size_bytes,
-                                    const_vector_size_bytes,
-                                    exp_source_const.data(),
-                                    &err));
-*/
+
     OCL_CHECK(err,
                 cl::Buffer buffer_output(context,
                                         CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY,
                                         vector_size_bytes,
                                         source_hw_results.data(),
                                         &err));
-/*
-    OCL_CHECK(err,
-                cl::Buffer exp_buffer_output(context,
-                                        CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY,
-                                        vector_size_bytes,
-                                        exp_source_hw_results.data(),
-                                        &err));
 
-*/
     int size = DATA_SIZE;
 
     OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim", &err));    
@@ -315,39 +232,13 @@ int main(int argc, char **argv) {
     verify(source_sw_results, source_hw_results);
     acc_measure(source_sw_results, source_hw_results);
 
-    printf("--------------------------------------------------------\n"
-           "Results from HLS exp function with reduced fixed point precision and range\n");
-
-    OCL_CHECK(err, kernel_monte_sim_dev = cl::Kernel(program, "monte_sim_dev", &err));    
-    OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(0, buffer_in1));
-    OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(1, buffer_in2));
-    OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(2, buffer_output));
-    OCL_CHECK(err, err = kernel_monte_sim_dev.setArg(3, size));
-
-    // Copy input data to device global memory
-    OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));
-    OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim_dev, NULL, &event));
-    OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_output},
-                                                    CL_MIGRATE_MEM_OBJECT_HOST));
-    q.finish();
-
-    OCL_CHECK(err,
-              err = event.getProfilingInfo<uint64_t>(CL_PROFILING_COMMAND_START,
-                                                     &nstimestart_exp));
-    OCL_CHECK(err,
-              err = event.getProfilingInfo<uint64_t>(CL_PROFILING_COMMAND_END,
-                                                     &nstimeend_exp));
-    auto monte_sim_dev_time = nstimeend_exp - nstimestart_exp;
-
-    verify(source_sw_results, source_hw_results);
-    acc_measure(source_sw_results, source_hw_results);
+    
 
     printf("|-------------------------+-------------------------|\n"
            "| Kernel                  |    Wall-Clock Time (ns) |\n"
            "|-------------------------+-------------------------|\n");
 
     printf("| %-23s | %23lu |\n", "monte_sim: ", monte_sim_time);
-    printf("| %-23s | %23lu |\n", "monte_sim_exp: ", monte_sim_dev_time);
     printf("|-------------------------+-------------------------|\n");
     //OpenCL Host Code Area End
 
