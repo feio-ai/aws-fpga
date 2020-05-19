@@ -5,9 +5,9 @@
 #include "hls_math.h"
 #include "ap_fixed.h"
 
-#define NUM_STEPS 100
-#define BUFFER_SIZE 1000
-#define DATA_SIZE 100000
+#define NUM_STEPS 10
+#define BUFFER_SIZE 100
+#define DATA_SIZE 1000
 
 typedef ap_fixed<32,16> fix_type;
 
