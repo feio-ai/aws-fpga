@@ -57,7 +57,7 @@ read_const:
 
     read1:
 
-        for (int itr = 0, k = 0, j = 0; itr < chunk_size; itr++, j++) {
+        for (int itr = 0, k = 0, j = 0; itr < chunk_size * NUM_STEPS; itr++, j++) {
             #pragma HLS PIPELINE II=1
             if (j == NUM_STEPS) {
                 j = 0;
@@ -86,11 +86,11 @@ read_const:
             //burst write the result
 
     write:
-        for (int itr = 0, j = 0; itr < chunk_size; itr++, j++) {
+        for (int itr = 0, i = 0, j = 0; itr < chunk_size * NUM_STEPS; itr++, j++) {
             #pragma HLS PIPELINE II=1
             if (j == NUM_STEPS) {
                 j = 0;
-                k++;
+                i++;
             }
             out_r[itr] = vout_buffer[i][j];
         }  
