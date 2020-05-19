@@ -83,7 +83,6 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
 
 }
 
-void montesim_asian ( )
 
 
 int main(int argc, char **argv) {
