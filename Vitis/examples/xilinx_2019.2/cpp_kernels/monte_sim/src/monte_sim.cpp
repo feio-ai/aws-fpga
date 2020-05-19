@@ -6,15 +6,13 @@
 #include "ap_fixed.h"
 
 #define NUM_STEPS 100
-#define BUFFER_SIZE 5000
-#define DATA_SIZE 500000
+#define BUFFER_SIZE 1000
+#define DATA_SIZE 100000
 
 typedef ap_fixed<32,16> fix_type;
 
 //TRIPCOUNT identifiers
-const unsigned int c_dim = NUM_STEPS;
-
-const unsigned int c_len = DATA_SIZE / BUFFER_SIZE;
+const unsigned int c_len = (DATA_SIZE * NUM_STEPS) / BUFFER_SIZE;
 const unsigned int c_size = BUFFER_SIZE;
 
 extern "C" {
@@ -40,8 +38,6 @@ void monte_sim(
     fix_type v2_buffer[BUFFER_SIZE];
     fix_type vout_buffer[BUFFER_SIZE][NUM_STEPS];
     
-
-#pragma HLS ARRAY_PARTITION variable = v1_buffer block factor = 10
 // Read Constants loop
 read_const:
     for (int z = 0; z < 4; z++) {
@@ -64,15 +60,14 @@ read_const:
 
     read1:
         int k = i;
-        int z = i;
-        for (int itr = 0, j = 0; itr < chunk_size * NUM_STEPS; itr++, j++) {
+        for (int itr = 0, j = 0; itr < chunk_size * 100; itr++, j++) {
             #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
             #pragma HLS PIPELINE II=1
             if (j == NUM_STEPS) {
                 j = 0;
                 k++;
             }
-        v1_buffer[k][j] = in1[itr];
+            v1_buffer[k][j] = in1[itr];
         }   
 
         fix_type hls_p = hls::pow(sig, 2);
@@ -87,6 +82,7 @@ read_const:
                 #pragma HLS LOOP_TRIPCOUNT min=c_dim max=c_dim
                 #pragma HLS PIPELINE II=1
                 fix_type result = (row == 0) ? so : vout_buffer[col][row - 1];
+                
                 fix_type x = v1_buffer[row][col];
                 fix_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
                 vout_buffer[col][row] = result * hls_exp_c;
