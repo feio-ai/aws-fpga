@@ -48,11 +48,12 @@ read_const:
     fix_type so = v2_buffer[1];
     fix_type r = v2_buffer[2];
     fix_type sig = v2_buffer[3];
+    fix_type half = 0.5;
 
     fix_type dt = t / NUM_STEPS;
     fix_type hls_p = hls::pow(sig, 2);
     fix_type hls_sq = hls::sqrt(dt);
-    fix_type cons1 = (r - (hls_p * 0.5)) * dt;
+    fix_type cons1 = (r - (hls_p * half)) * dt;
     fix_type cons2 = sig * hls_sq;
 
     for (int i = 0; i < DATA_SIZE * NUM_STEPS; i += BUFFER_SIZE) {
