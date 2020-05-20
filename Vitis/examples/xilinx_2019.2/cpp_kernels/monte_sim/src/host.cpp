@@ -156,13 +156,14 @@ int main(int argc, char **argv) {
     float vol = sqrt(sig*sig*dt);
         
     float sw_results [NUM_STEPS][DATA_SIZE];
-
+    int iter = 0;
     for (int i = 0; i < DATA_SIZE; i++) {
         for (int j = 0; j < NUM_STEPS; j++){
             float result = (j == 0) ? so : sw_results[j-1][i];
-            red_fix_type x = source_in1[i];
+            red_fix_type x = source_in1[iter];
             float x1 = static_cast<float>(x);
             sw_results[j][i] = result * drift * exp(vol*x1);
+            iter++;
         }
     }
 
