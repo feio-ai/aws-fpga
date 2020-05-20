@@ -66,7 +66,7 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
     float tot_sw = 0;
     
 
-    for (int i = 0; i < (DATA_SIZE * NUM_STEPS); i++) {
+    for (int i = 0; i < (10000); i++) {
         
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         
@@ -157,8 +157,8 @@ int main(int argc, char **argv) {
         
     float sw_results [10][10000];
     int iter = 0;
-    for (int i = 0; i < DATA_SIZE; i++) {
-        for (int j = 0; j < NUM_STEPS; j++){
+    for (int i = 0; i < 10000; i++) {
+        for (int j = 0; j < 10; j++){
             float result = (j == 0) ? so : sw_results[j-1][i];
             red_fix_type x = source_in1[iter];
             float x1 = static_cast<float>(x);
@@ -167,7 +167,7 @@ int main(int argc, char **argv) {
         }
     }
 
-    for (int j = 0, k = 0, itr = 0; itr < (DATA_SIZE * NUM_STEPS); j++, itr++){
+    for (int j = 0, k = 0, itr = 0; itr < (100000); j++, itr++){
         
         if (j == NUM_STEPS){
             j = 0;
