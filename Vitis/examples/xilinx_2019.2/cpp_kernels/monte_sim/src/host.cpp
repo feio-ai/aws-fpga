@@ -20,9 +20,9 @@ using std::generate;
 using std::uniform_real_distribution;
 using std::vector;
 
-#define DATA_SIZE 300000
+#define DATA_SIZE 200000
 #define CONST_SIZE 4
-#define NUM_STEPS 10
+#define NUM_STEPS 20
 
 
 typedef ap_fixed<32,16> red_fix_type;
