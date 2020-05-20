@@ -15,6 +15,10 @@
 
 
 using std::vector;
+using std::mt19937;
+using std::generate;
+using std::uniform_real_distribution;
+using std::vector;
 
 #define DATA_SIZE 500000
 #define CONST_SIZE 4
@@ -22,6 +26,13 @@ using std::vector;
 
 
 typedef ap_fixed<32,16> red_fix_type;
+
+float gen_random() {
+    std::random_device seed;
+    static mt19937 re (seed());
+    static std::uniform_real_distribution<float> unif(-9.0, 9.0);
+    return unif(re);
+}
 
 red_fix_type gaussian_box_muller() {
   float x = 0.0;
