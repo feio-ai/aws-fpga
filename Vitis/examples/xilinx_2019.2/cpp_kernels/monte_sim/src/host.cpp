@@ -230,7 +230,7 @@ int main(int argc, char **argv) {
                                         source_hw_results.data(),
                                         &err));
 
-    int size = DATA_SIZE;
+    int size = DATA_SIZE * NUM_STEPS;
 
     OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim", &err));    
     OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1));
