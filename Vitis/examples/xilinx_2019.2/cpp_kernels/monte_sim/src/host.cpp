@@ -60,22 +60,20 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
 
     
-    float hw_sum_val = 0;
-    float sw_sum_val = 0;
-    float tot_hw = 0;
-    float tot_sw = 0;
+    float hw_sum_val;
+    float sw_sum_val;
+    float tot_hw;
+    float tot_sw;
     
     int step_count = static_cast<int>(NUM_STEPS);
 
-    for (int i = 0, j = 0, iter = 0; iter < (DATA_SIZE * NUM_STEPS); i++, j++, iter++;) {
+    for (int i = 0, j = 0, iter = 0; iter < (DATA_SIZE * NUM_STEPS); i++, j++, iter++) {
         
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
         
         // Count annomaly numbers
         hw_sum_val += conv_hw_res;
         sw_sum_val += source_sw_results[i];
-        
-
 
         if (iter % step_count == 0) {
             float temp_avg = hw_sum_val / NUM_STEPS;
