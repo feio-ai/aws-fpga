@@ -35,7 +35,7 @@ void monte_sim(
 #pragma HLS INTERFACE s_axilite port = return bundle = control
 
     fix_type v1_buffer[NUM_STEPS][BUFFER_SIZE];
-    fix_type v2_buffer[BUFFER_SIZE];
+    fix_type v2_buffer[NUM_STEPS];
     fix_type vout_buffer[NUM_STEPS][BUFFER_SIZE];
     
 // Read Constants loop
