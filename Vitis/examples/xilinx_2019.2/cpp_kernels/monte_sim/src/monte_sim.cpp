@@ -7,7 +7,7 @@
 
 #define NUM_STEPS 100
 #define BUFFER_SIZE 10000
-#define DATA_SIZE 900000
+#define DATA_SIZE 400000
 
 typedef ap_fixed<32,16> fix_type;
 
@@ -34,9 +34,12 @@ void monte_sim(
 #pragma HLS INTERFACE s_axilite port = size bundle = control
 #pragma HLS INTERFACE s_axilite port = return bundle = control
 
+
     fix_type v1_buffer[NUM_STEPS][BUFFER_SIZE];
     fix_type v2_buffer[NUM_STEPS];
     fix_type vout_buffer[NUM_STEPS][BUFFER_SIZE];
+
+    #pragma HLS ARRAY_PARTITION variable = v1_buffer dim = 2 block = 4
     
 // Read Constants loop
 read_const:
