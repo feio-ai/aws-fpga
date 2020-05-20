@@ -59,22 +59,37 @@ void verify(
 void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
             vector<red_fix_type, aligned_allocator<red_fix_type>> &source_hw_results) {
 
-    float sum_err = 0;
+    
     float hw_sum_val = 0;
     float sw_sum_val = 0;
+    float tot_hw = 0;
+    float tot_sw = 0;
     
-    for (int i = 0; i < (DATA_SIZE * NUM_STEPS); i++) {
+    int step_count = static_cast<int>(NUM_STEPS);
+
+    for (int i = 0, j = 0, iter = 0; iter < (DATA_SIZE * NUM_STEPS); i++, j++, iter++;) {
+        
         float conv_hw_res = static_cast<float>(source_hw_results[i]);
+        
         // Count annomaly numbers
-    
         hw_sum_val += conv_hw_res;
         sw_sum_val += source_sw_results[i];
+        
 
-        sum_err += abs(conv_hw_res - source_sw_results[i]) / source_sw_results[i];
+
+        if (iter % step_count == 0) {
+            float temp_avg = hw_sum_val / NUM_STEPS;
+            float temp_avg_sw = sw_sum_val / NUM_STEPS; 
+            tot_hw += temp_avg;
+            tot_sw += temp_avg_sw;
+            hw_sum_val = 0;
+            sw_sum_val = 0;
+        }
      
     }
-    float hw_avg_val = hw_sum_val / DATA_SIZE;
-    float sw_avg_val = sw_sum_val / DATA_SIZE;
+    float hw_avg_val = tot_hw / DATA_SIZE;
+    float sw_avg_val = tot_sw / DATA_SIZE;
+    float sum_err = abs(hw_avg_val - sw_avg_val) / sw_avg_val;
     float avg_err = sum_err / DATA_SIZE;
     std::cout << "Average Percent Error: " << avg_err
               << " Average Stock Value (HW): " << hw_avg_val
