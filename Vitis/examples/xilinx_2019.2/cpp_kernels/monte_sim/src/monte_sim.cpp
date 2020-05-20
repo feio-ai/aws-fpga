@@ -56,14 +56,14 @@ read_const:
     fix_type cons1 = (r - (hls_p * half)) * dt;
     fix_type cons2 = sig * hls_sq;
 
-    for (int i = 0; i < DATA_SIZE * NUM_STEPS; i += BUFFER_SIZE) {
+    for (int i = 0; i < (DATA_SIZE * NUM_STEPS); i += (BUFFER_SIZE * NUM_STEPS)) {
         int chunk_size = BUFFER_SIZE;
 
         if ((i + BUFFER_SIZE) > size)
             chunk_size = size - i;
 
     read1:
-        for (int itr = 0, k = 0, j = 0; itr < chunk_size * NUM_STEPS; itr++, j++) {
+        for (int itr = 0, k = 0, j = 0; itr < (chunk_size * NUM_STEPS); itr++, j++) {
             #pragma HLS PIPELINE II=1
             if (j == NUM_STEPS) {
                 j = 0;
