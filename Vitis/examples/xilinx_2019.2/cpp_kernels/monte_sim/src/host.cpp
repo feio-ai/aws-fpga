@@ -16,7 +16,7 @@
 
 using std::vector;
 
-#define DATA_SIZE 1000
+#define DATA_SIZE 10000
 #define CONST_SIZE 4
 #define NUM_STEPS 10
 

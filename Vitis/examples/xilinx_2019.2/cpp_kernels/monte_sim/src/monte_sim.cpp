@@ -6,8 +6,8 @@
 #include "ap_fixed.h"
 
 #define NUM_STEPS 10
-#define BUFFER_SIZE 100
-#define DATA_SIZE 1000
+#define BUFFER_SIZE 1000
+#define DATA_SIZE 10000
 
 typedef ap_fixed<32,16> fix_type;
 
@@ -83,7 +83,6 @@ read_const:
 
             }
         }
-            //burst write the result
 
     write:
         for (int itr = 0, x = 0, z = 0; itr < chunk_size; itr++, z++) {
