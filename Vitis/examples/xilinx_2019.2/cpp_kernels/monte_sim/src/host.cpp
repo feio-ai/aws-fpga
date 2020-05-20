@@ -18,7 +18,7 @@ using std::vector;
 
 #define DATA_SIZE 100000
 #define CONST_SIZE 4
-#define NUM_STEPS 10
+#define NUM_STEPS 100
 
 
 typedef ap_fixed<32,16> red_fix_type;
@@ -155,7 +155,7 @@ int main(int argc, char **argv) {
     float drift = exp(dt*(r - 0.5*sig*sig));
     float vol = sqrt(sig*sig*dt);
         
-    float sw_results [NUM_STEPS][DATA_SIZE];
+    float sw_results [10][10000];
     int iter = 0;
     for (int i = 0; i < DATA_SIZE; i++) {
         for (int j = 0; j < NUM_STEPS; j++){
