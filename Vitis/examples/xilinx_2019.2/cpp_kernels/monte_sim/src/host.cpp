@@ -16,9 +16,9 @@
 
 using std::vector;
 
-#define DATA_SIZE 100000
+#define DATA_SIZE 10000
 #define CONST_SIZE 4
-#define NUM_STEPS 100
+#define NUM_STEPS 10
 
 
 typedef ap_fixed<32,16> red_fix_type;
