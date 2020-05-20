@@ -6,8 +6,8 @@
 #include "ap_fixed.h"
 
 #define NUM_STEPS 100
-#define BUFFER_SIZE 10000
-#define DATA_SIZE 400000
+#define BUFFER_SIZE 1000
+#define DATA_SIZE 100000
 
 typedef ap_fixed<32,16> fix_type;
 
@@ -39,7 +39,7 @@ void monte_sim(
     fix_type v2_buffer[NUM_STEPS];
     fix_type vout_buffer[NUM_STEPS][BUFFER_SIZE];
 
-    #pragma HLS ARRAY_PARTITION variable = v1_buffer dim = 2 block factor = 4
+    #pragma HLS ARRAY_PARTITION variable = v1_buffer dim = 2 block factor = 2
     
 // Read Constants loop
 read_const:
