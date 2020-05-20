@@ -34,9 +34,9 @@ void monte_sim(
 #pragma HLS INTERFACE s_axilite port = size bundle = control
 #pragma HLS INTERFACE s_axilite port = return bundle = control
 
-    fix_type v1_buffer[BUFFER_SIZE][NUM_STEPS];
+    fix_type v1_buffer[NUM_STEPS][BUFFER_SIZE];
     fix_type v2_buffer[BUFFER_SIZE];
-    fix_type vout_buffer[BUFFER_SIZE][NUM_STEPS];
+    fix_type vout_buffer[NUM_STEPS][BUFFER_SIZE];
     
 // Read Constants loop
 read_const:
@@ -52,10 +52,10 @@ read_const:
     fix_type dt = t / NUM_STEPS;
     fix_type hls_p = hls::pow(sig, 2);
     fix_type hls_sq = hls::sqrt(dt);
-    fix_type cons1 = r - (hls_p / 2) * dt;
+    fix_type cons1 = (r - (hls_p * 0.5)) * dt;
     fix_type cons2 = sig * hls_sq;
 
-    for (int i = 0; i < size * NUM_STEPS; i += BUFFER_SIZE) {
+    for (int i = 0; i < DATA_SIZE * NUM_STEPS; i += BUFFER_SIZE) {
         int chunk_size = BUFFER_SIZE;
 
         if ((i + BUFFER_SIZE) > size)
