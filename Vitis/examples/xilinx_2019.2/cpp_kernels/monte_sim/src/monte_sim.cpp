@@ -49,6 +49,12 @@ read_const:
     fix_type r = v2_buffer[2];
     fix_type sig = v2_buffer[3];
 
+    fix_type dt = t / NUM_STEPS;
+    fix_type hls_p = hls::pow(sig, 2);
+    fix_type hls_sq = hls::sqrt(dt);
+    fix_type cons1 = r - (hls_p / 2) * dt;
+    fix_type cons2 = sig * hls_sq;
+
     for (int i = 0; i < size * NUM_STEPS; i += BUFFER_SIZE) {
         int chunk_size = BUFFER_SIZE;
 
@@ -62,23 +68,17 @@ read_const:
                 j = 0;
                 k++;
             }
-            v1_buffer[k][j] = in1[i + itr];
+            v1_buffer[j][k] = in1[i + itr];
         }   
-        fix_type dt = t / NUM_STEPS;
-        fix_type hls_p = hls::pow(sig, 2);
-        fix_type hls_sq = hls::sqrt(dt);
-        fix_type cons1 = r - (hls_p / 2) * dt;
-        fix_type cons2 = sig * hls_sq;
-        
         
     monte_sim:
         for (int col = 0; col < BUFFER_SIZE; col++) {
             for (int row = 0; row < NUM_STEPS; row++) {
                 #pragma HLS PIPELINE II=1
-                fix_type result = (row == 0) ? so : vout_buffer[col][row - 1];
+                fix_type result = (row == 0) ? so : vout_buffer[row - 1][col];
                 fix_type x = v1_buffer[row][col];
                 fix_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
-                vout_buffer[col][row] = result * hls_exp_c;
+                vout_buffer[row][col] = result * hls_exp_c;
 
             }
         }
@@ -91,7 +91,7 @@ read_const:
                 z = 0;
                 x++;
             }
-            out_r[i + itr] = vout_buffer[x][z];
+            out_r[i + itr] = vout_buffer[z][x];
         }  
 
     }
