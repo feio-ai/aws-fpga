@@ -39,7 +39,7 @@ void monte_sim(
     fix_type v2_buffer[NUM_STEPS];
     fix_type vout_buffer[NUM_STEPS][BUFFER_SIZE];
 
-    #pragma HLS ARRAY_PARTITION variable = v1_buffer dim = 2 block factor = 2
+    #pragma HLS ARRAY_PARTITION variable = v1_buffer dim = 2 block factor = 10
     
 // Read Constants loop
 read_const:
