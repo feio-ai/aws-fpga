@@ -211,7 +211,7 @@ int main(int argc, char **argv) {
         OCL_CHECK(err, context = cl::Context({device}, NULL, NULL, NULL, &err));
         OCL_CHECK(err, 
                  q = cl::CommandQueue(
-                     context, {device}, CL_QUEUE_PROFILING_ENABLE, &err));
+                     context, {device}, CL_QUEUE_PROFILING_ENABLE | CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE, &err));
 
         std::cout << "Trying to program device[" << i
                   << "]: " << device.getInfo<CL_DEVICE_NAME>() << std::endl;
