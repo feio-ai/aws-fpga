@@ -74,8 +74,8 @@ read_const:
         
     monte_sim:
         for (int col = 0; col < (BUFFER_SIZE / NUM_STEPS); col++) {
+            #pragma HLS PIPELINE II=1
             for (int row = 0; row < NUM_STEPS; row++) {
-                #pragma HLS PIPELINE II=1
                 fix_type result = (row == 0) ? v2_buffer[1] : vout_buffer[row - 1][col];
                 fix_type x = v1_buffer[row][col];
                 fix_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
