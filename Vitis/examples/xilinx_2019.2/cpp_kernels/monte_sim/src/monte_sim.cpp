@@ -5,7 +5,7 @@
 #include "hls_math.h"
 #include "ap_fixed.h"
 
-#define NUM_STEPS 100
+#define NUM_STEPS 50
 #define BUFFER_SIZE 1000
 #define DATA_SIZE 100000
 
