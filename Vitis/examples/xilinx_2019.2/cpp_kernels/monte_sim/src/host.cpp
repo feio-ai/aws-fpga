@@ -22,7 +22,7 @@ using std::vector;
 
 #define DATA_SIZE 100000
 #define CONST_SIZE 4
-#define NUM_STEPS 10
+#define NUM_STEPS 100
 
 
 typedef ap_fixed<32,16> red_fix_type;
@@ -196,6 +196,7 @@ int main(int argc, char **argv) {
     source_const.at(2) = (float)(r); // r
     source_const.at(3) = (float)(sig); // sigma
     
+    // generate sw_results
     mcaccel(so, r, sig, t, source_in1, source_sw_results);
 
     // -------------------------------------------------------------------------
