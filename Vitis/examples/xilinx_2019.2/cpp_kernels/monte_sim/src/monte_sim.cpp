@@ -9,7 +9,7 @@
 #define BUFFER_SIZE 1000
 #define DATA_SIZE 200000
 
-typedef ap_fixed<24,8> fix_type;
+typedef ap_fixed<32,16> fix_type;
 
 //TRIPCOUNT identifiers
 // const unsigned int c_len = (DATA_SIZE * NUM_STEPS) / BUFFER_SIZE;

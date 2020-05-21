@@ -25,7 +25,7 @@ using std::vector;
 #define NUM_STEPS 10
 
 
-typedef ap_fixed<24,8> red_fix_type;
+typedef ap_fixed<32,16> red_fix_type;
 
 float gen_random() {
     std::random_device seed;
