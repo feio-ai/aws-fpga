@@ -27,7 +27,7 @@ void monte_sim(
 
 // Buffer inputs
 #pragma HLS INTERFACE m_axi port=in1 offset=slave bundle=gmem
-#pragma HLS INTERFACE m_axi port=in2 offset=slave bundle=gmem
+#pragma HLS INTERFACE m_axi port=in2 offset=slave bundle=gmem1
 #pragma HLS INTERFACE m_axi port=out_r offset=slave bundle=gmem
 #pragma HLS INTERFACE s_axilite port = in1 bundle = control
 #pragma HLS INTERFACE s_axilite port = in2 bundle = control
