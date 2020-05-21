@@ -8,6 +8,7 @@
 #define NUM_STEPS 10
 #define BUFFER_SIZE 1000
 #define DATA_SIZE 100000
+#define CONST_SIZE 4
 
 typedef ap_fixed<32,16> fix_type;
 
@@ -36,7 +37,7 @@ void monte_sim(
 
 
     fix_type v1_buffer[NUM_STEPS][BUFFER_SIZE];
-    fix_type v2_buffer[NUM_STEPS];
+    fix_type v2_buffer[CONST_SIZE];
     fix_type vout_buffer[NUM_STEPS][BUFFER_SIZE];
 
     #pragma HLS ARRAY_PARTITION variable = v1_buffer dim = 2 block factor = 10
@@ -46,18 +47,18 @@ read_const:
     for (int z = 0; z < 4; z++) {
         v2_buffer[z] = in2[z];
     }
-
+/*
     fix_type t = v2_buffer[0];
     fix_type so = v2_buffer[1];
     fix_type r = v2_buffer[2];
     fix_type sig = v2_buffer[3];
+*/
     fix_type half = 0.5;
-
-    fix_type dt = t / NUM_STEPS;
-    fix_type hls_p = hls::pow(sig, 2);
+    fix_type dt = v2_buffer[0] / NUM_STEPS;
+    fix_type hls_p = hls::pow(v2_buffer[3], 2);
     fix_type hls_sq = hls::sqrt(dt);
-    fix_type cons1 = (r - (hls_p * half)) * dt;
-    fix_type cons2 = sig * hls_sq;
+    fix_type cons1 = (v2_buffer[2] - (hls_p * half)) * dt;
+    fix_type cons2 = v2_buffer[3] * hls_sq;
 
     for (int i = 0; i < size; i += BUFFER_SIZE) {
         int chunk_size = BUFFER_SIZE;
@@ -79,7 +80,7 @@ read_const:
         for (int col = 0; col < (BUFFER_SIZE / NUM_STEPS); col++) {
             for (int row = 0; row < NUM_STEPS; row++) {
                 #pragma HLS PIPELINE II=1
-                fix_type result = (row == 0) ? so : vout_buffer[row - 1][col];
+                fix_type result = (row == 0) ? v2_buffer[1] : vout_buffer[row - 1][col];
                 fix_type x = v1_buffer[row][col];
                 fix_type hls_exp_c = hls::exp( cons1 + ( x * cons2) );
                 vout_buffer[row][col] = result * hls_exp_c;
