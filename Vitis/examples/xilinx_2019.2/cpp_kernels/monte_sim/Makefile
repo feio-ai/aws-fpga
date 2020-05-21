@@ -43,6 +43,8 @@ BUILD_DIR := ./build_dir.$(TARGET).$(XSA)
 VPP := v++
 SDCARD := sd_card
 
+VPP_LINK_OPTS := --config compile.cfg
+
 #Include Libraries
 include $(ABS_COMMON_REPO)/common/includes/opencl/opencl.mk
 include $(ABS_COMMON_REPO)/common/includes/xcl2/xcl2.mk
