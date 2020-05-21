@@ -20,7 +20,7 @@ using std::generate;
 using std::uniform_real_distribution;
 using std::vector;
 
-#define DATA_SIZE 200000
+#define DATA_SIZE 100000
 #define CONST_SIZE 4
 #define NUM_STEPS 10
 
@@ -30,7 +30,7 @@ typedef ap_fixed<32,16> red_fix_type;
 float gen_random() {
     std::random_device seed;
     static mt19937 re (seed());
-    static std::uniform_real_distribution<float> unif(-9.0, 9.0);
+    static std::uniform_real_distribution<float> unif(0.0, RAND_MAX);
     return unif(re);
 }
 
@@ -40,8 +40,8 @@ red_fix_type gaussian_box_muller() {
   float euclid_sq = 0.0;
 
   do {
-    x = 2.0 * rand() / static_cast<float>(RAND_MAX)-1;
-    y = 2.0 * rand() / static_cast<float>(RAND_MAX)-1;
+    x = 2.0 * gen_random() / static_cast<float>(RAND_MAX)-1;
+    y = 2.0 * gen_random() / static_cast<float>(RAND_MAX)-1;
     euclid_sq = x*x + y*y;
   } while (euclid_sq >= 1.0);  
 
@@ -106,6 +106,40 @@ void acc_measure(vector<float, aligned_allocator<float>> &source_sw_results,
 
 }
 
+void mcaccel (
+    const float& so,
+    const float& r,
+    const float& sig,
+    const float& t,
+    vector<red_fix_type, aligned_allocator<red_fix_type>>& source_in1, 
+    vector<float, aligned_allocator<float>>& source_sw_results
+) {
+
+    float dt = t / static_cast<float>(NUM_STEPS);
+    float drift = exp(dt*(r - 0.5*sig*sig));
+    float vol = sqrt(sig*sig*dt);
+        
+    float sw_results [NUM_STEPS][DATA_SIZE];
+    int iter = 0;
+    for (int i = 0; i < DATA_SIZE; i++) {
+        for (int j = 0; j < NUM_STEPS; j++){
+            float result = (j == 0) ? so : sw_results[j-1][i];
+            red_fix_type x = source_in1[iter];
+            float x1 = static_cast<float>(x);
+            sw_results[j][i] = result * drift * exp(vol*x1);
+            iter++;
+        }
+    }
+
+    for (int j = 0, k = 0, itr = 0; itr < (DATA_SIZE * NUM_STEPS); j++, itr++){
+        
+        if (j == NUM_STEPS){
+            j = 0;
+            k++;
+        }
+        source_sw_results[itr] = sw_results[j][k];
+    }
+}
 
 
 int main(int argc, char **argv) {
@@ -162,30 +196,7 @@ int main(int argc, char **argv) {
     source_const.at(2) = (float)(r); // r
     source_const.at(3) = (float)(sig); // sigma
     
-    float dt = t / static_cast<float>(NUM_STEPS);
-    float drift = exp(dt*(r - 0.5*sig*sig));
-    float vol = sqrt(sig*sig*dt);
-        
-    float sw_results [NUM_STEPS][DATA_SIZE];
-    int iter = 0;
-    for (int i = 0; i < DATA_SIZE; i++) {
-        for (int j = 0; j < NUM_STEPS; j++){
-            float result = (j == 0) ? so : sw_results[j-1][i];
-            red_fix_type x = source_in1[iter];
-            float x1 = static_cast<float>(x);
-            sw_results[j][i] = result * drift * exp(vol*x1);
-            iter++;
-        }
-    }
-
-    for (int j = 0, k = 0, itr = 0; itr < (DATA_SIZE * NUM_STEPS); j++, itr++){
-        
-        if (j == NUM_STEPS){
-            j = 0;
-            k++;
-        }
-        source_sw_results[itr] = sw_results[j][k];
-    }
+    mcaccel(so, r, sig, t, source_in1, source_sw_results);
 
     // -------------------------------------------------------------------------
     // OpenCL Host Area Start
