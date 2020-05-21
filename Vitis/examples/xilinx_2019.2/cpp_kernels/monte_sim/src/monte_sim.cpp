@@ -45,14 +45,10 @@ void monte_sim(
 // Read Constants loop
 read_const:
     for (int z = 0; z < 4; z++) {
+        #pragma HLS PIPELINE II=1
         v2_buffer[z] = in2[z];
     }
-/*
-    fix_type t = v2_buffer[0];
-    fix_type so = v2_buffer[1];
-    fix_type r = v2_buffer[2];
-    fix_type sig = v2_buffer[3];
-*/
+
     fix_type half = 0.5;
     fix_type dt = v2_buffer[0] / NUM_STEPS;
     fix_type hls_p = hls::pow(v2_buffer[3], 2);
