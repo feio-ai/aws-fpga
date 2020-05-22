@@ -43,19 +43,6 @@ void monte_sim(
     #pragma HLS ARRAY_PARTITION variable = v1_buffer dim = 2 block factor = 10
     
 // Read Constants loop
-read_const:
-    for (int z = 0; z < CONST_SIZE; z++) {
-        #pragma HLS PIPELINE II=1
-        v2_buffer[z] = in2[z];
-    }
-
-
-    fix_type half = 0.5;
-    fix_type dt = v2_buffer[0] / NUM_STEPS;
-    fix_type hls_p = hls::pow(v2_buffer[3], 2);
-    fix_type hls_sq = hls::sqrt(dt);
-    fix_type cons1 = (v2_buffer[2] - (hls_p * half)) * dt;
-    fix_type cons2 = v2_buffer[3] * hls_sq;
 
     for (int i = 0; i < size; i += BUFFER_SIZE) {
         int chunk_size = BUFFER_SIZE;
@@ -72,6 +59,21 @@ read_const:
             }
             v1_buffer[j][k] = in1[i + itr];
         }   
+
+            read_const:
+        for (int z = 0; z < CONST_SIZE; z++) {
+            #pragma HLS PIPELINE II=1
+            v2_buffer[z] = in2[z];
+        }
+
+
+        fix_type half = 0.5;
+        fix_type dt = v2_buffer[0] / NUM_STEPS;
+        fix_type hls_p = hls::pow(v2_buffer[3], 2);
+        fix_type hls_sq = hls::sqrt(dt);
+        fix_type cons1 = (v2_buffer[2] - (hls_p * half)) * dt;
+        fix_type cons2 = v2_buffer[3] * hls_sq;
+
         
     monte_sim:
         for (int col = 0; col < (BUFFER_SIZE / NUM_STEPS); col++) {
