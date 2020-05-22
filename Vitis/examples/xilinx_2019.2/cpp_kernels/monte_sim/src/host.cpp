@@ -22,7 +22,9 @@ using std::vector;
 
 #define DATA_SIZE 100000
 #define CONST_SIZE 4
-#define NUM_STEPS 10
+#define NUM_STEPS 100
+
+#define WORK_GROUP 4 
 
 
 typedef ap_fixed<16,8> red_fix_type;
@@ -191,6 +193,7 @@ int main(int argc, char **argv) {
     sig = 0.20;
     t = 0.5;
 
+    
     source_const.at(0) = (float)(t); // time
     source_const.at(1) = (float)(so); // so
     source_const.at(2) = (float)(r); // r
@@ -209,9 +212,10 @@ int main(int argc, char **argv) {
         auto device = devices[i];
         // Create Context and Command Queue
         OCL_CHECK(err, context = cl::Context({device}, NULL, NULL, NULL, &err));
-        OCL_CHECK(err, 
+        // OCL_CHECK(err, 
                  q = cl::CommandQueue(
                      context, {device}, CL_QUEUE_PROFILING_ENABLE, &err));
+        OCL_CHECK(err, cl::CommandQueue q(context, device, CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE | CL_QUEUE_PROFILING_ENABLE, &err));
 
         std::cout << "Trying to program device[" << i
                   << "]: " << device.getInfo<CL_DEVICE_NAME>() << std::endl;
@@ -255,20 +259,27 @@ int main(int argc, char **argv) {
                                         &err));
 
     int size = DATA_SIZE * NUM_STEPS;
-
+    int narg = 0;
     OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim", &err));    
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(0, buffer_in1));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(1, buffer_in2));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(2, buffer_output));
-    OCL_CHECK(err, err = kernel_monte_sim.setArg(3, size));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(narg++, buffer_in1));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(narg++, buffer_in2));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(narg++, buffer_output));
+    OCL_CHECK(err, err = kernel_monte_sim.setArg(narg++, size));
 
     // Copy input data to device global memory
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));
 
-    cl::Event event;
+    cl::Event events[work_group];
+    // cl::Event event;
     uint64_t nstimestart, nstimeend;
+    int work_group = WORK_GROUP;
+    for (int i = 0; i < work_group; i++) {
+        OCL_CHECK(err, err = kernel_monte_sim.setArg(3, i));
+        OCL_CHECK(err, err = kernel_monte_sim.setArg(4, work_group));
+        OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim, NULL, &events[i]));
 
-    OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim, NULL, &event));
+    }
+    // OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim, NULL, &event));
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_output},
                                                     CL_MIGRATE_MEM_OBJECT_HOST));
     q.finish();
