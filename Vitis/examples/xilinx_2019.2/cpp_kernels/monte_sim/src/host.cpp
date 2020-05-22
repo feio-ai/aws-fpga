@@ -277,8 +277,8 @@ int main(int argc, char **argv) {
     auto kernel_start = std::chrono::high_resolution_clock::now();
 
     for (int i = 0; i < work_group; i++) {
-        OCL_CHECK(err, err = kernel_monte_sim.setArg(3, i));
-        OCL_CHECK(err, err = kernel_monte_sim.setArg(4, work_group));
+        // OCL_CHECK(err, err = kernel_monte_sim.setArg(3, i));
+        // OCL_CHECK(err, err = kernel_monte_sim.setArg(4, work_group));
         OCL_CHECK(err, err = q.enqueueTask(kernel_monte_sim, NULL, &events[i]));
 
     }
