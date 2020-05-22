@@ -269,11 +269,11 @@ int main(int argc, char **argv) {
 
     // Copy input data to device global memory
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_in1, buffer_in2}, 0));
-
+    int work_group = WORK_GROUP;
     cl::Event events[work_group];
     // cl::Event event;
     uint64_t nstimestart, nstimeend;
-    int work_group = WORK_GROUP;
+    
     for (int i = 0; i < work_group; i++) {
         OCL_CHECK(err, err = kernel_monte_sim.setArg(3, i));
         OCL_CHECK(err, err = kernel_monte_sim.setArg(4, work_group));
