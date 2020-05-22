@@ -20,14 +20,14 @@ using std::generate;
 using std::uniform_real_distribution;
 using std::vector;
 
-#define DATA_SIZE 100000
+#define DATA_SIZE 10000
 #define CONST_SIZE 4
-#define NUM_STEPS 100
+#define NUM_STEPS 10
 
 #define WORK_GROUP 4 
 
 
-typedef ap_fixed<16,8> red_fix_type;
+typedef ap_fixed<32,16> red_fix_type;
 
 float gen_random() {
     std::random_device seed;
