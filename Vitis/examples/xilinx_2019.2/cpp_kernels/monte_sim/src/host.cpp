@@ -272,8 +272,10 @@ int main(int argc, char **argv) {
     int work_group = WORK_GROUP;
     cl::Event events[work_group];
     // cl::Event event;
-    uint64_t nstimestart, nstimeend;
+    uint64_t nstimestart, nstimeend, duration;
     
+    auto kernel_start = std::chrono::high_resolution_clock::now();
+
     for (int i = 0; i < work_group; i++) {
         OCL_CHECK(err, err = kernel_monte_sim.setArg(3, i));
         OCL_CHECK(err, err = kernel_monte_sim.setArg(4, work_group));
@@ -284,15 +286,15 @@ int main(int argc, char **argv) {
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_output},
                                                     CL_MIGRATE_MEM_OBJECT_HOST));
     q.finish();
+    auto kernel_end = std::chrono::high_resolution_clock::now();
+    auto kernel_time = std::chrono::duration<uint64_t, std::nano>(kernel_end - kernel_start);
+    duration =  kernel_time.count();
 
-    OCL_CHECK(err,
-              err = event.getProfilingInfo<uint64_t>(CL_PROFILING_COMMAND_START,
-                                                     &nstimestart));
-    OCL_CHECK(err,
-              err = event.getProfilingInfo<uint64_t>(CL_PROFILING_COMMAND_END,
-                                                     &nstimeend));
+/*
+    OCL_CHECK(err, err = event.getProfilingInfo<uint64_t>(CL_PROFILING_COMMAND_START, &nstimestart));
+    OCL_CHECK(err, err = event.getProfilingInfo<uint64_t>(CL_PROFILING_COMMAND_END, &nstimeend));
     auto monte_sim_time = nstimeend - nstimestart;
-
+*/
     verify(source_sw_results, source_hw_results);
     acc_measure(source_sw_results, source_hw_results);
 
@@ -302,7 +304,7 @@ int main(int argc, char **argv) {
            "| Kernel                  |    Wall-Clock Time (ns) |\n"
            "|-------------------------+-------------------------|\n");
 
-    printf("| %-23s | %23lu |\n", "monte_sim: ", monte_sim_time);
+    printf("| %-23s | %23lu |\n", "monte_sim: ", duration);
     printf("|-------------------------+-------------------------|\n");
     //OpenCL Host Code Area End
 
