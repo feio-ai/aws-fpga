@@ -272,7 +272,7 @@ int main(int argc, char **argv) {
     int work_group = WORK_GROUP;
     cl::Event events[work_group];
     // cl::Event event;
-    uint64_t nstimestart, nstimeend, duration;
+    uint64_t duration;
     
     auto kernel_start = std::chrono::high_resolution_clock::now();
 
@@ -311,11 +311,7 @@ int main(int argc, char **argv) {
     
     return EXIT_SUCCESS;
     
-    cl::ReleaseCommandQueue(q); 
-    cl::ReleaseContext(context); 
-    cl::ReleaseDevice(Target_Device_ID); 
-    cl::ReleaseKernel(kernel_monte_sim); 
-    cl::ReleaseProgram(program); 
+    // Clean up needed?
 
 
 }
