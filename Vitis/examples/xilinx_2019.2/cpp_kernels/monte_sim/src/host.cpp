@@ -261,7 +261,7 @@ int main(int argc, char **argv) {
 
     int size = DATA_SIZE * NUM_STEPS;
     int narg = 0;
-    OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim:{monte_sim_1,monte_sim_2,monte_sim_3,monte_sim_4", &err));    
+    OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim:{monte_sim_1,monte_sim_2,monte_sim_3,monte_sim_4}", &err));    
     OCL_CHECK(err, err = kernel_monte_sim.setArg(narg++, buffer_in1));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(narg++, buffer_in2));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(narg++, buffer_output));
