@@ -311,6 +311,13 @@ int main(int argc, char **argv) {
     
     return EXIT_SUCCESS;
     
+    clReleaseCommandQueue(Command_Queue); 
+    clReleaseContext(Context); 
+    clReleaseDevice(Target_Device_ID); 
+    clReleaseKernel(Kernel); 
+    clReleaseProgram(Program); 
+    free(Platform_IDs);
+    free(Device_IDs);
 
 
 
