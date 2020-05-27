@@ -311,11 +311,11 @@ int main(int argc, char **argv) {
     
     return EXIT_SUCCESS;
     
-    clReleaseCommandQueue(q); 
-    clReleaseContext(context); 
-    clReleaseDevice(Target_Device_ID); 
-    clReleaseKernel(kernel_monte_sim); 
-    clReleaseProgram(program); 
+    cl::ReleaseCommandQueue(q); 
+    cl::ReleaseContext(context); 
+    cl::ReleaseDevice(Target_Device_ID); 
+    cl::ReleaseKernel(kernel_monte_sim); 
+    cl::ReleaseProgram(program); 
 
 
 }
