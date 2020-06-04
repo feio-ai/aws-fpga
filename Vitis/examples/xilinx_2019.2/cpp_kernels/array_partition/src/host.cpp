@@ -89,8 +89,8 @@ int main(int argc, char **argv) {
         return EXIT_FAILURE;
     }
     std::string binaryFile = argv[1];
-    static const int columns = 32;
-    static const int rows = 32;
+    static const int columns = 100;
+    static const int rows = 100;
     cl_int err;
     cl::CommandQueue q;
     cl::Context context;
