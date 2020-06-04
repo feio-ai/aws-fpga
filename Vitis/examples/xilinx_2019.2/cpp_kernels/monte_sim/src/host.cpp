@@ -212,10 +212,10 @@ int main(int argc, char **argv) {
         auto device = devices[i];
         // Create Context and Command Queue
         OCL_CHECK(err, context = cl::Context({device}, NULL, NULL, NULL, &err));
-        // OCL_CHECK(err, q = cl::CommandQueue(context, {device}, CL_QUEUE_PROFILING_ENABLE, &err));
+        OCL_CHECK(err, q = cl::CommandQueue(context, {device}, CL_QUEUE_PROFILING_ENABLE, &err));
 
         // FOR MULTIPLE KERNELS ON ONE DEVICE      
-        OCL_CHECK(err, q = cl::CommandQueue(context, {device}, CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE, &err));
+        // OCL_CHECK(err, q = cl::CommandQueue(context, {device}, CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE, &err));
 
         std::cout << "Trying to program device[" << i
                   << "]: " << device.getInfo<CL_DEVICE_NAME>() << std::endl;
@@ -262,8 +262,8 @@ int main(int argc, char **argv) {
     int narg = 0;
 
     // FOR MULTIPLE KERNELS ON ONE DEVICE
-    OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim:{monte_sim_1,monte_sim_2,monte_sim_3,monte_sim_4}", &err));    
-    // OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim", &err));    
+    // OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim:{monte_sim_1,monte_sim_2,monte_sim_3,monte_sim_4}", &err));    
+    OCL_CHECK(err, kernel_monte_sim = cl::Kernel(program, "monte_sim", &err));    
     OCL_CHECK(err, err = kernel_monte_sim.setArg(narg++, buffer_in1));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(narg++, buffer_in2));
     OCL_CHECK(err, err = kernel_monte_sim.setArg(narg++, buffer_output));
