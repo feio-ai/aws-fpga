@@ -97,9 +97,13 @@ $(TEMP_DIR)/monte_sim.xo: src/monte_sim.cpp
 	mkdir -p $(TEMP_DIR)
 	$(VPP) $(CLFLAGS) --temp_dir $(TEMP_DIR) -c -k monte_sim -I'$(<D)' -o'$@' '$<'
 
+# $(BUILD_DIR)/monte_sim.xclbin: $(BINARY_CONTAINER_matmul_OBJS)
+#	mkdir -p $(BUILD_DIR)
+#	$(VPP) $(CLFLAGS) --temp_dir $(BUILD_DIR) -l $(LDCLFLAGS) --connectivity.nk monte_sim:4 -o'$@' $(+)
+
 $(BUILD_DIR)/monte_sim.xclbin: $(BINARY_CONTAINER_matmul_OBJS)
 	mkdir -p $(BUILD_DIR)
-	$(VPP) $(CLFLAGS) --temp_dir $(BUILD_DIR) -l $(LDCLFLAGS) --connectivity.nk monte_sim:4 -o'$@' $(+)
+	$(VPP) $(CLFLAGS) --temp_dir $(BUILD_DIR) -l $(LDCLFLAGS) -o'$@' $(+)
 
 # Building Host
 $(EXECUTABLE): check-xrt $(HOST_SRCS) $(HOST_HDRS)
