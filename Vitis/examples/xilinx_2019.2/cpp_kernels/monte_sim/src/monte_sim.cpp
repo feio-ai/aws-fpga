@@ -7,7 +7,7 @@
 
 #define NUM_STEPS 10
 #define BUFFER_SIZE 1000
-#define DATA_SIZE 4000
+#define DATA_SIZE 10000
 #define CONST_SIZE 4
 
 typedef ap_fixed<32,16> fix_type;
