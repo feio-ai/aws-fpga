@@ -36,7 +36,7 @@ Description:
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_SIZE 16
+#define MAX_SIZE 32
 
 //TRIPCOUNT identifiers
 const unsigned int c_dim = MAX_SIZE;
