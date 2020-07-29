@@ -1,5 +1,6 @@
 #include "structs.hpp"
 #include <stdint.h>
+#include <dirent.h>
 #include <sys/time.h>
 #include <iostream>
 #include <fstream>
@@ -16,10 +17,13 @@
 #include <stdio.h>
 #include <errno.h>
 #include "FringeContext.h"
+// #include "/../aws.sw-resources/headers/FringeContext.h"
 #include "functions.hpp"
 #include "ArgAPI.hpp"
 #include "Fixed.hpp"
 #include <vector>
+// #include <boost/filesystem.hpp>
+// namespace fs = std::filesystem;
 using std::vector;
 
 #ifndef ZYNQ
@@ -30,106 +34,14 @@ void printHelp();
 
 using namespace std;
 
-void Application(int numThreads, vector<string> * args) {
+void Application(int numThreads, vector<string> * args,vector<string> * img_list) {
   // Create an execution context.
   FringeContext *c1 = new FringeContext("./verilog/accel.bit.bin");
   c1->load();
+
+  
   vector<string>* x2637 = args;
-  string x2638;
-  try {
-    x2638 = (*x2637).at(0);
-  }
-  catch (std::out_of_range& e) {
-    printHelp();
-  }
-  std::ifstream x2639_file (x2638);
-  assert(x2639_file.good() && "File x2638 does not exist"); 
-  std::vector<string>* x2640 = new std::vector<string>; 
-  if (x2639_file.is_open()) {
-    while ( x2639_file.good() ) {
-      string x2640_line;
-      getline (x2639_file, x2640_line);
-      string x2640_delim = string("\n");
-      size_t x2640_pos = 0;
-      while (x2640_line.find(x2640_delim) != std::string::npos | x2640_line.length() > 0) {
-        if (x2640_line.find(x2640_delim) != std::string::npos) {
-          x2640_pos = x2640_line.find(x2640_delim);
-        } else {
-          x2640_pos = x2640_line.length();
-        }
-        string x2640_token = x2640_line.substr(0, x2640_pos);
-        x2640_line.erase(0, x2640_pos + x2640_delim.length());
-        x2640->push_back(x2640_token);
-      }
-    }
-  }
-  x2639_file.clear();
-  x2639_file.seekg(0, x2639_file.beg);
-  x2639_file.close();
-  vector<double>* x2644 = new vector<double>((*x2640).size());
-  for (int b5 = 0; b5 < (*x2640).size(); b5++) { 
-    string x2642 = (*x2640)[b5];
-    double x2643 = std::stod(x2642);
-    (*x2644)[b5] = x2643;
-  }
-  int32_t x2645 = (*x2644).size();
-  bool x2646 = 150528 == x2645;
-  string x2647 = std::to_string(x2645);
-  string x2648 = (string("Number of elements in vector (") + x2647);
-  string x2649 = (x2648 + string(") must match number of elements in matrix ("));
-  string x2650 = (x2649 + string("3"));
-  string x2651 = (x2650 + string("x"));
-  string x2652 = (x2651 + string("224"));
-  string x2653 = (x2652 + string("x"));
-  string x2654 = (x2653 + string("224"));
-  string x2655 = (x2654 + string(")"));
-  string x2656 = (string("resnetofficialopt2.scala:43:49:") + x2655);
-  string x2657 = ("\n=================\n" + (x2656 + "\n=================\n"));
-  if (true) { ASSERT(x2646, x2657.c_str()); }
-  vector<double>* x2678 = new vector<double>(158700);
-  for (int b22 = 0; b22 < 158700; b22++) {
-    int32_t x2658 = b22 / 52900;
-    int32_t x2659 = b22 / 230;
-    int32_t x2660 = (int32_t) ((x2659 % 230 + 230) % 230);
-    int32_t x2661 = (int32_t) ((b22 % 230 + 230) % 230);
-    bool x2662 = 3 <= x2660;
-    bool x2663 = x2660 < 227;
-    bool x2664 = x2662 & x2663;
-    bool x2665 = 3 <= x2661;
-    bool x2666 = x2664 & x2665;
-    bool x2667 = x2661 < 227;
-    bool x2668 = x2666 & x2667;
-    double x2677;
-    if (x2668) { 
-      int32_t x2669 = x2660 - 3;
-      int32_t x2670 = x2661 - 3;
-      int32_t x2671 = x2658 * 224;
-      int32_t x2672 = x2671 * 224;
-      int32_t x2673 = x2669 * 224;
-      int32_t x2674 = x2672 + x2673;
-      int32_t x2675 = x2674 + x2670;
-      double x2676 = (*x2644)[x2675];
-      x2677 = x2676;
-    }
-    else {
-      x2677 = 0;
-    }
-    (*x2678)[b22] = x2677;
-  }
-  uint64_t x2679 = c1->malloc(sizeof(double) * 3*230*230);
-  c1->setArg(I0_PAD_DRAM_ptr, x2679, false);
-  printf("Allocate mem of size 3*230*230 at %p\n", (void*)x2679);
-  uint64_t x2680 = c1->malloc(sizeof(double) * 1008);
-  c1->setArg(TMP76_DRAM_ptr, x2680, false);
-  printf("Allocate mem of size 1008 at %p\n", (void*)x2680);
-  vector<int32_t>* x2679_rawified = new vector<int32_t>((*x2678).size());
-  for (int x2679_rawified_i = 0; x2679_rawified_i < (*x2678).size(); x2679_rawified_i++) {
-    (*x2679_rawified)[x2679_rawified_i] = (int32_t) ((*x2678)[x2679_rawified_i] * ((int32_t)1 << 22));
-  }
-  c1->memcpy(x2679, &(*x2679_rawified)[0], (*x2679_rawified).size() * sizeof(int32_t));
-  uint64_t x2682 = c1->malloc(sizeof(double) * 3*802816);
-  c1->setArg(TMP_DRAM_ptr, x2682, false);
-  printf("Allocate mem of size 3*802816 at %p\n", (void*)x2682);
+  // COPYING WEIGHTS TO DEVICE
   int32_t x2683 = (*x2637).size();
   int32_t x2684 = x2683 - 1;
   string x2685;
@@ -139,6 +51,7 @@ void Application(int numThreads, vector<string> * args) {
   catch (std::out_of_range& e) {
     printHelp();
   }
+
   string x2686 = (x2685 + string("/Fused_Conv2D_BiasAdd_k3_bias_concat.bin"));
   std::ifstream x2687 (x2686, std::ios::binary);
   assert(x2687.good() && "File x2686 does not exist"); 
@@ -965,318 +878,475 @@ void Application(int numThreads, vector<string> * args) {
     (*x3096_rawified)[x3096_rawified_i] = (int32_t) ((*x3044)[x3096_rawified_i] * ((int32_t)1 << 22));
   }
   c1->memcpy(x3096, &(*x3096_rawified)[0], (*x3096_rawified).size() * sizeof(int32_t));
-// Register ArgIns and ArgIOs in case some are unused
-c1->setNumArgIns(0 + 11 + 0);
-c1->setNumArgIOs(0);
-c1->setNumArgOuts(0);
-c1->setNumArgOutInstrs(0);
-c1->setNumEarlyExits(0);
-c1->flushCache(1024);
-time_t tstart = time(0);
-c1->run();
-time_t tend = time(0);
-double elapsed = difftime(tend, tstart);
-std::cout << "Kernel done, test run time = " << elapsed << " ms" << std::endl;
-c1->flushCache(1024);
-vector<double>* x18645 = new vector<double>(1008);
-vector<int32_t>* x18645_rawified = new vector<int32_t>((*x18645).size());
-c1->memcpy(&(*x18645_rawified)[0], x2680, (*x18645_rawified).size() * sizeof(int32_t));
-for (int x18645_i = 0; x18645_i < (*x18645).size(); x18645_i++) {
-int32_t x18645_tmp = (*x18645_rawified)[x18645_i];
-(*x18645)[x18645_i] = (double) x18645_tmp / ((int32_t)1 << 22);
-}
-vector<double>* x18649 = new vector<double>(1000);
-for (int b1259 = 0; b1259 < 1000; b1259++) {
-int32_t x18647 = b1259 + 1;
-double x18648 = (*x18645)[x18647];
-(*x18649)[b1259] = x18648;
-}
-string x18650 = (string("output") + string("\n"));
-std::cout << x18650;
-int32_t x18652 = (*x18649).size();
-for (int b1266 = 0; b1266 < x18652; b1266 = b1266 + 1) {
-double x18653 = (*x18649)[b1266];
-string x18654 = std::to_string(x18653);
-string x18655 = (x18654 + string(" "));
-std::cout << x18655;
-}
-std::cout << string("\n");
-std::cout << string("\n\n");
-int32_t x18660 = (*x2637).size();
-int32_t x18661 = x18660 - 2;
-string x18662;
-try {
-x18662 = (*x2637).at(x18661);
-}
-catch (std::out_of_range& e) {
-printHelp();
-}
-std::ifstream x18663_file (x18662);
-assert(x18663_file.good() && "File x18662 does not exist"); 
-std::vector<string>* x18664 = new std::vector<string>; 
-if (x18663_file.is_open()) {
-while ( x18663_file.good() ) {
-string x18664_line;
-getline (x18663_file, x18664_line);
-string x18664_delim = string("\n");
-size_t x18664_pos = 0;
-while (x18664_line.find(x18664_delim) != std::string::npos | x18664_line.length() > 0) {
-  if (x18664_line.find(x18664_delim) != std::string::npos) {
-    x18664_pos = x18664_line.find(x18664_delim);
-  } else {
-    x18664_pos = x18664_line.length();
+
+
+  // Register ArgIns and ArgIOs in case some are unused
+  c1->setNumArgIns(0 + 11 + 0);
+  c1->setNumArgIOs(0);
+  c1->setNumArgOuts(0);
+  c1->setNumArgOutInstrs(0);
+  c1->setNumEarlyExits(0);
+  c1->flushCache(1024);
+  time_t tstart = time(0);
+
+  vector<string>* x2600 = img_list;
+  int num_img = (*x2600).size();
+
+  for (int i = 0; i < num_img; i++) {
+    string x2638;
+    try {
+      x2638 = (*x2600).at(i);
+    }
+    catch (std::out_of_range& e) {
+    printHelp();
+    }
+    // ifstream: input stream class to operate on files
+    std::ifstream x2639_file (x2638);
+    assert(x2639_file.good() && "File x2638 does not exist"); 
+    std::vector<string>* x2640 = new std::vector<string>; 
+    if (x2639_file.is_open()) {
+      while ( x2639_file.good() ) {
+        string x2640_line;
+        // get contents from .csv and store in x2640
+        getline (x2639_file, x2640_line);
+        
+        // used to iterate through and remove "\n"
+        string x2640_delim = string("\n");
+        size_t x2640_pos = 0;
+
+        // loop to remove the "\n" chars
+        while (x2640_line.find(x2640_delim) != std::string::npos | x2640_line.length() > 0) {
+          if (x2640_line.find(x2640_delim) != std::string::npos) {
+            // TODO: seems redundant
+            x2640_pos = x2640_line.find(x2640_delim);
+          } else {
+            x2640_pos = x2640_line.length();
+          }
+          string x2640_token = x2640_line.substr(0, x2640_pos);
+          x2640_line.erase(0, x2640_pos + x2640_delim.length());
+          // push to new vector x2640
+          x2640->push_back(x2640_token);
+        }
+      }
+    }
+
+    // set new value for stream internal error
+    x2639_file.clear();
+    // return to beginning of file
+    x2639_file.seekg(0, x2639_file.beg);
+    //close
+    x2639_file.close();
+
+    // convert from string to double
+    vector<double>* x2644 = new vector<double>((*x2640).size());
+    for (int b5 = 0; b5 < (*x2640).size(); b5++) { 
+      string x2642 = (*x2640)[b5];
+      double x2643 = std::stod(x2642);
+      (*x2644)[b5] = x2643;
+    }
+    // Check if number of elements is correct
+    int32_t x2645 = (*x2644).size();
+    bool x2646 = 150528 == x2645;
+    //  string debug_s = std::to_string(
+    string x2647 = std::to_string(x2645);
+    string x2648 = (string("Number of elements in vector (") + x2647);
+    string x2649 = (x2648 + string(") must match number of elements in matrix ("));
+    string x2650 = (x2649 + string("3"));
+    string x2651 = (x2650 + string("x"));
+    string x2652 = (x2651 + string("224"));
+    string x2653 = (x2652 + string("x"));
+    string x2654 = (x2653 + string("224"));
+    string x2655 = (x2654 + string(")"));
+    string x2656 = (string("resnetofficialopt2.scala:43:49:") + x2655);
+    string x2657 = ("\n=================\n" + (x2656 +"\n" + x2638 +  "\n=================\n"));
+    // ASSERT defined in FringeContext
+    if (true) { ASSERT(x2646, x2657.c_str()); }
+    vector<double>* x2678 = new vector<double>(158700);
+
+    // Checking for matching numer of elements per row? Not sure
+    for (int b22 = 0; b22 < 158700; b22++) {
+      int32_t x2658 = b22 / 52900;
+      int32_t x2659 = b22 / 230;
+      int32_t x2660 = (int32_t) ((x2659 % 230 + 230) % 230);
+      int32_t x2661 = (int32_t) ((b22 % 230 + 230) % 230);
+      bool x2662 = 3 <= x2660;
+      bool x2663 = x2660 < 227;
+      bool x2664 = x2662 & x2663;
+      bool x2665 = 3 <= x2661;
+      bool x2666 = x2664 & x2665;
+      bool x2667 = x2661 < 227;
+      bool x2668 = x2666 & x2667;
+      double x2677;
+      if (x2668) { 
+        int32_t x2669 = x2660 - 3;
+        int32_t x2670 = x2661 - 3;
+        int32_t x2671 = x2658 * 224;
+        int32_t x2672 = x2671 * 224;
+        int32_t x2673 = x2669 * 224;
+        int32_t x2674 = x2672 + x2673;
+        int32_t x2675 = x2674 + x2670;
+        double x2676 = (*x2644)[x2675];
+        x2677 = x2676;
+      }
+      else {
+        x2677 = 0;
+      }
+      (*x2678)[b22] = x2677;
+    }
+
+    // allocate memory in device memory
+    uint64_t x2679 = c1->malloc(sizeof(double) * 3*230*230);
+    c1->setArg(I0_PAD_DRAM_ptr, x2679, false);
+    printf("Allocate mem of size 3*230*230 at %p\n", (void*)x2679);
+
+    uint64_t x2680 = c1->malloc(sizeof(double) * 1008);
+    c1->setArg(TMP76_DRAM_ptr, x2680, false);
+    printf("Allocate mem of size 1008 at %p\n", (void*)x2680);
+
+    vector<int32_t>* x2679_rawified = new vector<int32_t>((*x2678).size());
+    for (int x2679_rawified_i = 0; x2679_rawified_i < (*x2678).size(); x2679_rawified_i++) {
+      (*x2679_rawified)[x2679_rawified_i] = (int32_t) ((*x2678)[x2679_rawified_i] * ((int32_t)1 << 22));
+    }
+
+    c1->memcpy(x2679, &(*x2679_rawified)[0], (*x2679_rawified).size() * sizeof(int32_t));
+    uint64_t x2682 = c1->malloc(sizeof(double) * 3*802816);
+    c1->setArg(TMP_DRAM_ptr, x2682, false);
+    printf("Allocate mem of size 3*802816 at %p\n", (void*)x2682);
+
+    c1->run();
+    c1->flushCache(1024);
+    vector<double>* x18645 = new vector<double>(1008);
+    vector<int32_t>* x18645_rawified = new vector<int32_t>((*x18645).size());
+    c1->memcpy(&(*x18645_rawified)[0], x2680, (*x18645_rawified).size() * sizeof(int32_t));
+    for (int x18645_i = 0; x18645_i < (*x18645).size(); x18645_i++) {
+      int32_t x18645_tmp = (*x18645_rawified)[x18645_i];
+      (*x18645)[x18645_i] = (double) x18645_tmp / ((int32_t)1 << 22);
+    }
+    vector<double>* x18649 = new vector<double>(1000);
+    for (int b1259 = 0; b1259 < 1000; b1259++) {
+      int32_t x18647 = b1259 + 1;
+      double x18648 = (*x18645)[x18647];
+      (*x18649)[b1259] = x18648;
+    }
+    string x18650 = (string("output") + string("\n"));
+    std::cout << x18650;
+    int32_t x18652 = (*x18649).size();
+    for (int b1266 = 0; b1266 < x18652; b1266 = b1266 + 1) {
+      double x18653 = (*x18649)[b1266];
+      string x18654 = std::to_string(x18653);
+      string x18655 = (x18654 + string(" "));
+      std::cout << x18655;
+    }
+    std::cout << string("\n");
+    std::cout << string("\n\n");
+    int32_t x18660 = (*x2637).size();
+    int32_t x18661 = x18660 - 2;
+    string x18662;
+    try {
+      x18662 = (*x2637).at(x18661);
+    }
+    catch (std::out_of_range& e) {
+      printHelp();
+    }
+    std::ifstream x18663_file (x18662);
+    assert(x18663_file.good() && "File x18662 does not exist"); 
+    std::vector<string>* x18664 = new std::vector<string>; 
+    if (x18663_file.is_open()) {
+      while ( x18663_file.good() ) {
+        string x18664_line;
+        getline (x18663_file, x18664_line);
+        string x18664_delim = string("\n");
+        size_t x18664_pos = 0;
+        while (x18664_line.find(x18664_delim) != std::string::npos | x18664_line.length() > 0) {
+          if (x18664_line.find(x18664_delim) != std::string::npos) {
+            x18664_pos = x18664_line.find(x18664_delim);
+          } else {
+            x18664_pos = x18664_line.length();
+          }
+          string x18664_token = x18664_line.substr(0, x18664_pos);
+          x18664_line.erase(0, x18664_pos + x18664_delim.length());
+          x18664->push_back(x18664_token);
+        }
+      }
+    }
+    x18663_file.clear();
+    x18663_file.seekg(0, x18663_file.beg);
+    x18663_file.close();
+    vector<string>* x18667 = new vector<string>((*x18664).size());
+    for (int b1280 = 0; b1280 < (*x18664).size(); b1280++) { 
+      string x18666 = (*x18664)[b1280];
+      (*x18667)[b1280] = x18666;
+    }
+    std::cout << string("Top 5 Predictions: \n");
+    vector<Tup2FixTRUE_10_22FixTRUE_32_0>* x18671 = new vector<Tup2FixTRUE_10_22FixTRUE_32_0>(1000);
+    for (int b1284 = 0; b1284 < 1000; b1284++) {
+      double x18669 = (*x18649)[b1284];
+      Tup2FixTRUE_10_22FixTRUE_32_0 x18670 = Tup2FixTRUE_10_22FixTRUE_32_0(x18669,b1284);
+      (*x18671)[b1284] = x18670;
+    }
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18677;
+    if ((*x18671).size() > 0) { // Hack to handle reductions on things of length 0
+      x18677 = (*x18671)[0];
+    }
+    else {
+      x18677 = *(new Tup2FixTRUE_10_22FixTRUE_32_0(0,0));;
+    }
+    for (int b1288 = 1; b1288 < (*x18671).size(); b1288++) {
+      Tup2FixTRUE_10_22FixTRUE_32_0 b1289 = (*x18671)[b1288];
+      Tup2FixTRUE_10_22FixTRUE_32_0 b1290 = x18677;
+      double x18673 = b1289._1;
+      double x18674 = b1290._1;
+      bool x18675 = x18674 < x18673;
+      Tup2FixTRUE_10_22FixTRUE_32_0 x18676;
+      if (x18675) { 
+        x18676 = b1289;
+      }
+      else {
+        x18676 = b1290;
+      }
+      x18677 = x18676;
+    }
+    int32_t x18678 = x18677._2;
+    vector<Tup2FixTRUE_10_22FixTRUE_32_0>* x18684 = new vector<Tup2FixTRUE_10_22FixTRUE_32_0>(1000);
+    for (int b1298 = 0; b1298 < 1000; b1298++) {
+      bool x18679 = b1298 == x18678;
+      Tup2FixTRUE_10_22FixTRUE_32_0 x18683;
+      if (x18679) { 
+        Tup2FixTRUE_10_22FixTRUE_32_0 x18680 = Tup2FixTRUE_10_22FixTRUE_32_0(-1,b1298);
+        x18683 = x18680;
+      }
+      else {
+        double x18681 = (*x18649)[b1298];
+        Tup2FixTRUE_10_22FixTRUE_32_0 x18682 = Tup2FixTRUE_10_22FixTRUE_32_0(x18681,b1298);
+        x18683 = x18682;
+      }
+      (*x18684)[b1298] = x18683;
+    }
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18690;
+    if ((*x18684).size() > 0) { // Hack to handle reductions on things of length 0
+      x18690 = (*x18684)[0];
+    }
+    else {
+      x18690 = *(new Tup2FixTRUE_10_22FixTRUE_32_0(0,0));;
+    }
+    for (int b1305 = 1; b1305 < (*x18684).size(); b1305++) {
+      Tup2FixTRUE_10_22FixTRUE_32_0 b1306 = (*x18684)[b1305];
+      Tup2FixTRUE_10_22FixTRUE_32_0 b1307 = x18690;
+      double x18686 = b1306._1;
+      double x18687 = b1307._1;
+      bool x18688 = x18687 < x18686;
+      Tup2FixTRUE_10_22FixTRUE_32_0 x18689;
+      if (x18688) { 
+        x18689 = b1306;
+      }
+      else {
+        x18689 = b1307;
+      }
+      x18690 = x18689;
+    }
+    int32_t x18691 = x18690._2;
+    vector<Tup2FixTRUE_10_22FixTRUE_32_0>* x18699 = new vector<Tup2FixTRUE_10_22FixTRUE_32_0>(1000);
+    for (int b1315 = 0; b1315 < 1000; b1315++) {
+      bool x18692 = b1315 == x18678;
+      bool x18693 = b1315 == x18691;
+      bool x18694 = x18692 | x18693;
+      Tup2FixTRUE_10_22FixTRUE_32_0 x18698;
+      if (x18694) { 
+        Tup2FixTRUE_10_22FixTRUE_32_0 x18695 = Tup2FixTRUE_10_22FixTRUE_32_0(-1,b1315);
+        x18698 = x18695;
+      }
+      else {
+        double x18696 = (*x18649)[b1315];
+        Tup2FixTRUE_10_22FixTRUE_32_0 x18697 = Tup2FixTRUE_10_22FixTRUE_32_0(x18696,b1315);
+        x18698 = x18697;
+      }
+      (*x18699)[b1315] = x18698;
+    }
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18705;
+    if ((*x18699).size() > 0) { // Hack to handle reductions on things of length 0
+      x18705 = (*x18699)[0];
+    }
+    else {
+      x18705 = *(new Tup2FixTRUE_10_22FixTRUE_32_0(0,0));;
+    }
+    for (int b1324 = 1; b1324 < (*x18699).size(); b1324++) {
+      Tup2FixTRUE_10_22FixTRUE_32_0 b1325 = (*x18699)[b1324];
+      Tup2FixTRUE_10_22FixTRUE_32_0 b1326 = x18705;
+      double x18701 = b1325._1;
+      double x18702 = b1326._1;
+      bool x18703 = x18702 < x18701;
+      Tup2FixTRUE_10_22FixTRUE_32_0 x18704;
+      if (x18703) { 
+        x18704 = b1325;
+      }
+      else {
+        x18704 = b1326;
+      }
+      x18705 = x18704;
+    }
+    int32_t x18706 = x18705._2;
+    vector<Tup2FixTRUE_10_22FixTRUE_32_0>* x18716 = new vector<Tup2FixTRUE_10_22FixTRUE_32_0>(1000);
+    for (int b1334 = 0; b1334 < 1000; b1334++) {
+    bool x18707 = b1334 == x18678;
+    bool x18708 = b1334 == x18691;
+    bool x18709 = x18707 | x18708;
+    bool x18710 = b1334 == x18706;
+    bool x18711 = x18709 | x18710;
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18715;
+    if (x18711) { 
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18712 = Tup2FixTRUE_10_22FixTRUE_32_0(-1,b1334);
+    x18715 = x18712;
+    }
+    else {
+    double x18713 = (*x18649)[b1334];
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18714 = Tup2FixTRUE_10_22FixTRUE_32_0(x18713,b1334);
+    x18715 = x18714;
+    }
+    (*x18716)[b1334] = x18715;
+    }
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18722;
+    if ((*x18716).size() > 0) { // Hack to handle reductions on things of length 0
+    x18722 = (*x18716)[0];
+    }
+    else {
+    x18722 = *(new Tup2FixTRUE_10_22FixTRUE_32_0(0,0));;
+    }
+    for (int b1345 = 1; b1345 < (*x18716).size(); b1345++) {
+    Tup2FixTRUE_10_22FixTRUE_32_0 b1346 = (*x18716)[b1345];
+    Tup2FixTRUE_10_22FixTRUE_32_0 b1347 = x18722;
+    double x18718 = b1346._1;
+    double x18719 = b1347._1;
+    bool x18720 = x18719 < x18718;
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18721;
+    if (x18720) { 
+    x18721 = b1346;
+    }
+    else {
+    x18721 = b1347;
+    }
+    x18722 = x18721;
+    }
+    int32_t x18723 = x18722._2;
+    vector<Tup2FixTRUE_10_22FixTRUE_32_0>* x18735 = new vector<Tup2FixTRUE_10_22FixTRUE_32_0>(1000);
+    for (int b1355 = 0; b1355 < 1000; b1355++) {
+    bool x18724 = b1355 == x18678;
+    bool x18725 = b1355 == x18691;
+    bool x18726 = x18724 | x18725;
+    bool x18727 = b1355 == x18706;
+    bool x18728 = x18726 | x18727;
+    bool x18729 = b1355 == x18723;
+    bool x18730 = x18728 | x18729;
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18734;
+    if (x18730) { 
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18731 = Tup2FixTRUE_10_22FixTRUE_32_0(-1,b1355);
+    x18734 = x18731;
+    }
+    else {
+    double x18732 = (*x18649)[b1355];
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18733 = Tup2FixTRUE_10_22FixTRUE_32_0(x18732,b1355);
+    x18734 = x18733;
+    }
+    (*x18735)[b1355] = x18734;
+    }
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18741;
+    if ((*x18735).size() > 0) { // Hack to handle reductions on things of length 0
+    x18741 = (*x18735)[0];
+    }
+    else {
+    x18741 = *(new Tup2FixTRUE_10_22FixTRUE_32_0(0,0));;
+    }
+    for (int b1368 = 1; b1368 < (*x18735).size(); b1368++) {
+    Tup2FixTRUE_10_22FixTRUE_32_0 b1369 = (*x18735)[b1368];
+    Tup2FixTRUE_10_22FixTRUE_32_0 b1370 = x18741;
+    double x18737 = b1369._1;
+    double x18738 = b1370._1;
+    bool x18739 = x18738 < x18737;
+    Tup2FixTRUE_10_22FixTRUE_32_0 x18740;
+    if (x18739) { 
+    x18740 = b1369;
+    }
+    else {
+    x18740 = b1370;
+    }
+    x18741 = x18740;
+    }
+    int32_t x18742 = x18741._2;
+    string x18743 = (*x18667)[x18678];
+    string x18744 = (string("  1. ") + x18743);
+    string x18745 = (x18744 + string("\n"));
+    std::cout << x18745;
+    string x18747 = (*x18667)[x18691];
+    string x18748 = (string("  2. ") + x18747);
+    string x18749 = (x18748 + string("\n"));
+    std::cout << x18749;
+    string x18751 = (*x18667)[x18706];
+    string x18752 = (string("  3. ") + x18751);
+    string x18753 = (x18752 + string("\n"));
+    std::cout << x18753;
+    string x18755 = (*x18667)[x18723];
+    string x18756 = (string("  4. ") + x18755);
+    string x18757 = (x18756 + string("\n"));
+    std::cout << x18757;
+    string x18759 = (*x18667)[x18742];
+    string x18760 = (string("  5. ") + x18759);
+    string x18761 = (x18760 + string("\n"));
+    std::cout << x18761;
+    std::cout << string("\n");
+  
+
   }
-  string x18664_token = x18664_line.substr(0, x18664_pos);
-  x18664_line.erase(0, x18664_pos + x18664_delim.length());
-  x18664->push_back(x18664_token);
-}
-}
-}
-x18663_file.clear();
-x18663_file.seekg(0, x18663_file.beg);
-x18663_file.close();
-vector<string>* x18667 = new vector<string>((*x18664).size());
-for (int b1280 = 0; b1280 < (*x18664).size(); b1280++) { 
-string x18666 = (*x18664)[b1280];
-(*x18667)[b1280] = x18666;
-}
-std::cout << string("Top 5 Predictions: \n");
-vector<Tup2FixTRUE_10_22FixTRUE_32_0>* x18671 = new vector<Tup2FixTRUE_10_22FixTRUE_32_0>(1000);
-for (int b1284 = 0; b1284 < 1000; b1284++) {
-double x18669 = (*x18649)[b1284];
-Tup2FixTRUE_10_22FixTRUE_32_0 x18670 = Tup2FixTRUE_10_22FixTRUE_32_0(x18669,b1284);
-(*x18671)[b1284] = x18670;
-}
-Tup2FixTRUE_10_22FixTRUE_32_0 x18677;
-if ((*x18671).size() > 0) { // Hack to handle reductions on things of length 0
-x18677 = (*x18671)[0];
-}
-else {
-x18677 = *(new Tup2FixTRUE_10_22FixTRUE_32_0(0,0));;
-}
-for (int b1288 = 1; b1288 < (*x18671).size(); b1288++) {
-Tup2FixTRUE_10_22FixTRUE_32_0 b1289 = (*x18671)[b1288];
-Tup2FixTRUE_10_22FixTRUE_32_0 b1290 = x18677;
-double x18673 = b1289._1;
-double x18674 = b1290._1;
-bool x18675 = x18674 < x18673;
-Tup2FixTRUE_10_22FixTRUE_32_0 x18676;
-if (x18675) { 
-x18676 = b1289;
-}
-else {
-x18676 = b1290;
-}
-x18677 = x18676;
-}
-int32_t x18678 = x18677._2;
-vector<Tup2FixTRUE_10_22FixTRUE_32_0>* x18684 = new vector<Tup2FixTRUE_10_22FixTRUE_32_0>(1000);
-for (int b1298 = 0; b1298 < 1000; b1298++) {
-bool x18679 = b1298 == x18678;
-Tup2FixTRUE_10_22FixTRUE_32_0 x18683;
-if (x18679) { 
-Tup2FixTRUE_10_22FixTRUE_32_0 x18680 = Tup2FixTRUE_10_22FixTRUE_32_0(-1,b1298);
-x18683 = x18680;
-}
-else {
-double x18681 = (*x18649)[b1298];
-Tup2FixTRUE_10_22FixTRUE_32_0 x18682 = Tup2FixTRUE_10_22FixTRUE_32_0(x18681,b1298);
-x18683 = x18682;
-}
-(*x18684)[b1298] = x18683;
-}
-Tup2FixTRUE_10_22FixTRUE_32_0 x18690;
-if ((*x18684).size() > 0) { // Hack to handle reductions on things of length 0
-x18690 = (*x18684)[0];
-}
-else {
-x18690 = *(new Tup2FixTRUE_10_22FixTRUE_32_0(0,0));;
-}
-for (int b1305 = 1; b1305 < (*x18684).size(); b1305++) {
-Tup2FixTRUE_10_22FixTRUE_32_0 b1306 = (*x18684)[b1305];
-Tup2FixTRUE_10_22FixTRUE_32_0 b1307 = x18690;
-double x18686 = b1306._1;
-double x18687 = b1307._1;
-bool x18688 = x18687 < x18686;
-Tup2FixTRUE_10_22FixTRUE_32_0 x18689;
-if (x18688) { 
-x18689 = b1306;
-}
-else {
-x18689 = b1307;
-}
-x18690 = x18689;
-}
-int32_t x18691 = x18690._2;
-vector<Tup2FixTRUE_10_22FixTRUE_32_0>* x18699 = new vector<Tup2FixTRUE_10_22FixTRUE_32_0>(1000);
-for (int b1315 = 0; b1315 < 1000; b1315++) {
-bool x18692 = b1315 == x18678;
-bool x18693 = b1315 == x18691;
-bool x18694 = x18692 | x18693;
-Tup2FixTRUE_10_22FixTRUE_32_0 x18698;
-if (x18694) { 
-Tup2FixTRUE_10_22FixTRUE_32_0 x18695 = Tup2FixTRUE_10_22FixTRUE_32_0(-1,b1315);
-x18698 = x18695;
-}
-else {
-double x18696 = (*x18649)[b1315];
-Tup2FixTRUE_10_22FixTRUE_32_0 x18697 = Tup2FixTRUE_10_22FixTRUE_32_0(x18696,b1315);
-x18698 = x18697;
-}
-(*x18699)[b1315] = x18698;
-}
-Tup2FixTRUE_10_22FixTRUE_32_0 x18705;
-if ((*x18699).size() > 0) { // Hack to handle reductions on things of length 0
-x18705 = (*x18699)[0];
-}
-else {
-x18705 = *(new Tup2FixTRUE_10_22FixTRUE_32_0(0,0));;
-}
-for (int b1324 = 1; b1324 < (*x18699).size(); b1324++) {
-Tup2FixTRUE_10_22FixTRUE_32_0 b1325 = (*x18699)[b1324];
-Tup2FixTRUE_10_22FixTRUE_32_0 b1326 = x18705;
-double x18701 = b1325._1;
-double x18702 = b1326._1;
-bool x18703 = x18702 < x18701;
-Tup2FixTRUE_10_22FixTRUE_32_0 x18704;
-if (x18703) { 
-x18704 = b1325;
-}
-else {
-x18704 = b1326;
-}
-x18705 = x18704;
-}
-int32_t x18706 = x18705._2;
-vector<Tup2FixTRUE_10_22FixTRUE_32_0>* x18716 = new vector<Tup2FixTRUE_10_22FixTRUE_32_0>(1000);
-for (int b1334 = 0; b1334 < 1000; b1334++) {
-bool x18707 = b1334 == x18678;
-bool x18708 = b1334 == x18691;
-bool x18709 = x18707 | x18708;
-bool x18710 = b1334 == x18706;
-bool x18711 = x18709 | x18710;
-Tup2FixTRUE_10_22FixTRUE_32_0 x18715;
-if (x18711) { 
-Tup2FixTRUE_10_22FixTRUE_32_0 x18712 = Tup2FixTRUE_10_22FixTRUE_32_0(-1,b1334);
-x18715 = x18712;
-}
-else {
-double x18713 = (*x18649)[b1334];
-Tup2FixTRUE_10_22FixTRUE_32_0 x18714 = Tup2FixTRUE_10_22FixTRUE_32_0(x18713,b1334);
-x18715 = x18714;
-}
-(*x18716)[b1334] = x18715;
-}
-Tup2FixTRUE_10_22FixTRUE_32_0 x18722;
-if ((*x18716).size() > 0) { // Hack to handle reductions on things of length 0
-x18722 = (*x18716)[0];
-}
-else {
-x18722 = *(new Tup2FixTRUE_10_22FixTRUE_32_0(0,0));;
-}
-for (int b1345 = 1; b1345 < (*x18716).size(); b1345++) {
-Tup2FixTRUE_10_22FixTRUE_32_0 b1346 = (*x18716)[b1345];
-Tup2FixTRUE_10_22FixTRUE_32_0 b1347 = x18722;
-double x18718 = b1346._1;
-double x18719 = b1347._1;
-bool x18720 = x18719 < x18718;
-Tup2FixTRUE_10_22FixTRUE_32_0 x18721;
-if (x18720) { 
-x18721 = b1346;
-}
-else {
-x18721 = b1347;
-}
-x18722 = x18721;
-}
-int32_t x18723 = x18722._2;
-vector<Tup2FixTRUE_10_22FixTRUE_32_0>* x18735 = new vector<Tup2FixTRUE_10_22FixTRUE_32_0>(1000);
-for (int b1355 = 0; b1355 < 1000; b1355++) {
-bool x18724 = b1355 == x18678;
-bool x18725 = b1355 == x18691;
-bool x18726 = x18724 | x18725;
-bool x18727 = b1355 == x18706;
-bool x18728 = x18726 | x18727;
-bool x18729 = b1355 == x18723;
-bool x18730 = x18728 | x18729;
-Tup2FixTRUE_10_22FixTRUE_32_0 x18734;
-if (x18730) { 
-Tup2FixTRUE_10_22FixTRUE_32_0 x18731 = Tup2FixTRUE_10_22FixTRUE_32_0(-1,b1355);
-x18734 = x18731;
-}
-else {
-double x18732 = (*x18649)[b1355];
-Tup2FixTRUE_10_22FixTRUE_32_0 x18733 = Tup2FixTRUE_10_22FixTRUE_32_0(x18732,b1355);
-x18734 = x18733;
-}
-(*x18735)[b1355] = x18734;
-}
-Tup2FixTRUE_10_22FixTRUE_32_0 x18741;
-if ((*x18735).size() > 0) { // Hack to handle reductions on things of length 0
-x18741 = (*x18735)[0];
-}
-else {
-x18741 = *(new Tup2FixTRUE_10_22FixTRUE_32_0(0,0));;
-}
-for (int b1368 = 1; b1368 < (*x18735).size(); b1368++) {
-Tup2FixTRUE_10_22FixTRUE_32_0 b1369 = (*x18735)[b1368];
-Tup2FixTRUE_10_22FixTRUE_32_0 b1370 = x18741;
-double x18737 = b1369._1;
-double x18738 = b1370._1;
-bool x18739 = x18738 < x18737;
-Tup2FixTRUE_10_22FixTRUE_32_0 x18740;
-if (x18739) { 
-x18740 = b1369;
-}
-else {
-x18740 = b1370;
-}
-x18741 = x18740;
-}
-int32_t x18742 = x18741._2;
-string x18743 = (*x18667)[x18678];
-string x18744 = (string("  1. ") + x18743);
-string x18745 = (x18744 + string("\n"));
-std::cout << x18745;
-string x18747 = (*x18667)[x18691];
-string x18748 = (string("  2. ") + x18747);
-string x18749 = (x18748 + string("\n"));
-std::cout << x18749;
-string x18751 = (*x18667)[x18706];
-string x18752 = (string("  3. ") + x18751);
-string x18753 = (x18752 + string("\n"));
-std::cout << x18753;
-string x18755 = (*x18667)[x18723];
-string x18756 = (string("  4. ") + x18755);
-string x18757 = (x18756 + string("\n"));
-std::cout << x18757;
-string x18759 = (*x18667)[x18742];
-string x18760 = (string("  5. ") + x18759);
-string x18761 = (x18760 + string("\n"));
-std::cout << x18761;
-std::cout << string("\n");
-delete c1;
+  
+  time_t tend = time(0);
+  double elapsed = difftime(tend, tstart);
+  std::cout << "Kernel done, test run time = " << elapsed << " ms" << std::endl;
+  delete c1;
+  
 }
 
 void printHelp() {
-fprintf(stderr, "Help for app: resnetofficialopt2\n");
-fprintf(stderr, "  -- Args:    <0: i0>\n");
-fprintf(stderr, "    -- Example: bash run.sh /path/to/input.csv  /path/to/classes.csv  /path/to/weights/directory/\n");
-exit(1);
+  fprintf(stderr, "Help for app: resnetofficialopt2\n");
+  fprintf(stderr, "  -- Args:    <0: i0>\n");
+  fprintf(stderr, "    -- Example: bash run.sh /path/to/input.csv  /path/to/classes.csv  /path/to/weights/directory/\n");
+  exit(1);
 }
 
 int main(int argc, char *argv[]) {
-vector<string> *args = new vector<string>(argc-1);
-for (int i=1; i<argc; i++) {
-(*args)[i-1] = std::string(argv[i]);
-if ((std::string(argv[i]) == "--help") |( std::string(argv[i]) == "-h")) {printHelp();}
-}
-int numThreads = 1;
-char *env_threads = getenv("DELITE_NUM_THREADS");
-if (env_threads != NULL) { numThreads = atoi(env_threads); } else {
-  fprintf(stderr, "[WARNING]: DELITE_NUM_THREADS undefined, defaulting to 1\n");
-}
-fprintf(stderr, "Executing with %d thread(s)\n", numThreads);
-Application(numThreads, args);
-return 0;
+
+  // argv[0] will point to images directory
+  const char* path = argv[1];
+  vector<string> *img_list = new vector<string>();
+  
+  DIR *dir;
+  struct dirent *ent;
+  if ((dir = opendir(path)) != NULL) {
+    while ((ent = readdir(dir)) != NULL) {
+      string img_path = ent->d_name;
+      if (img_path != ".." && img_path != ".") {
+        string full_img_name = path + img_path;
+        img_list->push_back(full_img_name);
+      }
+    }
+    closedir(dir);
+  } else {
+    perror("");
+    return EXIT_FAILURE;
+  }
+
+  
+  // add all .csv files to vector
+  vector<string> *args = new vector<string>(argc-1);
+  for (int i=1; i<argc; i++) {
+    (*args)[i-1] = std::string(argv[i]);
+    if (std::string(argv[i]) == "--help" | std::string(argv[i]) == "-h") {printHelp();}
+  }
+
+  int numThreads = 1;
+  char *env_threads = getenv("DELITE_NUM_THREADS");
+  // atoi() converts string to int
+  if (env_threads != NULL) { numThreads = atoi(env_threads); } else {
+    fprintf(stderr, "[WARNING]: DELITE_NUM_THREADS undefined, defaulting to 1\n");
+  }
+  fprintf(stderr, "Executing with %d thread(s)\n", numThreads);
+  Application(numThreads, args, img_list);
+  return 0;
 }
